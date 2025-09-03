@@ -72,6 +72,8 @@ streamlit run src/main.py
 🧪 Lancer les tests
 pytest tests/
 
+
+
 🔒 Contraintes techniques
 
 🚫 Interdiction de hardcoder des URLs
