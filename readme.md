@@ -89,3 +89,21 @@ Replit (dev rapide)
 Streamlit Cloud (prod public)
 
 Railway.app (auto-deploy GitHub + domaine personnalisé)
+
+
+
+---
+
+## 🤝 Contribuer
+
+Vous avez une idée d'amélioration ?  
+Un bug à signaler ?  
+👉 Ouvrez une issue ou une pull request !  
+Nous utilisons une méthodologie TDD stricte et refusons le hardcoding.
+
+---
+
+## 🧙‍♂️ Auteur
+
+Développé par [Jérôme Gonzalez](https://github.com/jeromegonz1)  
+Pour SEPTEO Digital Services — Fire Salamander Team
