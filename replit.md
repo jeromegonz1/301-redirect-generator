@@ -6,9 +6,10 @@ Application Streamlit pour générer automatiquement des redirections 301 entre 
 
 ## État actuel
 
-✅ **Fonctionnel et déployé**
+✅ **Fonctionnel et déployé avec module de scraping**
 - Interface Streamlit opérationnelle sur port 5000
-- Tests TDD complets (9/9 passants) 
+- Tests TDD complets (24/24 passants : 9 générateur + 15 scraper)
+- Module de scraping automatique implémenté selon SCRAPER_SPEC.md
 - Configuration de déploiement prête
 - Workflow configuré et en fonctionnement
 
@@ -18,16 +19,23 @@ Application Streamlit pour générer automatiquement des redirections 301 entre 
 /301-redirect-generator
 ├── src/
 │   ├── main.py          # Interface Streamlit
-│   └── generator.py     # Logique de parsing/génération
+│   ├── generator.py     # Logique de parsing/génération
+│   └── scraper.py       # Module de scraping automatique
 ├── tests/
-│   └── test_generator.py # Tests TDD complets
+│   ├── test_generator.py # Tests TDD générateur (9 tests)
+│   └── test_scraper.py   # Tests TDD scraper (15 tests) 
 ├── outputs/             # Fichiers générés (vide)
 ├── .streamlit/
 │   └── config.toml      # Config Streamlit (port 5000)
-├── requirements.txt
+├── requirements.txt     # Dépendances avec scraping
 ├── user_stories.md      # User Stories complètes
-├── CDC.md              # Cahier des charges
-└── readme.md           # Documentation originale
+├── CDC.md              # Cahier des charges mis à jour
+├── SCRAPER_SPEC.md     # Spécification technique scraping
+├── SCRAPING_STRATEGY.md # Stratégie de scraping
+├── UX_ENHANCEMENTS.md  # Améliorations UX
+├── US006.md           # Issue scraping automatique
+├── AGENT_BRIEF.md     # Brief technique détaillé
+└── readme.md          # Documentation originale
 ```
 
 ## Fonctionnalités implémentées
@@ -54,9 +62,18 @@ Application Streamlit pour générer automatiquement des redirections 301 entre 
 - Aucun paramètre technique
 
 ### US005 - Qualité TDD ✅
-- 9 tests automatisés passants
+- 24 tests automatisés passants (9 générateur + 15 scraper)
 - Aucune URL codée en dur
 - Structure de projet claire
+
+### US006 - Scraping automatique ✅ **NOUVEAU**
+- Module de scraping intelligent (src/scraper.py)
+- Crawling automatique jusqu'à 200 pages par site
+- Normalisation des URLs et gestion des domaines
+- Support authentification Basic Auth
+- User-Agent dédié : "301-Redirect-Bot"
+- Gestion des erreurs avec fallback
+- 15 tests automatisés couvrant tous les cas
 
 ## Configuration
 
@@ -75,8 +92,12 @@ Application Streamlit pour générer automatiquement des redirections 301 entre 
 
 ```bash
 python -m pytest tests/ -v
-# 9 passed in 0.08s
+# 24 passed in 1.06s (9 générateur + 15 scraper)
 ```
+
+### Tests par module
+- **Generator** : 9 tests (parsing, génération, validation)
+- **Scraper** : 15 tests (crawling, normalisation, authentification)
 
 ## Déploiement
 
