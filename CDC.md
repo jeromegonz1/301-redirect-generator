@@ -17,10 +17,17 @@ Développer une application ultra-simple permettant à des utilisateurs non tech
 
 ### 2.1. Entrées supportées
 
-L'application doit accepter 3 formats dans chacun des deux champs "Ancien site" et "Nouveau site" :
+L'application doit accepter 4 formats dans chacun des deux champs "Ancien site" et "Nouveau site" :
 - ✅ Sitemap XML (balises `<loc>`)
 - ✅ Liste brute d’URLs (1 par ligne)
 - ✅ CSV copié depuis Excel/Google Sheets (2 colonnes : ancienne, nouvelle)
+
+### 🔄 Scraping automatique (par défaut)
+L'utilisateur peut simplement entrer deux URLs racines (ancien site et nouveau site) :
+- L'outil explore automatiquement les liens internes (jusqu'à 200 pages)
+- Le scraping se fait en profondeur, avec respect des domaines
+- Ancienne URL = complète, Nouvelle URL = relative
+- Le scraping est le mode d'entrée par défaut, mais peut être désactivé
 
 ### 2.2. Traitement
 
