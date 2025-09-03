@@ -59,125 +59,269 @@ def generate_redirections_from_lists(old_urls, new_urls):
         return None, None, str(e)
 
 def main():
-    """Interface principale avec scraping automatique"""
+    """Interface principale avec scraping flexible"""
     
     # Titre
     st.title("🦎 301 Redirect Generator")
-    st.markdown("**Mode automatique avec scraping intelligent** - Entrez 2 URLs, obtenez vos redirections !")
+    st.markdown("**Mode flexible** - Scrapez automatiquement ou saisissez manuellement selon vos besoins !")
     st.markdown("---")
 
-    # Mode par défaut : Scraping automatique
-    st.header("🔄 Mode automatique (recommandé)")
+    # Interface hybride
+    st.header("🔄 Mode hybride (scraping + manuel)")
     
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("🔗 URL ancien site")
+        st.subheader("🔗 Ancien site")
+        
+        # URL pour scraping
         old_site_url = st.text_input(
-            label="URL ancien site",
+            label="URL ancien site (pour scraping)",
             placeholder="https://ancien-site.com",
-            label_visibility="collapsed",
-            help="L'outil va automatiquement explorer ce site pour trouver toutes les pages"
+            key="old_url_input",
+            help="URL pour scraping automatique"
+        )
+        
+        # Bouton de scraping individuel
+        scrape_old_button = st.button("📡 Scraper ancien site", key="scrape_old", use_container_width=True)
+        
+        st.markdown("**OU saisie manuelle :**")
+        
+        # Zone de saisie manuelle
+        old_urls_manual = st.text_area(
+            label="URLs anciennes (manuel)",
+            placeholder="Collez vos anciennes URLs ici...\nExemple:\nhttps://ancien-site.com/page1\nhttps://ancien-site.com/page2",
+            height=200,
+            key="old_manual_input",
+            help="Sitemap XML, liste brute ou CSV"
         )
     
     with col2:
-        st.subheader("🎯 URL nouveau site") 
+        st.subheader("🎯 Nouveau site") 
+        
+        # URL pour scraping
         new_site_url = st.text_input(
-            label="URL nouveau site",
+            label="URL nouveau site (pour scraping)",
             placeholder="https://nouveau-site.com",
-            label_visibility="collapsed", 
-            help="L'outil va automatiquement explorer ce site pour trouver toutes les pages"
+            key="new_url_input",
+            help="URL pour scraping automatique"
         )
-    
-    # Bouton de scraping
-    st.markdown("")
-    col_btn1, col_btn2, col_btn3 = st.columns([1, 1, 1])
-    with col_btn2:
-        scrape_button = st.button("⚡ Scraper les deux sites", use_container_width=True, type="primary")
+        
+        # Bouton de scraping individuel
+        scrape_new_button = st.button("📡 Scraper nouveau site", key="scrape_new", use_container_width=True)
+        
+        st.markdown("**OU saisie manuelle :**")
+        
+        # Zone de saisie manuelle
+        new_urls_manual = st.text_area(
+            label="URLs nouvelles (manuel)",
+            placeholder="Collez vos nouvelles URLs ici...\nExemple:\nhttps://nouveau-site.com/page1\nhttps://nouveau-site.com/page2",
+            height=200,
+            key="new_manual_input",
+            help="Sitemap XML, liste brute ou CSV"
+        )
     
     # Variables de session pour stocker les résultats
     if 'scraped_old_urls' not in st.session_state:
         st.session_state.scraped_old_urls = []
     if 'scraped_new_urls' not in st.session_state:
         st.session_state.scraped_new_urls = []
-    if 'scraping_success' not in st.session_state:
-        st.session_state.scraping_success = False
+    if 'old_scraping_success' not in st.session_state:
+        st.session_state.old_scraping_success = False
+    if 'new_scraping_success' not in st.session_state:
+        st.session_state.new_scraping_success = False
     
-    # Traitement du scraping
-    if scrape_button:
-        if not old_site_url.strip() or not new_site_url.strip():
-            st.error("❌ Veuillez saisir les deux URLs avant de lancer le scraping.")
+    # Traitement du scraping de l'ancien site
+    if scrape_old_button:
+        if not old_site_url.strip():
+            st.error("❌ Veuillez saisir l'URL de l'ancien site avant de lancer le scraping.")
         else:
-            with st.spinner("🔍 Scraping en cours... Cela peut prendre quelques secondes"):
-                
-                # Scraping de l'ancien site
-                st.info("📡 Scraping de l'ancien site...")
+            with st.spinner("🔍 Scraping de l'ancien site en cours..."):
                 old_urls, old_success = crawl_site_with_fallback(old_site_url, max_pages=200)
                 
-                # Scraping du nouveau site  
-                st.info("📡 Scraping du nouveau site...")
-                scraper = WebScraper()
-                new_urls_absolute, new_success = crawl_site_with_fallback(new_site_url, max_pages=200)
-                
-                # Convertit les nouvelles URLs en relatives
-                new_urls = []
-                if new_success and new_urls_absolute:
-                    new_urls = scraper.crawl_site_relative(new_site_url, max_pages=200)
-                    if not new_urls:
-                        new_success = False
-                
-                # Stocke les résultats
                 st.session_state.scraped_old_urls = old_urls
-                st.session_state.scraped_new_urls = new_urls
-                st.session_state.scraping_success = old_success and new_success
+                st.session_state.old_scraping_success = old_success
                 
-                # Affiche les résultats du scraping
-                if st.session_state.scraping_success:
-                    st.success(f"✅ Scraping réussi ! Trouvé {len(old_urls)} pages sur l'ancien site et {len(new_urls)} sur le nouveau.")
+                if old_success:
+                    st.success(f"✅ Ancien site scrapé avec succès ! Trouvé {len(old_urls)} pages.")
                 else:
-                    st.warning("⚠️ Le scraping automatique a échoué ou n'a pas trouvé d'URLs. Utilisez le mode manuel ci-dessous.")
-                    if not old_success:
-                        st.error(f"❌ Impossible de scraper l'ancien site : {old_site_url}")
-                    if not new_success:
-                        st.error(f"❌ Impossible de scraper le nouveau site : {new_site_url}")
+                    st.error(f"❌ Impossible de scraper l'ancien site : {old_site_url}")
+                    st.info("💡 Utilisez la saisie manuelle ci-dessous pour l'ancien site.")
     
-    # Affichage des résultats du scraping si disponibles
-    if st.session_state.scraped_old_urls or st.session_state.scraped_new_urls:
-        st.markdown("---")
-        st.subheader("👁️ Aperçu des URLs détectées")
+    # Traitement du scraping du nouveau site
+    if scrape_new_button:
+        if not new_site_url.strip():
+            st.error("❌ Veuillez saisir l'URL du nouveau site avant de lancer le scraping.")
+        else:
+            with st.spinner("🔍 Scraping du nouveau site en cours..."):
+                scraper = WebScraper()
+                new_urls = scraper.crawl_site_relative(new_site_url, max_pages=200)
+                new_success = len(new_urls) > 0
+                
+                st.session_state.scraped_new_urls = new_urls
+                st.session_state.new_scraping_success = new_success
+                
+                if new_success:
+                    st.success(f"✅ Nouveau site scrapé avec succès ! Trouvé {len(new_urls)} pages.")
+                else:
+                    st.error(f"❌ Impossible de scraper le nouveau site : {new_site_url}")
+                    st.info("💡 Utilisez la saisie manuelle ci-dessous pour le nouveau site.")
+    
+    # Logique de combinaison scraping/manuel et génération
+    st.markdown("---")
+    st.subheader("🎯 Génération des redirections")
+    
+    # Détermine les URLs finales (scraping + manuel)
+    final_old_urls = []
+    final_new_urls = []
+    
+    # Pour l'ancien site : priorité au scraping si disponible, sinon manuel
+    if st.session_state.scraped_old_urls and st.session_state.old_scraping_success:
+        final_old_urls = st.session_state.scraped_old_urls
+        old_source = "scraping"
+    elif old_urls_manual.strip():
+        # Parse les URLs manuelles
+        generator = RedirectGenerator()
+        final_old_urls = generator.parse_urls(old_urls_manual)
+        old_source = "manuel"
+    else:
+        old_source = "aucun"
+    
+    # Pour le nouveau site : priorité au scraping si disponible, sinon manuel
+    if st.session_state.scraped_new_urls and st.session_state.new_scraping_success:
+        final_new_urls = st.session_state.scraped_new_urls
+        new_source = "scraping"
+    elif new_urls_manual.strip():
+        # Parse les URLs manuelles
+        generator = RedirectGenerator()
+        final_new_urls = generator.parse_urls(new_urls_manual)
+        new_source = "manuel"
+    else:
+        new_source = "aucun"
+    
+    # Affichage du statut
+    col_status1, col_status2 = st.columns(2)
+    
+    with col_status1:
+        if final_old_urls:
+            st.success(f"✅ Ancien site : {len(final_old_urls)} URLs ({old_source})")
+        else:
+            st.warning("⚠️ Ancien site : Aucune URL (scrapez ou saisissez manuellement)")
+    
+    with col_status2:
+        if final_new_urls:
+            st.success(f"✅ Nouveau site : {len(final_new_urls)} URLs ({new_source})")
+        else:
+            st.warning("⚠️ Nouveau site : Aucune URL (scrapez ou saisissez manuellement)")
+    
+    # Bouton de génération si on a les deux listes
+    if final_old_urls and final_new_urls:
         
-        display_url_preview(st.session_state.scraped_old_urls, st.session_state.scraped_new_urls)
+        # Aperçu des URLs
+        with st.expander("👁️ Aperçu des URLs détectées"):
+            display_url_preview(final_old_urls, final_new_urls)
         
         # Vérification de correspondance
-        if len(st.session_state.scraped_old_urls) != len(st.session_state.scraped_new_urls):
-            st.warning(f"⚠️ Nombre d'URLs différent : {len(st.session_state.scraped_old_urls)} vs {len(st.session_state.scraped_new_urls)}. Les redirections seront générées pour les URLs correspondantes.")
+        if len(final_old_urls) != len(final_new_urls):
+            st.warning(f"⚠️ Nombre d'URLs différent : {len(final_old_urls)} vs {len(final_new_urls)}. Les redirections seront générées pour les URLs correspondantes.")
         
-        # Bouton de génération des redirections
+        # Bouton de génération
         col_gen1, col_gen2, col_gen3 = st.columns([1, 1, 1])
         with col_gen2:
-            generate_from_scraping = st.button("🚀 Générer les redirections", use_container_width=True, type="primary")
+            generate_button = st.button("🚀 Générer les redirections", use_container_width=True, type="primary")
         
-        if generate_from_scraping:
-            if st.session_state.scraped_old_urls and st.session_state.scraped_new_urls:
-                htaccess_content, csv_data, error = generate_redirections_from_lists(
-                    st.session_state.scraped_old_urls, 
-                    st.session_state.scraped_new_urls
-                )
+        if generate_button:
+            htaccess_content, csv_data, error = generate_redirections_from_lists(
+                final_old_urls, 
+                final_new_urls
+            )
+            
+            if error:
+                st.error(f"❌ Erreur lors de la génération: {error}")
+            else:
+                # Affichage des résultats
+                st.success(f"✅ {len(csv_data)-1} redirections générées avec succès !")
                 
-                if error:
-                    st.error(f"❌ Erreur lors de la génération: {error}")
-                else:
-                    # Affichage des résultats
-                    st.success(f"✅ {len(csv_data)-1} redirections générées avec succès !")
+                # Aperçu du .htaccess
+                st.subheader("📄 Aperçu du fichier .htaccess")
+                st.code(htaccess_content, language="apache")
+                
+                # Boutons de téléchargement
+                st.markdown("---")
+                st.subheader("📥 Téléchargements")
+                
+                col_dl1, col_dl2 = st.columns(2)
+                
+                with col_dl1:
+                    st.download_button(
+                        label="⬇️ Télécharger .htaccess",
+                        data=htaccess_content,
+                        file_name="redirections.htaccess",
+                        mime="text/plain"
+                    )
+                
+                with col_dl2:
+                    # Génération du CSV
+                    csv_buffer = io.StringIO()
+                    csv_writer = csv.writer(csv_buffer)
+                    csv_writer.writerows(csv_data)
+                    csv_content = csv_buffer.getvalue()
                     
-                    # Aperçu du .htaccess
-                    st.subheader("📄 Aperçu du fichier .htaccess")
-                    st.code(htaccess_content, language="apache")
+                    st.download_button(
+                        label="⬇️ Télécharger CSV",
+                        data=csv_content,
+                        file_name="redirections_audit.csv",
+                        mime="text/csv"
+                    )
+                
+                # Aperçu du CSV
+                st.subheader("📊 Aperçu du fichier CSV")
+                st.dataframe(csv_data[1:], column_config={
+                    "0": "Ancienne URL complète",
+                    "1": "Ancien chemin", 
+                    "2": "Nouvelle URL complète",
+                    "3": "Nouveau chemin"
+                })
+    else:
+        st.info("💡 Scrapez ou saisissez manuellement les URLs des deux sites pour générer les redirections.")
+
+    # Mode upload de fichiers (bonus)
+    st.markdown("---")
+    with st.expander("📁 Mode upload de fichiers (optionnel)"):
+        st.markdown("**Uploadez directement vos fichiers sitemap.xml ou listes d'URLs**")
+        
+        col_up1, col_up2 = st.columns(2)
+        
+        with col_up1:
+            st.subheader("📄 Fichier ancien site")
+            old_file = st.file_uploader(
+                "Fichier ancien site",
+                type=['txt', 'xml'],
+                help="Fichier texte ou sitemap.xml",
+                key="old_file_upload"
+            )
+        
+        with col_up2:
+            st.subheader("📄 Fichier nouveau site")
+            new_file = st.file_uploader(
+                "Fichier nouveau site", 
+                type=['txt', 'xml'],
+                help="Fichier texte ou sitemap.xml",
+                key="new_file_upload"
+            )
+        
+        if old_file and new_file:
+            if st.button("🚀 Générer depuis fichiers", key="generate_from_files"):
+                try:
+                    old_content = old_file.read().decode('utf-8')
+                    new_content = new_file.read().decode('utf-8')
                     
-                    # Boutons de téléchargement
-                    st.markdown("---")
-                    st.subheader("📥 Téléchargements")
+                    generator = RedirectGenerator()
+                    htaccess_content, csv_data = generator.generate_redirections(old_content, new_content)
                     
+                    st.success(f"✅ {len(csv_data)-1} redirections générées depuis les fichiers !")
+                    
+                    # Interface de téléchargement
                     col_dl1, col_dl2 = st.columns(2)
                     
                     with col_dl1:
@@ -185,11 +329,11 @@ def main():
                             label="⬇️ Télécharger .htaccess",
                             data=htaccess_content,
                             file_name="redirections.htaccess",
-                            mime="text/plain"
+                            mime="text/plain",
+                            key="download_htaccess_files"
                         )
                     
                     with col_dl2:
-                        # Génération du CSV
                         csv_buffer = io.StringIO()
                         csv_writer = csv.writer(csv_buffer)
                         csv_writer.writerows(csv_data)
@@ -199,197 +343,54 @@ def main():
                             label="⬇️ Télécharger CSV",
                             data=csv_content,
                             file_name="redirections_audit.csv",
-                            mime="text/csv"
+                            mime="text/csv",
+                            key="download_csv_files"
                         )
                     
                     # Aperçu du CSV
                     st.subheader("📊 Aperçu du fichier CSV")
-                    st.dataframe(csv_data[1:], column_config={
-                        "0": "Ancienne URL complète",
-                        "1": "Ancien chemin", 
-                        "2": "Nouvelle URL complète",
-                        "3": "Nouveau chemin"
-                    })
-            else:
-                st.error("❌ Aucune URL trouvée pour générer les redirections.")
-
-    # Mode manuel (fallback)
-    st.markdown("---")
-    with st.expander("🛠️ Mode manuel (si le scraping automatique ne fonctionne pas)"):
-        st.markdown("**Utilisez ce mode si :**")
-        st.markdown("- Le scraping automatique a échoué")
-        st.markdown("- Vous préférez coller vos listes d'URLs manuellement")
-        st.markdown("- Vous avez des fichiers sitemap.xml à uploader")
-        
-        # Tabs pour les différents modes manuels
-        tab1, tab2 = st.tabs(["📝 Copier-coller", "📁 Upload fichiers"])
-        
-        with tab1:
-            col1_manual, col2_manual = st.columns(2)
-            
-            with col1_manual:
-                st.subheader("🔗 Anciennes URLs")
-                old_urls_manual = st.text_area(
-                    label="Anciennes URLs",
-                    placeholder="Collez ici vos anciennes URLs...\nExemple:\nhttps://ancien-site.com/page1\nhttps://ancien-site.com/page2",
-                    height=300,
-                    label_visibility="collapsed",
-                    help="Formats supportés: sitemap XML, liste brute, CSV"
-                )
-            
-            with col2_manual:
-                st.subheader("🎯 Nouvelles URLs") 
-                new_urls_manual = st.text_area(
-                    label="Nouvelles URLs",
-                    placeholder="Collez ici vos nouvelles URLs...\nExemple:\nhttps://nouveau-site.com/nouvelle-page1\nhttps://nouveau-site.com/nouvelle-page2",
-                    height=300,
-                    label_visibility="collapsed",
-                    help="Formats supportés: sitemap XML, liste brute, CSV"
-                )
-            
-            # Bouton de génération manuelle
-            col_manual1, col_manual2, col_manual3 = st.columns([1, 1, 1])
-            with col_manual2:
-                generate_manual = st.button("🚀 Générer (mode manuel)", use_container_width=True)
-            
-            if generate_manual:
-                if not old_urls_manual.strip() or not new_urls_manual.strip():
-                    st.error("❌ Veuillez remplir les deux champs avant de générer les redirections.")
-                else:
-                    try:
-                        generator = RedirectGenerator()
-                        htaccess_content, csv_data = generator.generate_redirections(old_urls_manual, new_urls_manual)
-                        
-                        # Affichage des résultats (même code que plus haut)
-                        st.success(f"✅ {len(csv_data)-1} redirections générées avec succès !")
-                        
-                        # Aperçu du .htaccess
-                        st.subheader("📄 Aperçu du fichier .htaccess")
-                        st.code(htaccess_content, language="apache")
-                        
-                        # Boutons de téléchargement
-                        st.markdown("---")
-                        st.subheader("📥 Téléchargements")
-                        
-                        col_dl1, col_dl2 = st.columns(2)
-                        
-                        with col_dl1:
-                            st.download_button(
-                                label="⬇️ Télécharger .htaccess",
-                                data=htaccess_content,
-                                file_name="redirections.htaccess",
-                                mime="text/plain"
-                            )
-                        
-                        with col_dl2:
-                            csv_buffer = io.StringIO()
-                            csv_writer = csv.writer(csv_buffer)
-                            csv_writer.writerows(csv_data)
-                            csv_content = csv_buffer.getvalue()
-                            
-                            st.download_button(
-                                label="⬇️ Télécharger CSV",
-                                data=csv_content,
-                                file_name="redirections_audit.csv",
-                                mime="text/csv"
-                            )
-                        
-                        # Aperçu du CSV
-                        st.subheader("📊 Aperçu du fichier CSV")
-                        st.dataframe(csv_data[1:])
-                        
-                    except ValueError as e:
-                        st.error(f"❌ Erreur de correspondance: {str(e)}")
-                        st.info("💡 Vérifiez que vous avez le même nombre d'URLs dans les deux listes.")
-                    except Exception as e:
-                        st.error(f"❌ Erreur lors de la génération: {str(e)}")
-        
-        with tab2:
-            st.subheader("📁 Upload de fichiers")
-            col_up1, col_up2 = st.columns(2)
-            
-            with col_up1:
-                old_file = st.file_uploader(
-                    "Fichier ancien site",
-                    type=['txt', 'xml'],
-                    help="Fichier texte ou sitemap.xml"
-                )
-            
-            with col_up2:
-                new_file = st.file_uploader(
-                    "Fichier nouveau site", 
-                    type=['txt', 'xml'],
-                    help="Fichier texte ou sitemap.xml"
-                )
-            
-            if old_file and new_file:
-                if st.button("🚀 Générer depuis fichiers"):
-                    try:
-                        old_content = old_file.read().decode('utf-8')
-                        new_content = new_file.read().decode('utf-8')
-                        
-                        generator = RedirectGenerator()
-                        htaccess_content, csv_data = generator.generate_redirections(old_content, new_content)
-                        
-                        st.success(f"✅ {len(csv_data)-1} redirections générées depuis les fichiers !")
-                        
-                        # Interface de téléchargement (même code que plus haut)
-                        col_dl1, col_dl2 = st.columns(2)
-                        
-                        with col_dl1:
-                            st.download_button(
-                                label="⬇️ Télécharger .htaccess",
-                                data=htaccess_content,
-                                file_name="redirections.htaccess",
-                                mime="text/plain"
-                            )
-                        
-                        with col_dl2:
-                            csv_buffer = io.StringIO()
-                            csv_writer = csv.writer(csv_buffer)
-                            csv_writer.writerows(csv_data)
-                            csv_content = csv_buffer.getvalue()
-                            
-                            st.download_button(
-                                label="⬇️ Télécharger CSV",
-                                data=csv_content,
-                                file_name="redirections_audit.csv",
-                                mime="text/csv"
-                            )
-                        
-                    except Exception as e:
-                        st.error(f"❌ Erreur lors du traitement des fichiers: {str(e)}")
+                    st.dataframe(csv_data[1:])
+                    
+                except Exception as e:
+                    st.error(f"❌ Erreur lors du traitement des fichiers: {str(e)}")
 
     # Instructions d'utilisation
     with st.expander("📋 Instructions & aide"):
         st.markdown("""
-        ### 🔄 Mode automatique (recommandé)
-        1. **Entrez l'URL de l'ancien site** (ex: https://ancien-site.com)
-        2. **Entrez l'URL du nouveau site** (ex: https://nouveau-site.com)
-        3. **Cliquez sur "Scraper les deux sites"** - L'outil va automatiquement explorer jusqu'à 200 pages de chaque site
-        4. **Vérifiez les URLs détectées** dans l'aperçu
-        5. **Générez les redirections** et téléchargez vos fichiers
+        ### 🔄 Mode hybride (recommandé)
+        **Pour chaque site, choisissez votre méthode :**
         
-        ### 🛠️ Mode manuel (fallback)
-        Utilisez ce mode si le scraping automatique échoue :
-        - **Copier-coller** : Collez vos listes d'URLs ou contenus de sitemap
-        - **Upload** : Importez vos fichiers sitemap.xml ou listes d'URLs
+        #### 🤖 Scraping automatique
+        1. **Entrez l'URL** (ex: https://ancien-site.com)
+        2. **Cliquez "Scraper"** - L'outil explore automatiquement jusqu'à 200 pages
+        3. **Vérifiez le résultat** (succès ou échec)
         
-        ### 📤 Formats supportés
-        - Sitemap XML (balises `<loc>`)
-        - Liste brute (une URL par ligne)
-        - CSV copié (deux colonnes)
+        #### ✏️ Saisie manuelle 
+        1. **Collez vos URLs** dans le champ texte
+        2. **Formats supportés** : sitemap XML, liste brute, CSV
+        
+        ### 💡 Flexibilité totale
+        - **Scraper l'ancien + Manuel nouveau** : Si robots.txt bloque le nouveau site
+        - **Manuel ancien + Scraper nouveau** : Si l'ancien site est inaccessible
+        - **Tout scraping** : Si les deux sites sont accessibles
+        - **Tout manuel** : Pour un contrôle total
+        
+        ### 📤 Formats supportés (saisie manuelle)
+        - **Sitemap XML** : Balises `<loc>...</loc>`
+        - **Liste brute** : Une URL par ligne
+        - **CSV** : Deux colonnes
         
         ### ⚠️ Dépannage
-        - Si le scraping échoue : vérifiez que les sites sont accessibles
-        - En cas de blocage robots.txt : utilisez le mode manuel
-        - Pour des sites avec authentification : contactez l'équipe technique
+        - **Scraping échoue** → Passez en manuel pour ce site
+        - **Robots.txt bloque** → Utilisez la saisie manuelle
+        - **Site avec auth** → Exportez manuellement le sitemap
+        - **Nombre d'URLs différent** → Pas de problème, génération adaptative
         """)
     
     # Footer
     st.markdown("---")
     st.markdown("*Développé pour SEPTEO Digital Services — Fire Salamander Team* 🦎")
-    st.markdown("*v2.0 avec scraping automatique intelligent*")
+    st.markdown("*v2.1 avec mode hybride flexible (scraping + manuel)*")
 
 if __name__ == "__main__":
     main()
