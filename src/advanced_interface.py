@@ -13,6 +13,7 @@ from scraper import crawl_site_with_fallback, WebScraper, parse_sitemap
 from language_detector import LanguageDetector
 from ai_mapper import AIMapper, AIMatchingError
 from fallback_manager import FallbackManager
+from cache_manager import CacheManager
 
 
 def url_to_relative_path(url: str) -> str:
@@ -44,6 +45,9 @@ def interface_ai_avancee():
     st.header("🚀 Générateur IA avec support multilangue")
     st.info("ℹ️ Cette interface utilise GPT-3.5-turbo pour le matching sémantique intelligent des URLs")
     
+    # Initialisation du gestionnaire de cache
+    cache_manager = CacheManager()
+    
     # Vérification de la clé API
     if not os.getenv("OPENAI_API_KEY"):
         st.error("❌ Clé API OpenAI manquante. Veuillez la configurer dans les secrets Replit.")
@@ -63,6 +67,29 @@ def interface_ai_avancee():
             fallback_lang = st.selectbox("🌐 Langue de fallback", 
                                        ["fr", "en", "de", "es", "it", "nl"], 
                                        index=0)
+    
+    # Gestion du cache
+    with st.expander("💾 Gestion du cache (évite les appels API répétés)"):
+        col_cache1, col_cache2 = st.columns(2)
+        
+        with col_cache1:
+            # Statistiques du cache
+            cache_stats = cache_manager.get_cache_stats()
+            st.metric("Résultats en cache", cache_stats["gpt_cache_files"])
+            st.metric("Fichiers .htaccess", cache_stats["htaccess_files"])
+            
+        with col_cache2:
+            st.metric("Taille cache", f"{cache_stats['total_size_mb']} MB")
+            if st.button("🧹 Nettoyer cache (>7j)"):
+                deleted = cache_manager.clear_old_cache()
+                st.success(f"✅ {deleted} fichiers supprimés")
+        
+        # Affichage des caches récents
+        cached_results = cache_manager.list_cached_results()
+        if cached_results:
+            st.write("**Résultats récents en cache:**")
+            for i, cache_info in enumerate(cached_results[:3]):  # Affiche les 3 plus récents
+                st.text(f"• {cache_info['timestamp'][:16]} - {cache_info['old_urls_count']} → {cache_info['new_urls_count']} URLs")
     
     # Collecte des URLs
     st.header("📊 Collecte des URLs")
@@ -173,61 +200,95 @@ def interface_ai_avancee():
         
         # Génération avec IA
         if st.button("🤖 Générer avec IA sémantique", type="primary"):
-            with st.spinner("🧠 IA en cours de traitement..."):
+            with st.spinner("🧠 Vérification du cache..."):
                 try:
-                    # Initialisation de l'IA
-                    ai_mapper = AIMapper(
-                        api_key=os.getenv("OPENAI_API_KEY"),
-                        temperature=temperature,
-                        chunk_size=chunk_size
+                    # Vérification du cache d'abord
+                    cache_key_info = f"Temp:{temperature}, Chunk:{chunk_size}, Seuil:{confidence_threshold}"
+                    cached_result = cache_manager.get_gpt_cache(
+                        old_urls, new_urls, contexte_metier, temperature
                     )
                     
-                    # Génération du rapport de fallback d'abord
-                    if missing_langs:
-                        st.subheader("📋 Rapport des redirections temporaires")
-                        fallback_report = fallback_manager.generate_fallback_report(old_urls, new_urls)
-                        st.text(fallback_report)
+                    if cached_result:
+                        st.success(f"✅ Résultats trouvés en cache ! (Économie API)")
+                        # Utilise les résultats du cache
+                        all_matches = cached_result["results"]["all_matches"]
+                        all_unmatched = cached_result["results"]["all_unmatched"]
+                        missing_langs = cached_result["results"]["missing_langs"]
+                        old_grouped = cached_result["results"]["old_grouped"]
+                        
+                        st.info(f"📊 Cache utilisé: {len(all_matches)} correspondances trouvées")
+                    else:
+                        st.info("💸 Appel API GPT nécessaire - Nouveau matching...")
+                        
+                        # Initialisation de l'IA
+                        ai_mapper = AIMapper(
+                            api_key=os.getenv("OPENAI_API_KEY"),
+                            temperature=temperature,
+                            chunk_size=chunk_size
+                        )
                     
-                    # Matching IA pour chaque langue commune
-                    st.subheader("🤖 Résultats du matching IA")
+                        # Génération du rapport de fallback d'abord
+                        if missing_langs:
+                            st.subheader("📋 Rapport des redirections temporaires")
+                            fallback_report = fallback_manager.generate_fallback_report(old_urls, new_urls)
+                            st.text(fallback_report)
+                        
+                        # Matching IA pour chaque langue commune
+                        st.subheader("🤖 Résultats du matching IA")
+                        
+                        all_matches = []
+                        all_unmatched = []
+                        
+                        common_langs = set(old_grouped.keys()) & set(new_grouped.keys())
+                        
+                        for lang in sorted(common_langs):
+                            if old_grouped[lang] and new_grouped[lang]:
+                                st.write(f"**🔄 Traitement langue: {lang.upper()}**")
+                                
+                                # Matching IA pour cette langue
+                                result = ai_mapper.match_urls(
+                                    old_grouped[lang],
+                                    new_grouped[lang],
+                                    contexte_metier=contexte_metier,
+                                    langue=lang
+                                )
+                                
+                                # Affichage des résultats
+                                matches = result.correspondances
+                                unmatched = result.non_matchees
+                                
+                                st.success(f"✅ {len(matches)} correspondances trouvées")
+                                if unmatched:
+                                    st.warning(f"⚠️ {len(unmatched)} URLs non matchées")
+                                
+                                # Filtre par confiance
+                                filtered_matches = [
+                                    match for match in matches 
+                                    if match.get('confidence', 0) >= confidence_threshold
+                                ]
+                                
+                                if len(filtered_matches) < len(matches):
+                                    excluded = len(matches) - len(filtered_matches)
+                                    st.info(f"🎯 {excluded} matches exclus (confiance < {confidence_threshold})")
+                                
+                                all_matches.extend(filtered_matches)
+                                all_unmatched.extend(unmatched)
+                        
+                        # Sauvegarde des résultats dans le cache
+                        gpt_results = {
+                            "all_matches": all_matches,
+                            "all_unmatched": all_unmatched,
+                            "missing_langs": missing_langs,
+                            "old_grouped": old_grouped
+                        }
+                        
+                        cache_file = cache_manager.save_gpt_cache(
+                            old_urls, new_urls, contexte_metier, temperature, gpt_results
+                        )
+                        st.success(f"💾 Résultats sauvegardés en cache: {cache_file}")
                     
-                    all_matches = []
-                    all_unmatched = []
-                    
-                    common_langs = set(old_grouped.keys()) & set(new_grouped.keys())
-                    
-                    for lang in sorted(common_langs):
-                        if old_grouped[lang] and new_grouped[lang]:
-                            st.write(f"**🔄 Traitement langue: {lang.upper()}**")
-                            
-                            # Matching IA pour cette langue
-                            result = ai_mapper.match_urls(
-                                old_grouped[lang],
-                                new_grouped[lang],
-                                contexte_metier=contexte_metier,
-                                langue=lang
-                            )
-                            
-                            # Affichage des résultats
-                            matches = result.correspondances
-                            unmatched = result.non_matchees
-                            
-                            st.success(f"✅ {len(matches)} correspondances trouvées")
-                            if unmatched:
-                                st.warning(f"⚠️ {len(unmatched)} URLs non matchées")
-                            
-                            # Filtre par confiance
-                            filtered_matches = [
-                                match for match in matches 
-                                if match.get('confidence', 0) >= confidence_threshold
-                            ]
-                            
-                            if len(filtered_matches) < len(matches):
-                                excluded = len(matches) - len(filtered_matches)
-                                st.info(f"🎯 {excluded} matches exclus (confiance < {confidence_threshold})")
-                            
-                            all_matches.extend(filtered_matches)
-                            all_unmatched.extend(unmatched)
+                    # Les variables all_matches, all_unmatched, etc. sont maintenant disponibles
+                    # que ce soit depuis le cache ou depuis l'API GPT
                     
                     # Génération des redirections 302 pour langues manquantes
                     redirects_302 = []
@@ -272,6 +333,12 @@ def interface_ai_avancee():
                         ])
                     
                     htaccess_content = "\n".join(htaccess_lines)
+                    
+                    # Sauvegarde automatique du fichier .htaccess
+                    htaccess_file_path = cache_manager.save_htaccess_file(
+                        htaccess_content, old_urls, new_urls, "ai_semantic"
+                    )
+                    st.success(f"💾 Fichier .htaccess sauvegardé: {htaccess_file_path}")
                     
                     # Affichage et téléchargement
                     st.code(htaccess_content, language="apache")
