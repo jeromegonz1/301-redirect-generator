@@ -261,12 +261,23 @@ def parse_sitemap(sitemap_url: str, recursive: bool = True, _visited: set = None
             url = loc.text.strip()
             if url:
                 # Vérifier si c'est un sitemap ou une URL normale
-                if recursive and ('sitemap' in url.lower() or url.endswith('.xml')):
-                    # C'est probablement un sous-sitemap, le parser récursivement
+                # Détecte les patterns courants de sitemaps: sitemap*.xml, *-sitemap.xml, etc.
+                is_sitemap = any([
+                    'sitemap' in url.lower(),
+                    url.endswith('.xml'),
+                    'page-sitemap' in url.lower(),
+                    'post-sitemap' in url.lower(),
+                    'category-sitemap' in url.lower(),
+                    'product-sitemap' in url.lower()
+                ])
+                
+                if recursive and is_sitemap:
+                    # C'est un sous-sitemap (pages, articles, etc.), le parser récursivement
+                    print(f"  → Parsing sub-sitemap: {url}")
                     sub_urls = parse_sitemap(url, recursive=True, _visited=_visited)
                     urls.extend(sub_urls)
                 else:
-                    # C'est une URL normale
+                    # C'est une URL de contenu normale
                     urls.append(url)
         
         # Dédoublonner les URLs
