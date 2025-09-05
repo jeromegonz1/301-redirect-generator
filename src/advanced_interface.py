@@ -40,6 +40,88 @@ def url_to_relative_path(url: str) -> str:
     return path
 
 
+def convert_url_domain(old_url: str, target_domain: str) -> str:
+    """
+    Convertit une URL d'un domaine vers un autre en conservant le path
+    
+    Args:
+        old_url: URL source (ex: https://www.campinglescascades.com/fr/page)
+        target_domain: Domaine cible (ex: https://www.les-cascades.com)
+        
+    Returns:
+        URL avec nouveau domaine (ex: https://www.les-cascades.com/fr/page)
+    """
+    if not old_url or not isinstance(old_url, str):
+        return target_domain
+    
+    parsed = urlparse(old_url.strip())
+    path = parsed.path if parsed.path else "/"
+    query = f"?{parsed.query}" if parsed.query else ""
+    fragment = f"#{parsed.fragment}" if parsed.fragment else ""
+    
+    # S'assurer que le domaine cible se termine sans slash
+    target_domain = target_domain.rstrip('/')
+    
+    return f"{target_domain}{path}{query}{fragment}"
+
+
+def extract_language_from_url_path(url: str) -> str:
+    """
+    Extrait la langue depuis une URL en analysant le path
+    
+    Args:
+        url: URL à analyser
+        
+    Returns:
+        Code langue (fr, en, de, nl, etc.) ou 'fr' par défaut
+    """
+    if not url:
+        return "fr"
+    
+    path = url_to_relative_path(url)
+    
+    # Patterns de langue supportés : /fr/, /en/, /de/, /nl/, /es/, /it/
+    languages = ['fr', 'en', 'de', 'nl', 'es', 'it']
+    
+    for lang in languages:
+        if f"/{lang}/" in path or path.startswith(f"/{lang}"):
+            return lang
+    
+    return "fr"  # Fallback par défaut
+
+
+def remove_duplicate_redirects(redirects: List[Dict]) -> List[Dict]:
+    """
+    Filtre les redirections pour éviter les doublons et source == cible
+    
+    Args:
+        redirects: Liste des redirections avec 'source' et 'target'
+        
+    Returns:
+        Liste filtrée sans doublons
+    """
+    seen = set()
+    filtered = []
+    
+    for redirect in redirects:
+        source = redirect.get('source', '')
+        target = redirect.get('target', '')
+        
+        # Ignorer si source == target  
+        if source == target:
+            continue
+            
+        # Ignorer les doublons
+        redirect_key = (source, target)
+        if redirect_key in seen:
+            continue
+            
+        seen.add(redirect_key)
+        filtered.append(redirect)
+    
+    return filtered
+
+
 def interface_ai_avancee():
     """Interface avancée avec IA sémantique et multilangue"""
     
@@ -201,6 +283,19 @@ def interface_ai_avancee():
                 
                 st.write(f"**{lang.upper()}** - Ancien: {old_count}, Nouveau: {new_count} - {status}")
         
+        # Configuration domaine cible
+        st.header("🌐 Configuration domaine cible")
+        target_domain = st.text_input(
+            "Domaine cible pour les redirections",
+            placeholder="https://www.les-cascades.com",
+            help="Domaine complet du nouveau site (sans slash final)",
+            value="https://www.les-cascades.com"  # Valeur par défaut
+        )
+        
+        if not target_domain:
+            st.error("⚠️ Domaine cible requis pour générer les redirections absolues")
+            return
+        
         # Configuration du contexte métier
         st.header("💼 Contexte métier (optionnel)")
         contexte_metier = st.text_area(
@@ -352,54 +447,142 @@ def interface_ai_avancee():
                             missing_langs, old_grouped, fallback_lang
                         )
                     
-                    # Génération du fichier .htaccess final
-                    st.subheader("📄 Fichier .htaccess généré")
+                    # Génération du fichier .htaccess final avec URLs absolues
+                    st.subheader("📄 Fichier .htaccess avec URLs absolues")
                     
+                    # Préparation de toutes les redirections avec URLs absolues
+                    all_redirects = []
+                    
+                    # 1. Ajout des matches IA avec commentaires (301)
+                    for match in all_matches:
+                        source = match['ancienne']
+                        target = match['nouvelle']
+                        
+                        # Conversion target vers domaine cible (URLs absolues)
+                        target_absolute = convert_url_domain(target, target_domain)
+                        confidence = match.get('confidence', 0)
+                        reason = match.get('raison', '')
+                        
+                        all_redirects.append({
+                            'type': '301',
+                            'source': source,
+                            'target': target_absolute,
+                            'comment': f"# {reason} (confiance: {confidence:.2f})",
+                            'confidence': confidence
+                        })
+                    
+                    # 2. Ajout des fallback 302 intelligents avec URLs absolues
+                    if enable_fallback_302 and all_unmatched:
+                        for unmatched_url in all_unmatched:
+                            language = extract_language_from_url_path(unmatched_url)
+                            target_fallback = f"{target_domain}/{language}/"
+                            
+                            all_redirects.append({
+                                'type': '302',
+                                'source': unmatched_url,
+                                'target': target_fallback,
+                                'comment': f"# Fallback 302 vers la home {language.upper()}",
+                                'confidence': 0
+                            })
+                    
+                    # 3. Ajout des redirections 302 pour langues manquantes  
+                    if missing_langs:
+                        redirects_302 = fallback_manager.generate_302_redirects(
+                            missing_langs, old_grouped, fallback_lang
+                        )
+                        for source, target_relative in redirects_302:
+                            target_absolute = f"{target_domain}{target_relative}"
+                            language = extract_language_from_url_path(source)
+                            
+                            all_redirects.append({
+                                'type': '302',
+                                'source': source,
+                                'target': target_absolute,
+                                'comment': f"# Langue {language.upper()} non migrée",
+                                'confidence': 0
+                            })
+                    
+                    # 4. Filtrage des doublons et source == cible
+                    filtered_redirects = remove_duplicate_redirects(all_redirects)
+                    
+                    # 5. Construction du .htaccess final
                     htaccess_lines = [
-                        "# Redirections 301 générées par IA sémantique",
-                        "# 301 Redirect Generator - Sprint 2",
+                        "# Redirections 301/302 avec URLs absolues",
+                        "# 301 Redirect Generator - Sprint 3 Enhanced",
+                        "# Format: Source absolue → Target absolue",
                         ""
                     ]
                     
-                    # Ajout des redirections 301 IA
-                    if all_matches:
+                    # Séparation 301 et 302 pour meilleure organisation
+                    redirects_301 = [r for r in filtered_redirects if r['type'] == '301']
+                    redirects_302 = [r for r in filtered_redirects if r['type'] == '302']
+                    
+                    # Ajout des 301 avec commentaires IA
+                    if redirects_301:
                         htaccess_lines.extend([
-                            "# Redirections 301 - Matching IA sémantique",
+                            "# ===================================================",
+                            "# REDIRECTIONS 301 - MATCHING IA SÉMANTIQUE",
+                            "# ===================================================",
                             ""
                         ])
                         
-                        for match in all_matches:
-                            source = match['ancienne']
-                            target = match['nouvelle']
-                            target_relative = url_to_relative_path(target)  # Conversion en relatif
-                            confidence = match.get('confidence', 0)
-                            reason = match.get('raison', '')
-                            
-                            htaccess_lines.append(f"# {reason} (confiance: {confidence:.2f})")
-                            htaccess_lines.append(f"Redirect 301 {source} {target_relative}")
+                        for redirect in redirects_301:
+                            htaccess_lines.append(redirect['comment'])
+                            htaccess_lines.append(f"Redirect 301 {redirect['source']} {redirect['target']}")
                             htaccess_lines.append("")
                     
-                    # Ajout des redirections 302 pour fallbacks
+                    # Ajout des 302 avec commentaires simplifiés
                     if redirects_302:
-                        fallback_htaccess = fallback_manager.format_htaccess_302(redirects_302)
                         htaccess_lines.extend([
-                            "",
-                            fallback_htaccess
-                        ])
-                    
-                    # Sprint 3 - Intégration des redirections 302 fallback dans .htaccess
-                    if enable_fallback_302 and fallback_302_results.get("htaccess_lines"):
-                        htaccess_lines.extend([
-                            "",
-                            "# ===========================================",
-                            "# FALLBACK 302 INTELLIGENT (Sprint 3)",  
-                            "# URLs non matchées → page d'accueil langue",
-                            "# ===========================================",
+                            "# ===================================================",
+                            "# REDIRECTIONS 302 - FALLBACK INTELLIGENT",
+                            "# URLs orphelines → Page d'accueil langue",
+                            "# ===================================================",
                             ""
                         ])
-                        htaccess_lines.extend(fallback_302_results["htaccess_lines"])
+                        
+                        for redirect in redirects_302:
+                            htaccess_lines.append(redirect['comment'])
+                            htaccess_lines.append(f"Redirect 302 {redirect['source']} {redirect['target']}")
+                            htaccess_lines.append("")
                     
+                    # 6. Génération du contenu final .htaccess
                     htaccess_content = "\n".join(htaccess_lines)
+                    
+                    # 7. Résumé statistiques en console (BONUS)
+                    st.subheader("📊 Résumé de génération")
+                    
+                    total_301 = len(redirects_301)
+                    total_302 = len(redirects_302)
+                    total_redirects = total_301 + total_302
+                    total_old_urls = len(old_urls)
+                    
+                    # Calcul du taux de correspondance IA
+                    if total_old_urls > 0:
+                        taux_correspondance = (total_301 / total_old_urls) * 100
+                    else:
+                        taux_correspondance = 0
+                    
+                    # Affichage des métriques
+                    col_stats1, col_stats2, col_stats3, col_stats4 = st.columns(4)
+                    
+                    with col_stats1:
+                        st.metric("✅ Redirections 301", total_301, help="Correspondances IA trouvées")
+                    
+                    with col_stats2:
+                        st.metric("↪️ Redirections 302", total_302, help="Fallback automatiques")
+                    
+                    with col_stats3:
+                        st.metric("🎯 Taux correspondance", f"{taux_correspondance:.1f}%", help="% URLs matchées par IA")
+                    
+                    with col_stats4:
+                        st.metric("🔧 Total redirections", total_redirects, help="301 + 302 combinées")
+                    
+                    # Message récapitulatif style console
+                    st.code(f"""✅ {total_301} redirections 301 générées
+↪️ {total_302} redirections 302 fallback  
+🎯 Taux de correspondance IA : {taux_correspondance:.2f}%
+📄 Fichier .htaccess prêt pour production avec URLs absolues""", language="text")
                     
                     # Sauvegarde automatique du fichier .htaccess
                     htaccess_file_path = cache_manager.save_htaccess_file(
@@ -425,29 +608,18 @@ def interface_ai_avancee():
                         )
                     
                     with col_dl2:
-                        # Génération du CSV détaillé
+                        # Génération du CSV détaillé avec URLs absolues
                         csv_data = [["Source", "Target", "Type", "Confidence", "Reason", "Language"]]
                         
-                        # Ajout des matches IA
-                        for match in all_matches:
+                        # Utilisation des redirections filtrées pour le CSV
+                        for redirect in filtered_redirects:
                             csv_data.append([
-                                match['ancienne'],
-                                url_to_relative_path(match['nouvelle']),  # Aussi en relatif pour le CSV
-                                "301",
-                                f"{match.get('confidence', 0):.2f}",
-                                match.get('raison', ''),
-                                detector.detect(match['ancienne'])
-                            ])
-                        
-                        # Ajout des fallbacks 302
-                        for source, target in redirects_302:
-                            csv_data.append([
-                                source,
-                                target,
-                                "302",
-                                "N/A",
-                                "Langue non migrée",
-                                detector.detect(source)
+                                redirect['source'],
+                                redirect['target'],  # URLs absolues maintenant
+                                redirect['type'],
+                                f"{redirect.get('confidence', 0):.2f}",
+                                redirect['comment'].replace('# ', ''),  # Nettoyage du commentaire
+                                extract_language_from_url_path(redirect['source'])
                             ])
                         
                         csv_buffer = io.StringIO()
@@ -455,10 +627,11 @@ def interface_ai_avancee():
                         csv_writer.writerows(csv_data)
                         
                         st.download_button(
-                            label="⬇️ Télécharger CSV",
+                            label="⬇️ CSV Complet",
                             data=csv_buffer.getvalue(),
-                            file_name="redirections_ai_detailed.csv",
-                            mime="text/csv"
+                            file_name="redirections_absolues_301_302.csv",
+                            mime="text/csv",
+                            help="CSV avec toutes les redirections (URLs absolues)"
                         )
                     
                     with col_dl3:

@@ -12,6 +12,14 @@ Application Streamlit pour générer des redirections 301 intelligentes avec sup
 
 ## Modifications récentes (05/09/2025)
 
+### Sprint 3 Enhanced - URLs absolues et fallback intelligent
+- ✅ **URLs absolues** : Toutes les redirections utilisent des URLs complètes (source → target)
+- ✅ **Fallback 302 intelligent** : Détection automatique langue + redirection vers home langue
+- ✅ **Filtres anti-doublons** : Suppression automatique des redirections dupliquées et source==target
+- ✅ **Résumé statistiques** : Métriques détaillées avec taux de correspondance IA
+- ✅ **Configuration domaine cible** : Input utilisateur pour spécifier le domaine de destination
+- ✅ **Format production** : .htaccess prêt à déployer avec commentaires organisés
+
 ### Sprint intermédiaire - Sitemap ancien site
 - ✅ **Nouvelle option collecte** : Ajout "Sitemap XML" pour ancien site
 - ✅ **Tests TDD** : 4 nouveaux tests pour `parse_sitemap` (tous passent)
