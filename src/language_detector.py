@@ -25,21 +25,21 @@ class LanguageDetector:
         """Construit les patterns de détection par langue (configurable)"""
         return {
             'fr': [
-                r'^/fr/',           # /fr/contact
+                r'/fr/',            # anywhere: /path/fr/contact
                 r'/(fr)$',          # /contact/fr
                 r'-fr[./]',         # /contact-fr.html
                 r'\.fr/',           # domain.fr/page
                 r'fr\..*\.com'      # fr.site.com
             ],
             'en': [
-                r'^/en/',           # /en/contact  
+                r'/en/',            # anywhere: /path/en/contact  
                 r'/(en)$',          # /contact/en
                 r'-en[./]',         # /contact-en.html
                 r'\.co\.uk/',       # domain.co.uk/page
                 r'en\..*\.com'      # en.site.com
             ],
             'de': [
-                r'^/de/',           # /de/kontakt
+                r'/de/',            # anywhere: /path/de/kontakt
                 r'/(de)$',          # /kontakt/de
                 r'-de[./]',         # /kontakt-de.html
                 r'-de$',            # /kontakt-de
@@ -48,21 +48,21 @@ class LanguageDetector:
                 r'de\..*\.com'      # de.site.com
             ],
             'es': [
-                r'^/es/',           # /es/contacto
+                r'/es/',            # anywhere: /path/es/contacto
                 r'/(es)$',          # /contacto/es
                 r'-es[./]',         # /contacto-es.html
                 r'\.es/',           # domain.es/page
                 r'es\..*\.com'      # es.site.com
             ],
             'it': [
-                r'^/it/',           # /it/contatto
+                r'/it/',            # anywhere: /path/it/contatto
                 r'/(it)$',          # /contatto/it
                 r'-it[./]',         # /contatto-it.html
                 r'\.it/',           # domain.it/page
                 r'it\..*\.com'      # it.site.com
             ],
             'nl': [
-                r'^/nl/',           # /nl/contact
+                r'/nl/',            # anywhere: /path/nl/contact
                 r'/(nl)$',          # /contact/nl
                 r'-nl[./]',         # /contact-nl.html
                 r'\.nl/',           # domain.nl/page

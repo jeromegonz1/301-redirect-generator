@@ -39,7 +39,8 @@ class AIMapper:
     """Mapper IA pour correspondances sémantiques entre URLs"""
     
     def __init__(self, api_key: str, model: str = "gpt-3.5-turbo", 
-                 temperature: float = 0.1, max_retries: int = 3):
+                 temperature: float = 0.1, max_retries: int = 3, 
+                 chunk_size: int = 50):
         """
         Initialise le mapper IA
         
@@ -48,6 +49,7 @@ class AIMapper:
             model: Modèle à utiliser (gpt-3.5-turbo par défaut)
             temperature: Température pour le sampling (0.1 = très déterministe)
             max_retries: Nombre maximum de tentatives en cas d'erreur
+            chunk_size: Taille des lots d'URLs (50 par défaut)
         """
         self.api_key = api_key
         self.model = model
@@ -56,7 +58,7 @@ class AIMapper:
         self.client = OpenAI(api_key=api_key)
         
         # Configuration de chunking
-        self.chunk_size = 50
+        self.chunk_size = chunk_size
         self.max_tokens = 4000
         
         # Coûts approximatifs (USD pour 1K tokens)
