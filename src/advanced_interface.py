@@ -47,7 +47,7 @@ def interface_ai_avancee():
     
     with col1:
         st.subheader("🔗 Ancien site")
-        old_input_mode = st.radio("Mode", ["URL à scraper", "Liste manuelle"], key="old")
+        old_input_mode = st.radio("Mode", ["URL à scraper", "Sitemap XML", "Liste manuelle"], key="old")
         
         if old_input_mode == "URL à scraper":
             old_url = st.text_input("URL de l'ancien site", placeholder="https://ancien-site.com")
@@ -59,6 +59,16 @@ def interface_ai_avancee():
                         st.success(f"✅ {len(old_urls)} URLs collectées")
                 else:
                     st.error("Veuillez entrer une URL")
+        elif old_input_mode == "Sitemap XML":
+            old_sitemap_url = st.text_input("URL du sitemap ancien site", placeholder="https://ancien-site.com/sitemap.xml")
+            if st.button("🗺️ Parser sitemap ancien site"):
+                if old_sitemap_url:
+                    with st.spinner("Parsing du sitemap..."):
+                        old_urls = parse_sitemap(old_sitemap_url)
+                        st.session_state.old_urls = old_urls
+                        st.success(f"✅ {len(old_urls)} URLs extraites du sitemap")
+                else:
+                    st.error("Veuillez entrer une URL de sitemap")
         else:
             old_text = st.text_area("URLs (une par ligne)", height=200, key="old_manual")
             if old_text:

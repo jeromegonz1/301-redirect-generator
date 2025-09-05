@@ -11,6 +11,13 @@ Application Streamlit pour générer des redirections 301 intelligentes avec sup
 - ✅ **Tests TDD** : 57/58 tests passent (1 test retry désactivé)
 
 ## Modifications récentes (05/09/2025)
+
+### Sprint intermédiaire - Sitemap ancien site
+- ✅ **Nouvelle option collecte** : Ajout "Sitemap XML" pour ancien site
+- ✅ **Tests TDD** : 4 nouveaux tests pour `parse_sitemap` (tous passent)
+- ✅ **Interface mise à jour** : 3 options au lieu de 2 pour ancien site
+- ✅ **Documentation** : `docs/SPRINT_INTERMEDIAIRE_SITEMAP.md`
+
 ### Nouveaux modules développés
 1. `language_detector.py` - Détection automatique des langues dans URLs (11 tests)
 2. `ai_mapper.py` - Mapping sémantique avec OpenAI GPT-3.5-turbo (10 tests)

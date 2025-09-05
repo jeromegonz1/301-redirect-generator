@@ -4,8 +4,8 @@ Approche TDD selon SCRAPER_SPEC.md
 """
 
 import pytest
-from unittest.mock import Mock, patch
-from src.scraper import WebScraper, crawl_site, crawl_site_with_fallback
+from unittest.mock import Mock, patch, PropertyMock
+from src.scraper import WebScraper, crawl_site, crawl_site_with_fallback, parse_sitemap
 
 
 class TestWebScraper:
@@ -195,6 +195,119 @@ class TestHelperFunctions:
         
         assert success == False
         assert urls == []
+
+
+class TestParseSitemap:
+    """Tests TDD pour la fonction parse_sitemap (Sprint intermédiaire)"""
+    
+    @patch('src.scraper.requests.get')
+    def test_parse_sitemap_basic_xml(self, mock_get):
+        """Test parsing d'un sitemap XML basique"""
+        # Mock de la réponse HTTP avec XML sitemap basique
+        xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://ancien-site.com/page1</loc>
+        <lastmod>2024-01-01</lastmod>
+    </url>
+    <url>
+        <loc>https://ancien-site.com/page2</loc>
+        <lastmod>2024-01-02</lastmod>
+    </url>
+</urlset>'''
+        mock_response = Mock()
+        mock_response.status_code = 200
+        # parse_sitemap utilise response.content, pas response.text
+        mock_response.content = xml_content.encode('utf-8')
+        mock_response.raise_for_status.return_value = None
+        mock_get.return_value = mock_response
+        
+        # Test
+        urls = parse_sitemap("https://ancien-site.com/sitemap.xml")
+        
+        # Vérifications
+        assert len(urls) == 2
+        assert "https://ancien-site.com/page1" in urls
+        assert "https://ancien-site.com/page2" in urls
+    
+    @patch('src.scraper.requests.get')
+    def test_parse_sitemap_error_handling(self, mock_get):
+        """Test gestion d'erreur lors du parsing sitemap"""
+        # Mock d'une erreur HTTP
+        mock_get.side_effect = Exception("Network error")
+        
+        # Test
+        urls = parse_sitemap("https://invalid-site.com/sitemap.xml")
+        
+        # Doit retourner liste vide en cas d'erreur
+        assert urls == []
+    
+    @patch('src.scraper.requests.get')
+    def test_parse_sitemap_empty_xml(self, mock_get):
+        """Test parsing d'un sitemap vide"""
+        xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+</urlset>'''
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.content = xml_content.encode('utf-8')
+        mock_response.raise_for_status.return_value = None
+        mock_get.return_value = mock_response
+        
+        # Test
+        urls = parse_sitemap("https://ancien-site.com/empty-sitemap.xml")
+        
+        # Doit retourner liste vide
+        assert urls == []
+    
+    @patch('src.scraper.requests.get')
+    def test_parse_sitemap_ancien_site_workflow(self, mock_get):
+        """Test workflow spécifique pour ancien site avec sitemap"""
+        # Mock d'un sitemap d'ancien site réaliste
+        xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://ancien-site.com/</loc>
+        <lastmod>2024-01-01</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://ancien-site.com/fr/accueil</loc>
+        <lastmod>2024-01-02</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ancien-site.com/en/home</loc>
+        <lastmod>2024-01-02</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ancien-site.com/fr/contact</loc>
+        <lastmod>2024-01-03</lastmod>
+        <priority>0.6</priority>
+    </url>
+</urlset>'''
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.content = xml_content.encode('utf-8')
+        mock_response.raise_for_status.return_value = None
+        mock_get.return_value = mock_response
+        
+        # Test
+        urls = parse_sitemap("https://ancien-site.com/sitemap.xml")
+        
+        # Vérifications pour workflow ancien site
+        assert len(urls) == 4
+        assert "https://ancien-site.com/" in urls
+        assert "https://ancien-site.com/fr/accueil" in urls
+        assert "https://ancien-site.com/en/home" in urls
+        assert "https://ancien-site.com/fr/contact" in urls
+        
+        # Vérification que les URLs sont adaptées pour matching IA
+        # (même format que scraping ou saisie manuelle)
+        for url in urls:
+            assert url.startswith("https://")
+            assert "ancien-site.com" in url
 
 
 if __name__ == "__main__":
