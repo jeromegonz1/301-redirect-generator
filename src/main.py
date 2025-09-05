@@ -118,7 +118,7 @@ def main():
             st.error("❌ Veuillez saisir l'URL de l'ancien site avant de lancer le scraping.")
         else:
             with st.spinner("🔍 Scraping de l'ancien site en cours..."):
-                old_urls, old_success = crawl_site_with_fallback(old_site_url, max_pages=200)
+                old_urls, old_success = crawl_site_with_fallback(old_site_url, max_pages=1000)
                 
                 st.session_state.scraped_old_urls = old_urls
                 st.session_state.old_scraping_success = old_success

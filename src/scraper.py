@@ -175,7 +175,7 @@ class WebScraper:
 
 # Fonction helper pour compatibilité avec l'ancienne API
 def crawl_site(url_root: str, 
-               max_pages: int = 200,
+               max_pages: int = 1000,
                user_agent: str = "301-Redirect-Bot",
                auth: Optional[Tuple[str, str]] = None,
                headers: Optional[Dict[str, str]] = None) -> List[str]:
@@ -199,7 +199,7 @@ def crawl_site(url_root: str,
     )
 
 
-def crawl_site_with_fallback(url_root: str, max_pages: int = 200) -> Tuple[List[str], bool]:
+def crawl_site_with_fallback(url_root: str, max_pages: int = 1000) -> Tuple[List[str], bool]:
     """
     Crawl un site avec gestion de fallback
     
