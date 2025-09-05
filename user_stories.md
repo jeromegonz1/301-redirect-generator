@@ -116,10 +116,75 @@ Toute la valeur ajoutée repose sur le **gain de temps**, la **simplicité d'uti
 
 ---
 
+## ✅ US006 – Scraping automatique (Legacy)
+
+**Titre** : US006 - Scraping automatique des URLs
+
+**En tant que** utilisateur,  
+**je veux** pouvoir scraper automatiquement les URLs d'un site,  
+**afin de** ne pas avoir à les copier manuellement.
+
+### 🎯 Critères d'acceptation
+- ✅ Scraping intelligent avec crawling jusqu'à 200 pages
+- ✅ Détection automatique des liens internes
+- ✅ Normalisation des URLs (suppression query strings, fragments)
+- ✅ Support Basic Auth si nécessaire
+- ✅ User-Agent dédié : "301-Redirect-Bot"
+
+---
+
+## ✅ US007 – Parsing du sitemap Yoast pour le site nouveau
+
+**Titre** : US007 - Parser le sitemap du nouveau site en préproduction
+
+**En tant que** utilisateur,  
+**je veux** pouvoir parser le sitemap XML du nouveau site (souvent bloqué par robots.txt),  
+**afin d'** extraire toutes les URLs sans scraping.
+
+### 🎯 Critères d'acceptation
+- ✅ Parsing récursif des sitemaps index Yoast
+- ✅ Détection automatique des sous-sitemaps (post, page, category)
+- ✅ Protection contre les boucles infinies
+- ✅ Conversion en URLs relatives pour matching
+- ✅ Support des sitemaps standards et Yoast SEO
+
+📄 **Documentation complète :** [docs/user_stories/US007.md](docs/user_stories/US007.md)
+
+---
+
+## ✅ US008 – Campagne de test réelle
+
+**Titre** : US008 - Test sur cas réel de refonte
+
+**En tant que** équipe projet,  
+**je veux** valider l'application sur un vrai cas de refonte,  
+**afin de** m'assurer qu'elle est prête pour la production.
+
+### 🎯 Critères d'acceptation
+- ✅ Test avec ancien site : https://www.campinglescascades.com/
+- ✅ Test avec nouveau site : http://72.web.thelis.es:30178/les-cascades/sitemap_index.xml
+- ✅ Extraction correcte de 549 URLs du sitemap
+- ✅ Génération des fichiers .htaccess et .csv fonctionnels
+- ✅ Performance acceptable (< 2 min)
+
+📄 **Documentation complète :** [docs/user_stories/US008.md](docs/user_stories/US008.md)
+
+---
+
 ## 🗺️ Suivi & gestion projet
 
-Les User Stories sont suivies dans le Kanban GitHub Project :  
-👉 **Roadmap 301 Generator**
+### État des User Stories
+
+| US | Titre | Statut | Documentation |
+|----|-------|--------|---------------|
+| US001 | Coller deux listes d'URL | ✅ Terminée | - |
+| US002 | Générer le fichier .htaccess | ✅ Terminée | - |
+| US003 | Générer un fichier .csv | ✅ Terminée | - |
+| US004 | Interface ultra-simple | ✅ Terminée | - |
+| US005 | TDD & Qualité code | ✅ Terminée | - |
+| US006 | Scraping automatique | ✅ Terminée | - |
+| US007 | Parsing sitemap Yoast | ✅ Terminée | [Voir doc](docs/user_stories/US007.md) |
+| US008 | Campagne test réelle | ✅ Terminée | [Voir doc](docs/user_stories/US008.md) |
 
 ---
 
@@ -132,13 +197,18 @@ Les User Stories sont suivies dans le Kanban GitHub Project :
 
 ---
 
-### ✅ Et maintenant :
+### 📊 Métriques du projet
 
-1. Crée un fichier dans ton repo : `user_stories.md`
-2. Colle ce contenu
-3. Commit :
-   ```bash
-   git add user_stories.md
-   git commit -m "docs: ajout des User Stories complètes du projet"
-   git push origin main
-   ```
+- **Total User Stories :** 8
+- **Complétées :** 8/8 (100%)
+- **Tests automatisés :** 24 tests (9 generator + 15 scraper)
+- **Couverture fonctionnelle :** 100%
+- **Version actuelle :** v3.0 avec parsing sitemap
+
+### 🚀 Prochaines évolutions potentielles
+
+- Matching intelligent (fuzzy matching)
+- Filtrage des URLs media
+- Gestion spécifique du multilingue
+- Interface de preview avant génération
+- Export vers d'autres formats (nginx, etc.)
