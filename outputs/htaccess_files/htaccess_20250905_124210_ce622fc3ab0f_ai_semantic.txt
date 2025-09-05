@@ -1,0 +1,654 @@
+# Fichier .htaccess généré par 301 Redirect Generator
+# Date: 2025-09-05 12:42:10
+# URLs anciennes: 212
+# URLs nouvelles: 549
+# Cache key: ce622fc3ab0f
+
+# Redirections 301/302 avec URLs absolues
+# 301 Redirect Generator - Sprint 3 Enhanced
+# Format: Source absolue → Target absolue
+
+# ===================================================
+# REDIRECTIONS 301 - MATCHING IA SÉMANTIQUE
+# ===================================================
+
+# Correspondance basée sur le thème du camping 4 étoiles (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/de/actualites-de/camping-4-sterne-wache/ https://www.les-cascades.com/les-cascades/de/das-wichtigste-fuer-einen-gelungenen-aufenthalt-auf-dem-campingplatz-les-cascades/
+
+# Correspondance basée sur les activités de vacances en camping (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/de/actualites-de/ferien-camping-garten/ https://www.les-cascades.com/les-cascades/de/die-besten-aktivitaeten-fuer-familien-auf-dem-campingplatz-les-cascades/
+
+# Correspondance basée sur le thème du camping 4 étoiles (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/de/actualites-de/4-sterne-camping/ https://www.les-cascades.com/les-cascades/de/das-wichtigste-fuer-einen-gelungenen-aufenthalt-auf-dem-campingplatz-les-cascades/
+
+# Correspondance basée sur les activités sportives dans le Gard (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/de/actualites-de/aktivitaten-gard/ https://www.les-cascades.com/les-cascades/de/umgebung/sportliche-aktivitaeten/
+
+# Correspondance basée sur les festivals dans le Gard (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/de/actualites-de/festivals-gard/ https://www.les-cascades.com/les-cascades/de/festivals-und-veranstaltungen-die-sie-diesen-sommer-im-departement-gard-nicht-verpassen-sollten/
+
+# Correspondance basée sur la découverte du camping (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/de/actualites-de/neu-2022-service-hotel-camping/ https://www.les-cascades.com/les-cascades/de/entdecken-sie-den-campingplatz/
+
+# La nouvelle URL regroupe tous les types d'hébergements, dont les mobilheime. (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/de/mobilheim/ https://www.les-cascades.com/les-cascades/de/unsere-unterkuenfte/
+
+# La nouvelle URL regroupe des informations sur la région, incluant le Gard. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/de/gard/ https://www.les-cascades.com/les-cascades/de/umgebung/
+
+# Correspondance directe avec la nouvelle catégorie 'Die schönsten Dörfer'. (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/de/die-schoensten-doerfer-frankreichs/ https://www.les-cascades.com/les-cascades/de/umgebung/staedte-und-doerfer/die-schoensten-doerfer/
+
+# Correspondance directe avec les cascades de Sautadet. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/de/der-fluss-und-die-kaskaden-von-sautadet/ https://www.les-cascades.com/les-cascades/de/umgebung/natur-und-kulturstaetten/die-sautadet-wasserfaelle/
+
+# Correspondance directe avec la nouvelle URL dédiée à La Roque-sur-Cèze. (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/de/la-roque-sur-ceze/ https://www.les-cascades.com/les-cascades/de/umgebung/staedte-und-doerfer/la-roque-sur-ceze/
+
+# Correspondance directe avec la nouvelle page de contact. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/de/kontakt-und-anfahrt/ https://www.les-cascades.com/les-cascades/de/kontakt/
+
+# Correspondance directe avec la nouvelle page des tarifs. (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/de/preise/ https://www.les-cascades.com/les-cascades/de/unsere-unterkuenfte/unsere-preise/
+
+# Correspondance directe avec la nouvelle page dédiée au campingplatz. (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/de/der-campingplatz/ https://www.les-cascades.com/les-cascades/de/entdecken-sie-den-campingplatz/
+
+# Correspondance directe avec la nouvelle page des services et équipements. (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/de/dienstleistungen-ausruestung/ https://www.les-cascades.com/les-cascades/de/entdecken-sie-den-campingplatz/unsere-leistungen-ausstattung/
+
+# Correspondance directe avec la nouvelle page dédiée à la piscine. (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/de/das-schwimmbad/ https://www.les-cascades.com/les-cascades/de/entdecken-sie-den-campingplatz/der-swimmingpool/
+
+# Correspondance directe avec la nouvelle catégorie des hébergements premium. (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/de/premium-unterkuenfte/ https://www.les-cascades.com/les-cascades/de/unsere-unterkuenfte/premiums/
+
+# Correspondance directe avec la nouvelle catégorie des lodges. (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/de/lodges/ https://www.les-cascades.com/les-cascades/de/unsere-unterkuenfte/lodges/
+
+# Correspondance directe avec la nouvelle catégorie des emplacements. (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/de/stellplaetze/ https://www.les-cascades.com/les-cascades/de/unsere-unterkuenfte/stellplaetze/
+
+# Correspondance directe avec la nouvelle page du restaurant. (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/de/restaurant/ https://www.les-cascades.com/les-cascades/de/entdecken-sie-den-campingplatz/das-restaurant/
+
+# La nouvelle URL correspond à la catégorie 'premiums' qui peut inclure des campings 4 étoiles. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/camping-4-star-gard/ https://www.les-cascades.com/les-cascades/en/our-accommodations/premiums/
+
+# La nouvelle URL correspond à la catégorie 'cottages' qui peut être associée à des séjours de vacances en camping. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/holiday-camping-garden/ https://www.les-cascades.com/les-cascades/en/our-accommodations/cottages/
+
+# La nouvelle URL correspond à la catégorie 'premiums' qui peut inclure des campings 4 étoiles. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/4-star-camping/ https://www.les-cascades.com/les-cascades/en/our-accommodations/premiums/
+
+# La nouvelle URL parle de produits du terroir et de séjour, ce qui peut être associé à un séjour en camping. (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/sejour-gard-product-terroir/ https://www.les-cascades.com/les-cascades/en/local-markets-not-to-be-missed-near-la-roque-sur-ceze-crafts-and-local-products/
+
+# La nouvelle URL correspond à la découverte du camping 'Les Cascades'. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/zoover-campsite-les-cascades/ https://www.les-cascades.com/les-cascades/en/discover-the-campsite/
+
+# La nouvelle URL parle des raisons de choisir un camping, en lien avec l'engagement écologique du camping 'Les Cascades'. (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/why-camping/ https://www.les-cascades.com/les-cascades/en/eco-friendly-stay-at-les-cascades-campground-nature-at-the-heart-of-our-commitments/
+
+# La nouvelle URL correspond à la catégorie 'lodges' qui peut être associée au glamping. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/glamping-tourism/ https://www.les-cascades.com/les-cascades/en/our-accommodations/lodges/
+
+# La nouvelle URL parle des événements et festivals, en lien avec l'agenda du camping 'Les Cascades'. (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/festivals-gard/ https://www.les-cascades.com/les-cascades/en/surroundings/agenda/
+
+# La nouvelle URL parle de la qualité du camping 'Les Cascades' avec des prix et récompenses. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/camping-quality/ https://www.les-cascades.com/les-cascades/en/adac-and-anwb-awards-a-guarantee-of-quality-for-our-campsite-in-la-roque-sur-ceze/
+
+# La nouvelle URL parle des activités dans le Gard, en lien avec les activités proposées autour du camping 'Les Cascades'. (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/activities-gard/ https://www.les-cascades.com/les-cascades/en/surroundings/sports-activities/
+
+# Correspondance basée sur le thème de l'espace aquatique (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/our-new-aquatic-space-in-the-gard/ https://www.les-cascades.com/les-cascades/en/discover-the-campsite/the-swimming-pool/
+
+# Correspondance basée sur la visite des attractions dans le Gard (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/en/actualites-en/visiter-le-gard-un-veritable-tour-du-monde/ https://www.les-cascades.com/les-cascades/en/must-see-attractions-in-gard-top-sites-to-visit-less-than-30-minutes-from-the-campground/
+
+# Correspondance générale avec la section hébergements (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/en/mobile-home/ https://www.les-cascades.com/les-cascades/en/our-accommodations/
+
+# Correspondance avec la section actualités et photos (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/en/photo-gallery/ https://www.les-cascades.com/les-cascades/en/news/
+
+# Correspondance avec la section environnement et activités (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/en/gard/ https://www.les-cascades.com/les-cascades/en/surroundings/
+
+# Correspondance directe avec la visite des plus beaux villages (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/en/the-most-beautiful-villages-in-france/ https://www.les-cascades.com/les-cascades/en/surroundings/towns-and-villages/the-most-beautiful-villages/
+
+# Correspondance directe avec la ville de La Roque-sur-Cèze (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/en/la-roque-sur-ceze/ https://www.les-cascades.com/les-cascades/en/surroundings/towns-and-villages/la-roque-sur-ceze/
+
+# Correspondance avec la découverte du camping (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/en/the-campsite/ https://www.les-cascades.com/les-cascades/en/discover-the-campsite/
+
+# Correspondance directe avec la piscine du camping (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/en/the-swimming-pool/ https://www.les-cascades.com/les-cascades/en/discover-the-campsite/the-swimming-pool/
+
+# Correspondance directe avec la section des hébergements Premium (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/en/the-premiums/ https://www.les-cascades.com/les-cascades/en/our-accommodations/premiums/
+
+# Correspondance directe avec la section des lodges (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/en/the-lodges/ https://www.les-cascades.com/les-cascades/en/our-accommodations/lodges/
+
+# Correspondance avec la section des services et équipements du camping (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/en/services-equipment/ https://www.les-cascades.com/les-cascades/en/discover-the-campsite/our-services-equipment/
+
+# Correspondance avec le planning des animations (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/en/animations/ https://www.les-cascades.com/les-cascades/en/discover-the-campsite/our-activities-schedule/
+
+# Correspondance avec l'accès à la rivière et aux cascades (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/en/the-river-and-the-cascades-du-sautadet/ https://www.les-cascades.com/les-cascades/en/discover-the-campsite/access-to-the-river-and-the-famous-waterfalls/
+
+# Correspondance avec la section des tarifs (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/en/tariffs/ https://www.les-cascades.com/les-cascades/en/our-accommodations/our-prices/
+
+# Correspondance avec la section des emplacements (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/en/pitches/ https://www.les-cascades.com/les-cascades/en/our-accommodations/pitches/
+
+# Correspondance directe avec la section de contact (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/en/contact-and-access/ https://www.les-cascades.com/les-cascades/en/contact/
+
+# Correspondance directe avec la section du restaurant (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/en/the-restaurant/ https://www.les-cascades.com/les-cascades/en/discover-the-campsite/the-restaurant/
+
+# Correspondance directe avec la page d'accueil (confiance: 1.00)
+Redirect 301 https://www.campinglescascades.com/en/ https://www.les-cascades.com/les-cascades/en/
+
+# Correspondance avec la section actualités (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/en/category/actualites-en/ https://www.les-cascades.com/les-cascades/en/news/
+
+# La nouvelle URL parle des gorges du Gardon, en lien avec le camping en bord de rivière. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/wp-content/uploads/2019/10/Camping-en-bord-de-riviere-Gard.jpg https://www.les-cascades.com/les-cascades/aux-alentours/sites-naturels-culturels/les-gorges-du-gardon/
+
+# La nouvelle URL présente les hébergements du camping, incluant des cottages 4 étoiles. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/wp-content/uploads/2019/11/camping-4-etoiles.jpg https://www.les-cascades.com/les-cascades/nos-hebergements/
+
+# La nouvelle URL propose des activités familiales, en lien avec un séjour familial. (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/wp-content/uploads/2019/10/sejour-familial-bord-de-riviere-gard.jpg https://www.les-cascades.com/les-cascades/les-meilleures-activites-a-faire-en-famille-au-camping-les-cascades/
+
+# La nouvelle URL parle des vacances dans le Gard, en lien avec l'organisation de vacances en camping. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/wp-content/uploads/2019/11/organiser-vacances-camping-gard.jpg https://www.les-cascades.com/les-cascades/pourquoi-choisir-le-gard-pour-vos-prochaines-vacances/
+
+# La nouvelle URL met en avant les distinctions de qualité du camping, en lien avec des récompenses. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-Gard-Vainqueur-Zoover-Silver-Adwards.jpg https://www.les-cascades.com/les-cascades/distinctions-adac-et-anwb-un-gage-de-qualite-pour-notre-camping-a-la-roque-sur-ceze/
+
+# La nouvelle URL présente les bonnes raisons de choisir le Gard pour des vacances, en lien avec les vacances en camping. (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/wp-content/uploads/2019/10/bonnes-raisons-vacances-camping.jpg https://www.les-cascades.com/les-cascades/pourquoi-choisir-le-gard-pour-vos-prochaines-vacances/
+
+# La nouvelle URL concerne les hébergements premium du camping, en lien avec les locations premium. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/wp-content/uploads/2020/07/location-premium-camping-les-cascades.jpg https://www.les-cascades.com/les-cascades/nos-hebergements/premiums/
+
+# La nouvelle URL parle des festivals dans le Gard, en lien avec les événements locaux. (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/wp-content/uploads/2019/10/festivals-gard.jpg https://www.les-cascades.com/les-cascades/aux-alentours/villes-et-villages/
+
+# La nouvelle URL évoque les Cévennes, en lien avec les montagnes du Gard. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/wp-content/uploads/2019/10/cevennes-montagne-gard.jpg https://www.les-cascades.com/les-cascades/aux-alentours/sites-naturels-culturels/les-cevennes/
+
+# La nouvelle URL est la page d'accueil du camping, en lien avec la bannière du camping. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/wp-content/uploads/2021/10/bg-banner-camping-cascades.jpg https://www.les-cascades.com/les-cascades/
+
+# La nouvelle URL traite des engagements sanitaires du camping, en lien avec la FAQ du camping. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/actualites/engagement-sanitaire-du-camping-les-cascades/ https://www.les-cascades.com/les-cascades/le-camping/faq/
+
+# Le lien parle de distinctions et de qualité, correspondant à la nouvelle catégorie 'nos hebergements'. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/actualites/yelloh-village-elu-meilleure-enseigne-de-camping-2021/ https://www.les-cascades.com/les-cascades/distinctions-adac-et-anwb-un-gage-de-qualite-pour-notre-camping-a-la-roque-sur-ceze/
+
+# Le thème de la qualité du camping est conservé dans la nouvelle URL. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/actualites/camping-qualite/ https://www.les-cascades.com/les-cascades/distinctions-adac-et-anwb-un-gage-de-qualite-pour-notre-camping-a-la-roque-sur-ceze/
+
+# La nouvelle URL regroupe toutes les actualités, correspondant à la section 'actualites'. (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/actualites/nouveautes-2022-camping-cascades/ https://www.les-cascades.com/les-cascades/actualites/
+
+# La nouvelle URL regroupe toutes les actualités, correspondant à la section 'actualites'. (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/actualites/notre-nouvel-espace-aquatique-dans-le-gard/ https://www.les-cascades.com/les-cascades/actualites/
+
+# L'ancienne URL parlant d'un restaurant italien correspond à la nouvelle section 'le restaurant'. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/actualites/restaurant-italien-dans-le-gard/ https://www.les-cascades.com/les-cascades/le-camping/le-restaurant/
+
+# Correspondance directe avec la nouvelle catégorie 'sites-naturels-culturels' et le lieu 'le-pont-du-gard'. (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/tourisme-gard/pont-du-gard/ https://www.les-cascades.com/les-cascades/aux-alentours/sites-naturels-culturels/le-pont-du-gard/
+
+# Nouvelle catégorie 'sites-naturels-culturels' et le lieu 'les-gorges-du-gardon' correspondent. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/tourisme-gard/visite-gorges-du-gardon/ https://www.les-cascades.com/les-cascades/aux-alentours/sites-naturels-culturels/les-gorges-du-gardon/
+
+# Correspondance avec la nouvelle catégorie 'villes-et-villages' et le lieu 'aigues-mortes'. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/tourisme-gard/aigues-mortes/ https://www.les-cascades.com/les-cascades/aux-alentours/villes-et-villages/aigues-mortes/
+
+# Nouvelle catégorie 'villes-et-villages' et le lieu 'ales' correspondent. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/tourisme-gard/ales/ https://www.les-cascades.com/les-cascades/aux-alentours/villes-et-villages/ales/
+
+# Correspondance avec la nouvelle catégorie 'villes-et-villages' et le lieu 'anduze'. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/tourisme-gard/anduze/ https://www.les-cascades.com/les-cascades/aux-alentours/villes-et-villages/anduze/
+
+# Nouvelle catégorie 'villes-et-villages' et le lieu 'avignon' correspondent. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/tourisme-gard/avignon/ https://www.les-cascades.com/les-cascades/aux-alentours/villes-et-villages/avignon/
+
+# Correspondance avec la nouvelle catégorie 'villes-et-villages' et le lieu 'nimes'. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/tourisme-gard/nimes/ https://www.les-cascades.com/les-cascades/aux-alentours/villes-et-villages/nimes/
+
+# Nouvelle catégorie 'villes-et-villages' et le lieu 'saint-jean-du-gard' correspondent. (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/tourisme-gard/saint-jean-du-gard/ https://www.les-cascades.com/les-cascades/aux-alentours/villes-et-villages/saint-jean-du-gard/
+
+# Correspondance directe avec la nouvelle catégorie 'villes-et-villages' pour Uzès (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/tourisme-gard/uzes/ https://www.les-cascades.com/les-cascades/aux-alentours/villes-et-villages/uzes/
+
+# Nouvelle catégorie 'sites-naturels-culturels' pour Vallon Pont d'Arc (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/camping-vallon-pont-darc/ https://www.les-cascades.com/les-cascades/aux-alentours/sites-naturels-culturels/vallon-pont-darc/
+
+# Correspondance avec la nouvelle catégorie 'villes-et-villages' pour La Roque-sur-Cèze (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/camping-roque-sur-ceze/ https://www.les-cascades.com/les-cascades/aux-alentours/villes-et-villages/la-roque-sur-ceze/
+
+# La page d'accueil du camping semble correspondre à la présentation générale du camping. (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/camping-presentation-gard/ https://www.les-cascades.com/les-cascades/
+
+# La nouvelle URL semble contenir des informations sur les services du camping. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/camping-services-gard/ https://www.les-cascades.com/les-cascades/le-camping/faq/
+
+# La présence d'une piscine dans le camping peut être associée aux services généraux du camping. (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/camping-piscine-gard/ https://www.les-cascades.com/les-cascades/le-camping/faq/
+
+# La catégorie 'premium' semble correspondre aux hébergements de qualité supérieure. (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/location-premium-gard/ https://www.les-cascades.com/les-cascades/nos-hebergements/premiums/
+
+# La nouvelle URL semble contenir des informations sur les plus beaux villages, similaire à l'ancienne URL. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/plus-beaux-villages-de-france/ https://www.les-cascades.com/les-cascades/aux-alentours/villes-et-villages/les-plus-beaux-villages/
+
+# La nouvelle URL parle des activités familiales au camping, correspondant au thème du camping 4 étoiles. (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/nl/actualites-nl/camping-4-sterrenwacht/ https://www.les-cascades.com/les-cascades/nl/les-meilleures-activites-a-faire-en-famille-au-camping-les-cascades/
+
+# La nouvelle URL parle des activités familiales au camping, en lien avec le concept de camping 4 étoiles. (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/nl/actualites-nl/4-sterren-camping/ https://www.les-cascades.com/les-cascades/nl/les-meilleures-activites-a-faire-en-famille-au-camping-les-cascades/
+
+# La nouvelle URL parle des festivals et événements à ne pas manquer dans le Gard, en lien avec les activités proposées. (confiance: 0.70)
+Redirect 301 https://www.campinglescascades.com/nl/actualites-nl/activiteiten-gard/ https://www.les-cascades.com/les-cascades/nl/festivals-en-evenementen-die-u-deze-zomer-in-de-gard-niet-mag-missen/
+
+# Correspondance directe avec la section actualités de la nouvelle version (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/nl/actualites-nl/onze-nieuwe-ruimte-in-de-tuin/ https://www.les-cascades.com/les-cascades/nl/nieuws/
+
+# Correspondance avec la section tarifs de la nouvelle version (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/nl/tarieven/ https://www.les-cascades.com/les-cascades/nl/onze-accommodaties/onze-prijzen/
+
+# Correspondance avec la section sur le Gard de la nouvelle version (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/nl/gard/ https://www.les-cascades.com/les-cascades/nl/in-de-omgeving/
+
+# Correspondance avec la section sur les plus beaux villages de France de la nouvelle version (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/nl/de-mooiste-dorpen-van-frankrijk/ https://www.les-cascades.com/les-cascades/nl/in-de-omgeving/steden-en-dorpen/de-mooiste-dorpen/
+
+# Correspondance avec la section sur les hébergements en mobil-home de la nouvelle version (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/nl/stacaravan/ https://www.les-cascades.com/les-cascades/nl/onze-accommodaties/cottages/
+
+# Correspondance avec la section sur les activités de la nouvelle version (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/nl/activiteiten/ https://www.les-cascades.com/les-cascades/nl/onze-accommodaties/locaties/
+
+# Correspondance avec la section sur les cascades du Sautadet de la nouvelle version (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/nl/de-rivier-en-de-cascades-du-sautadet/ https://www.les-cascades.com/les-cascades/nl/in-de-omgeving/natuurlijke-en-culturele-plekken/de-sautadet-watervallen/
+
+# Correspondance avec la section sur La Roque-sur-Cèze de la nouvelle version (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/nl/la-roque-sur-ceze/ https://www.les-cascades.com/les-cascades/nl/in-de-omgeving/steden-en-dorpen/la-roque-sur-ceze/
+
+# Correspondance avec la section de présentation du camping de la nouvelle version (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/nl/de-camping/ https://www.les-cascades.com/les-cascades/nl/ontdek-de-camping/
+
+# Correspondance avec la section sur les services et équipements de la nouvelle version (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/nl/diensten-uitrusting/ https://www.les-cascades.com/les-cascades/nl/ontdek-de-camping/onze-diensten-en-apparatuur/
+
+# Correspondance directe avec la section sur les hébergements premium de la nouvelle version (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/nl/de-premiums/ https://www.les-cascades.com/les-cascades/nl/onze-accommodaties/premiums/
+
+# Correspondance directe avec la section sur les lodges de la nouvelle version (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/nl/de-lodges/ https://www.les-cascades.com/les-cascades/nl/onze-accommodaties/lodges/
+
+# Correspondance avec la section de contact de la nouvelle version (confiance: 0.85)
+Redirect 301 https://www.campinglescascades.com/nl/contact-en-toegang/ https://www.les-cascades.com/les-cascades/nl/contact/
+
+# Correspondance directe avec la section sur la piscine de la nouvelle version (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/nl/het-zwembad/ https://www.les-cascades.com/les-cascades/nl/ontdek-de-camping/het-zwembad/
+
+# Correspondance avec la section sur les emplacements de la nouvelle version (confiance: 0.80)
+Redirect 301 https://www.campinglescascades.com/nl/de-staanplaatsen/ https://www.les-cascades.com/les-cascades/nl/onze-accommodaties/locaties/
+
+# Correspondance directe avec la section sur le restaurant de la nouvelle version (confiance: 0.90)
+Redirect 301 https://www.campinglescascades.com/nl/het-restaurant/ https://www.les-cascades.com/les-cascades/nl/ontdek-de-camping/het-restaurant/
+
+# Correspondance directe avec la page d'accueil de la nouvelle version (confiance: 1.00)
+Redirect 301 https://www.campinglescascades.com/nl/ https://www.les-cascades.com/les-cascades/nl/
+
+# Correspondance avec la catégorie 'geen-onderdeel-van-een-categorie' de la nouvelle version (confiance: 0.75)
+Redirect 301 https://www.campinglescascades.com/nl/category/actualites-nl/ https://www.les-cascades.com/les-cascades/nl/category/geen-onderdeel-van-een-categorie/
+
+# ===================================================
+# REDIRECTIONS 302 - FALLBACK INTELLIGENT
+# URLs orphelines → Page d'accueil langue
+# ===================================================
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/sejour-gard-product-terroir/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/organisieren-freizeit-camping/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/zoover-camping-les-cascades/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/warum-das-camping/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/glamping-tourismus/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/sanitaeres-engagement-des-campingplatzes-les-cascades/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/camping-qualitat/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/yelloh-village-better-camping-zeichen-2021/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/4-sterne-tourismus/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/italienisches-restaurant-im-gard/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/teil-2-soziale-verantwortung-von-unternehmen-unsere-verpflichtungen/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/soziale-verantwortung-von-unternehmen-unsere-verpflichtungen/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/nicolas-vanier-gard/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/yelloh-village/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/actualites-de/unser-neuer-raum-im-garten/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/category/actualites-de/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/fotogalerie/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home DE
+Redirect 302 https://www.campinglescascades.com/de/freizeitangebot/ https://www.les-cascades.com/de/
+
+# Fallback 302 vers la home EN
+Redirect 302 https://www.campinglescascades.com/en/actualites-en/yelloh-village-better-camping-sign-2021/ https://www.les-cascades.com/en/
+
+# Fallback 302 vers la home EN
+Redirect 302 https://www.campinglescascades.com/en/actualites-en/4-star-tourism/ https://www.les-cascades.com/en/
+
+# Fallback 302 vers la home EN
+Redirect 302 https://www.campinglescascades.com/en/actualites-en/organise-vacation-camping/ https://www.les-cascades.com/en/
+
+# Fallback 302 vers la home EN
+Redirect 302 https://www.campinglescascades.com/en/actualites-en/camping-les-cascades-sanitary-commitment/ https://www.les-cascades.com/en/
+
+# Fallback 302 vers la home EN
+Redirect 302 https://www.campinglescascades.com/en/actualites-en/new-2022-service-hotel-camping/ https://www.les-cascades.com/en/
+
+# Fallback 302 vers la home EN
+Redirect 302 https://www.campinglescascades.com/en/actualites-en/corporate-social-responsibility-our-commitments/ https://www.les-cascades.com/en/
+
+# Fallback 302 vers la home EN
+Redirect 302 https://www.campinglescascades.com/en/actualites-en/italian-restaurant-in-the-gard/ https://www.les-cascades.com/en/
+
+# Fallback 302 vers la home EN
+Redirect 302 https://www.campinglescascades.com/en/actualites-en/partie-2-responsabilite-societale-des-entreprises-nos-engagements/ https://www.les-cascades.com/en/
+
+# Fallback 302 vers la home EN
+Redirect 302 https://www.campinglescascades.com/en/actualites-en/nicolas-vanier-gard/ https://www.les-cascades.com/en/
+
+# Fallback 302 vers la home EN
+Redirect 302 https://www.campinglescascades.com/en/actualites-en/yelloh-village/ https://www.les-cascades.com/en/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/10/IMG_5101_240_240.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/10/avantage-camping-4-etoiles-cevennes.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/pourquoi-le-camping/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/yelloh-village/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2021/12/nps-Cascades841-scaled.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2021/12/FR1I7114.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2021/12/IMG_0315.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2021/12/IMG_9413-scaled-e1642088182301.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/camping-4-etoiles-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/partie-2-responsabilite-societale-des-entreprises-nos-engagements/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/vacances-camping-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/camping-4-etoiles/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/sejour-gard-produit-terroir/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/organiser-vacances-camping/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/tourisme-4-etoiles/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/festivals-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/activites-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/glamping-tourisme/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/responsabilite-societale-des-entreprises-nos-engagements/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/nicolas-vanier-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/11/film-nicolas-vanier-gard.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2021/08/banner-cascades-camping-banner.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/actualites/visiter-le-gard-un-veritable-tour-du-monde/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2020/10/cascades-du-sautadet.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-prix-reduit-gard.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2021/07/nps-Cascades727-Copie11-scaled.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/10/tourisme-gard.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2021/10/camping-aniamtions-gard.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2022/03/visite-pont-du-gard.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2022/03/visite-gorges-du-gardon.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2022/03/visites-aigues-mortes.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2022/03/visiter-ales.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2022/03/visites-anduze.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2022/03/tourisme-avignon.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2022/03/visites-nimes.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2022/03/visite-saint-jean-du-gard.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2022/03/tourisme-uzes.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/camping-prix-reduit-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-vallon-pont-d-arc.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2022/06/cascades-pont.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/camping-riviere-cascades/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/tourisme-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/parc-national-des-cevennes/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-cevennes.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/10/contact-camping-les-cascades.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/camping-animations-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-aniamtions-gard.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/accueil-2/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/location-emplacement-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/11/emplacement-camping-gard.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/agenda-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/location-mobil-home-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/10/chateau-les-plus-beaux-villages-de-france.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/contact-acces/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-gard-sejour-lodge.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/restaurant-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2019/10/restaurant-gard-avec-pizzeria.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/selection-activites-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/location-lodges-gard/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/wp-content/uploads/2024/02/banner-cascades-camping.jpg https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home FR
+Redirect 302 https://www.campinglescascades.com/category/actualites/ https://www.les-cascades.com/fr/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/vakantie-camping-gard/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/sejour-gard-product-terroir/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/organiseer-vacature-camping/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/zoover-camping-les-cascades/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/waarom-de-kamping/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/glamping-toerisme/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/sanitair-engagement-van-camping-les-cascades/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/camping-kwaliteit/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/yelloh-dorp-boter-kamping-sign-2021/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/4-sterren-toerisme/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/festivals-gard/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/nieuw-2022-hotel-service-camping/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/maatschappelijk-verantwoord-ondernemen-onze-verbintenissen/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/italiaans-restaurant-in-de-gard/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/deel-2-maatschappelijk-verantwoord-ondernemen-onze-verbintenissen/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/nicolas-vanier-gard/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/actualites-nl/yelloh-village/ https://www.les-cascades.com/nl/
+
+# Fallback 302 vers la home NL
+Redirect 302 https://www.campinglescascades.com/nl/fotogalerij/ https://www.les-cascades.com/nl/
