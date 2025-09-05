@@ -1,0 +1,87 @@
+Sprint 3 – Gestion des URLs non matchées avec fallback intelligent 302 :
+
+🧠 🎯 Objectif du Sprint 3 :
+
+Intégrer une gestion intelligente des URLs non matchées dans le générateur de redirections 301, avec :
+
+Fallback automatique en 302 vers la page d’accueil de la langue correspondante
+
+Journalisation & audit des cas non résolus
+
+Contrôle UI pour activer/désactiver ce mode
+
+✅ Tâches à réaliser :
+📌 1. Nouvelle User Story US009 - Fallback intelligent en 302
+
+Créer une nouvelle user story dans le fichier user_stories.md :
+
+## US009 - Fallback intelligent en 302
+
+En tant que chef de projet SEO,
+Je veux que les URLs de l'ancien site qui n'ont pas de correspondance sur le nouveau
+soient redirigées temporairement (302) vers la page d'accueil de leur langue,
+Afin de ne pas générer d'erreur 404, tout en me laissant le temps de retraiter manuellement ces cas.
+
+### Critères d'acceptation :
+- Redirection `302` générée automatiquement pour les URLs sans match
+- La redirection cible est `/fr/`, `/en/`, `/de/` selon le prefixe de l'URL source
+- Option dans l’interface : `Activer fallback automatique`
+- Fichier `.htaccess` annoté : `# fallback temporaire à retraiter`
+- Export CSV des URLs concernées pour retraitement manuel
+
+📌 2. Nouveau fichier fallback_mode.md
+
+Créer un nouveau fichier dans docs/ :
+
+# fallback_mode.md
+
+## Fallback 302 pour les URLs non matchées
+
+Ce mode permet de gérer intelligemment les cas où une URL de l’ancien site n’a pas d’équivalent sémantique sur le nouveau site (matching IA non concluant ou URL manquante).
+
+### Fonctionnement
+
+- Une redirection **302 temporaire** est générée vers la **page d’accueil de la langue correspondante**
+- Le code **302** évite d’indexer une mauvaise URL, contrairement à un 301
+- Toutes les redirections fallback sont **loggées et exportables**
+
+### Exemple
+
+Ancienne URL : `https://www.monsite.com/de/angebot-alt/`  
+Aucune correspondance trouvée par IA  
+➡️ Fallback : `Redirect 302 https://www.monsite.com/de/angebot-alt/ /de/`
+
+### UI
+
+- Case à cocher dans l’interface : `✅ Activer fallback 302 automatique`
+- Export CSV des fallback générés
+
+### Retraitement
+
+L’équipe SEO peut retraiter les URLs à partir du CSV, puis regénérer un `.htaccess` propre en supprimant les 302 manuels.
+
+
+📌 3. Améliorations UI (Sprint 3)
+
+Ajouter à l’interface :
+
+✅ Checkbox : Activer fallback 302
+
+📁 Téléchargement CSV des URLs fallback
+
+💬 Tooltip explicatif : "Redirige temporairement les URLs sans match vers la home de la langue. À retraiter plus tard."
+
+📌 4. Modifications fonctionnelles à intégrer
+
+Dans le générateur :
+
+Lors du mapping IA, si aucune correspondance n’est trouvée :
+
+Extraire la langue de l’URL (/fr/, /en/, /de/, etc.)
+
+Générer un Redirect 302 {ancienne URL} /{lang}/
+
+Annoter dans le .htaccess :
+
+# Fallback temporaire - à retraiter manuellement
+Redirect 302 https://www.site.com/fr/page-introuvable /fr/

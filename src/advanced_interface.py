@@ -14,6 +14,7 @@ from language_detector import LanguageDetector
 from ai_mapper import AIMapper, AIMatchingError
 from fallback_manager import FallbackManager
 from cache_manager import CacheManager
+from fallback_302_intelligent import Fallback302Intelligent
 
 
 def url_to_relative_path(url: str) -> str:
@@ -67,6 +68,20 @@ def interface_ai_avancee():
             fallback_lang = st.selectbox("🌐 Langue de fallback", 
                                        ["fr", "en", "de", "es", "it", "nl"], 
                                        index=0)
+    
+    # Configuration Fallback 302 Intelligent (Sprint 3)
+    with st.expander("🔄 Fallback intelligent 302 (Sprint 3)"):
+        enable_fallback_302 = st.checkbox(
+            "✅ Activer fallback 302 automatique", 
+            value=True,
+            help="Redirige automatiquement les URLs non matchées vers la page d'accueil de leur langue (302 temporaire)"
+        )
+        
+        if enable_fallback_302:
+            st.info("🎯 Les URLs sans correspondance IA seront redirigées en 302 vers /langue/")
+            st.write("**Exemple :** `/fr/page-orpheline` → `Redirect 302 /fr/page-orpheline /fr/`")
+        else:
+            st.warning("⚠️ URLs non matchées ignoreront les fallback (peut générer des 404)")
     
     # Gestion du cache
     with st.expander("💾 Gestion du cache (évite les appels API répétés)"):
@@ -290,6 +305,46 @@ def interface_ai_avancee():
                     # Les variables all_matches, all_unmatched, etc. sont maintenant disponibles
                     # que ce soit depuis le cache ou depuis l'API GPT
                     
+                    # Sprint 3 - Traitement intelligent des URLs non matchées
+                    fallback_302_results = {}
+                    fallback_302_csv_data = []
+                    
+                    if enable_fallback_302 and all_unmatched:
+                        st.subheader("🔄 Fallback intelligent 302 (Sprint 3)")
+                        
+                        # Initialisation du gestionnaire fallback 302
+                        intelligent_fallback = Fallback302Intelligent(
+                            enable_fallback_302=True,
+                            default_fallback_lang=fallback_lang
+                        )
+                        
+                        # Traitement des URLs non matchées
+                        ai_session_results = {
+                            "matched_urls": all_matches,
+                            "unmatched_urls": all_unmatched
+                        }
+                        
+                        fallback_302_results = intelligent_fallback.process_ai_results(ai_session_results)
+                        
+                        # Affichage des résultats fallback
+                        nb_fallback = len(fallback_302_results["fallback_302_redirects"])
+                        if nb_fallback > 0:
+                            st.success(f"✅ {nb_fallback} redirections 302 fallback générées")
+                            
+                            # Préparation des données CSV pour export
+                            fallback_302_csv_data = fallback_302_results["csv_export_data"]
+                            
+                            # Affichage d'un échantillon
+                            with st.expander(f"🔍 Aperçu des {min(3, nb_fallback)} premières redirections 302"):
+                                for redirect in fallback_302_results["fallback_302_redirects"][:3]:
+                                    st.code(f"Redirect 302 {redirect['old_url']} {redirect['target_url']}")
+                        else:
+                            st.info("ℹ️ Aucune URL non matchée nécessitant de fallback 302")
+                    elif not enable_fallback_302 and all_unmatched:
+                        st.warning(f"⚠️ {len(all_unmatched)} URLs non matchées (fallback 302 désactivé)")
+                    
+                    # Fin Sprint 3 - Fallback intelligent
+                    
                     # Génération des redirections 302 pour langues manquantes
                     redirects_302 = []
                     if missing_langs:
@@ -332,6 +387,18 @@ def interface_ai_avancee():
                             fallback_htaccess
                         ])
                     
+                    # Sprint 3 - Intégration des redirections 302 fallback dans .htaccess
+                    if enable_fallback_302 and fallback_302_results.get("htaccess_lines"):
+                        htaccess_lines.extend([
+                            "",
+                            "# ===========================================",
+                            "# FALLBACK 302 INTELLIGENT (Sprint 3)",  
+                            "# URLs non matchées → page d'accueil langue",
+                            "# ===========================================",
+                            ""
+                        ])
+                        htaccess_lines.extend(fallback_302_results["htaccess_lines"])
+                    
                     htaccess_content = "\n".join(htaccess_lines)
                     
                     # Sauvegarde automatique du fichier .htaccess
@@ -343,7 +410,11 @@ def interface_ai_avancee():
                     # Affichage et téléchargement
                     st.code(htaccess_content, language="apache")
                     
-                    col_dl1, col_dl2, col_dl3 = st.columns(3)
+                    # Sprint 3 - Ajout de la colonne pour export CSV fallback 302
+                    if enable_fallback_302 and fallback_302_csv_data:
+                        col_dl1, col_dl2, col_dl3, col_dl4 = st.columns(4)
+                    else:
+                        col_dl1, col_dl2, col_dl3 = st.columns(3)
                     
                     with col_dl1:
                         st.download_button(
@@ -406,6 +477,21 @@ def interface_ai_avancee():
                             with st.expander("⚠️ URLs non matchées"):
                                 for url in all_unmatched:
                                     st.text(url)
+                    
+                    # Sprint 3 - Bouton export CSV fallback 302
+                    if enable_fallback_302 and fallback_302_csv_data:
+                        with col_dl4:
+                            # Export CSV des fallback 302
+                            intelligent_fallback = Fallback302Intelligent()
+                            fallback_csv_content = intelligent_fallback.export_to_csv(fallback_302_csv_data)
+                            
+                            st.download_button(
+                                label="🔄 CSV Fallback 302",
+                                data=fallback_csv_content,
+                                file_name="fallback_302_urls.csv",
+                                mime="text/csv",
+                                help="URLs non matchées avec redirections 302 temporaires"
+                            )
                 
                 except AIMatchingError as e:
                     st.error(f"❌ Erreur IA: {str(e)}")

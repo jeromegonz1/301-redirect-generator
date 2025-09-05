@@ -343,3 +343,46 @@ Toute la valeur ajoutée repose sur le **gain de temps**, la **simplicité d'uti
 - [📋 Sprint 2 README](docs/SPRINT_2_README.md)
 - [🤖 Stratégie Matching IA](docs/AI_MATCHING_STRATEGY.md)
 - [🌍 Gestion Multilingue](docs/LANGUAGE_HANDLING.md)
+
+---
+
+## ✅ US009 – Fallback intelligent en 302
+
+**Titre** : US009 - Fallback intelligent en 302
+
+**En tant que** chef de projet SEO,  
+**je veux** que les URLs de l'ancien site qui n'ont pas de correspondance sur le nouveau  
+soient redirigées temporairement (302) vers la page d'accueil de leur langue,  
+**afin de** ne pas générer d'erreur 404, tout en me laissant le temps de retraiter manuellement ces cas.
+
+### 🎯 Critères d'acceptation
+- ✅ Redirection `302` générée automatiquement pour les URLs sans match IA
+- ✅ La redirection cible est `/fr/`, `/en/`, `/de/` selon le prefixe de l'URL source
+- ✅ Option dans l'interface : `Activer fallback automatique 302`
+- ✅ Fichier `.htaccess` annoté : `# fallback temporaire à retraiter`
+- ✅ Export CSV des URLs concernées pour retraitement manuel
+- ✅ Détection automatique des langues dans les URLs (`/fr/`, `/en/`, `/de/`, etc.)
+- ✅ Possibilité d'activer/désactiver cette fonctionnalité via interface
+- ✅ Logging et audit des cas non résolus pour équipe SEO
+
+### 📋 Exemple de fonctionnement
+
+**Cas 1 - URL avec langue détectée :**
+```
+Ancienne URL : https://ancien-site.com/fr/page-introuvable
+Aucune correspondance IA trouvée
+→ Fallback généré : Redirect 302 https://ancien-site.com/fr/page-introuvable /fr/
+```
+
+**Cas 2 - Export CSV pour retraitement :**
+```
+old_url,target_url,language,status,comment
+/fr/page-orpheline,/fr/,fr,fallback_302,À retraiter manuellement
+/en/missing-article,/en/,en,fallback_302,À retraiter manuellement
+```
+
+### 🔧 Intégration technique
+- Module : `fallback_302_intelligent.py`
+- Tests TDD : `test_fallback_302_intelligent.py` (9 tests)
+- Interface : Checkbox dans section configuration IA
+- Documentation : `docs/fallback_mode.md`
