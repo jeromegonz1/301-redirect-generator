@@ -11,6 +11,7 @@ from typing import List, Optional, Tuple, Dict
 import tldextract
 import time
 import logging
+import xml.etree.ElementTree as ET
 
 # Configuration du logging silencieux
 logging.getLogger("requests").setLevel(logging.WARNING)
@@ -218,3 +219,65 @@ def crawl_site_with_fallback(url_root: str, max_pages: int = 200) -> Tuple[List[
             
     except Exception:
         return [], False
+
+
+def parse_sitemap(sitemap_url: str, recursive: bool = True, _visited: set = None) -> List[str]:
+    """
+    Parse un sitemap XML (incluant les sitemaps Yoast) et extrait toutes les URLs.
+    
+    Args:
+        sitemap_url: URL du sitemap à parser
+        recursive: Si True, parse récursivement les sitemaps index
+        _visited: Set des sitemaps déjà visités (pour éviter les boucles infinies)
+    
+    Returns:
+        Liste des URLs trouvées dans le sitemap
+    """
+    if _visited is None:
+        _visited = set()
+    
+    if sitemap_url in _visited:
+        return []
+    
+    _visited.add(sitemap_url)
+    urls = []
+    
+    try:
+        # Configuration du user-agent pour éviter les blocages
+        headers = {
+            'User-Agent': '301-Redirect-Bot (Sitemap Parser)',
+            'Accept': 'application/xml,text/xml,application/xhtml+xml'
+        }
+        
+        response = requests.get(sitemap_url, headers=headers, timeout=30)
+        response.raise_for_status()
+        
+        # Parse le XML avec BeautifulSoup (plus robuste)
+        soup = BeautifulSoup(response.content, 'xml')
+        
+        # Extraire toutes les balises <loc>
+        loc_tags = soup.find_all('loc')
+        for loc in loc_tags:
+            url = loc.text.strip()
+            if url:
+                # Vérifier si c'est un sitemap ou une URL normale
+                if recursive and ('sitemap' in url.lower() or url.endswith('.xml')):
+                    # C'est probablement un sous-sitemap, le parser récursivement
+                    sub_urls = parse_sitemap(url, recursive=True, _visited=_visited)
+                    urls.extend(sub_urls)
+                else:
+                    # C'est une URL normale
+                    urls.append(url)
+        
+        # Dédoublonner les URLs
+        urls = list(dict.fromkeys(urls))
+        
+        print(f"Parsed {len(urls)} URLs from sitemap: {sitemap_url}")
+        return urls
+        
+    except requests.RequestException as e:
+        print(f"Erreur lors de la récupération du sitemap {sitemap_url}: {e}")
+        return []
+    except Exception as e:
+        print(f"Erreur lors du parsing du sitemap {sitemap_url}: {e}")
+        return []

@@ -6,7 +6,7 @@ import streamlit as st
 import csv
 import io
 from generator import RedirectGenerator
-from scraper import crawl_site_with_fallback, WebScraper
+from scraper import crawl_site_with_fallback, WebScraper, parse_sitemap
 
 # Configuration de la page
 st.set_page_config(
@@ -63,73 +63,54 @@ def main():
     
     # Titre
     st.title("🦎 301 Redirect Generator")
-    st.markdown("**Mode flexible** - Scrapez automatiquement ou saisissez manuellement selon vos besoins !")
+    st.markdown("**Nouvelle stratégie** - Scraping ancien site + Sitemap nouveau site en préproduction")
     st.markdown("---")
 
-    # Interface hybride
-    st.header("🔄 Mode hybride (scraping + manuel)")
+    # Interface simplifiée avec sitemap pour le nouveau site
+    st.header("🔄 Collecte des URLs")
     
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("🔗 Ancien site")
+        st.subheader("🔗 Ancien site (en ligne)")
         
         # URL pour scraping
         old_site_url = st.text_input(
-            label="URL ancien site (pour scraping)",
+            label="URL ancien site",
             placeholder="https://ancien-site.com",
             key="old_url_input",
-            help="URL pour scraping automatique"
+            help="L'outil va automatiquement explorer ce site pour trouver toutes les pages"
         )
         
-        # Bouton de scraping individuel
-        scrape_old_button = st.button("📡 Scraper ancien site", key="scrape_old", use_container_width=True)
-        
-        st.markdown("**OU saisie manuelle :**")
-        
-        # Zone de saisie manuelle
-        old_urls_manual = st.text_area(
-            label="URLs anciennes (manuel)",
-            placeholder="Collez vos anciennes URLs ici...\nExemple:\nhttps://ancien-site.com/page1\nhttps://ancien-site.com/page2",
-            height=200,
-            key="old_manual_input",
-            help="Sitemap XML, liste brute ou CSV"
-        )
+        # Bouton de scraping
+        scrape_old_button = st.button("⚡ Scraper l'ancien site", key="scrape_old", use_container_width=True, type="primary")
     
     with col2:
-        st.subheader("🎯 Nouveau site") 
+        st.subheader("🎯 Nouveau site (préproduction)")
         
-        # URL pour scraping
-        new_site_url = st.text_input(
-            label="URL nouveau site (pour scraping)",
-            placeholder="https://nouveau-site.com",
-            key="new_url_input",
-            help="URL pour scraping automatique"
+        # URL du sitemap Yoast
+        new_sitemap_url = st.text_input(
+            label="URL du sitemap du nouveau site",
+            placeholder="https://nouveau-site.com/sitemap_index.xml",
+            key="new_sitemap_input",
+            help="Entrez l'URL du sitemap XML (ex: /sitemap.xml ou /sitemap_index.xml)"
         )
         
-        # Bouton de scraping individuel
-        scrape_new_button = st.button("📡 Scraper nouveau site", key="scrape_new", use_container_width=True)
+        # Suggestion automatique
+        st.info("💡 URLs courantes : `/sitemap.xml`, `/sitemap_index.xml`, `/wp-sitemap.xml`")
         
-        st.markdown("**OU saisie manuelle :**")
-        
-        # Zone de saisie manuelle
-        new_urls_manual = st.text_area(
-            label="URLs nouvelles (manuel)",
-            placeholder="Collez vos nouvelles URLs ici...\nExemple:\nhttps://nouveau-site.com/page1\nhttps://nouveau-site.com/page2",
-            height=200,
-            key="new_manual_input",
-            help="Sitemap XML, liste brute ou CSV"
-        )
+        # Bouton pour parser le sitemap
+        parse_sitemap_button = st.button("📄 Parser le sitemap", key="parse_sitemap", use_container_width=True, type="primary")
     
     # Variables de session pour stocker les résultats
     if 'scraped_old_urls' not in st.session_state:
         st.session_state.scraped_old_urls = []
-    if 'scraped_new_urls' not in st.session_state:
-        st.session_state.scraped_new_urls = []
+    if 'parsed_new_urls' not in st.session_state:
+        st.session_state.parsed_new_urls = []
     if 'old_scraping_success' not in st.session_state:
         st.session_state.old_scraping_success = False
-    if 'new_scraping_success' not in st.session_state:
-        st.session_state.new_scraping_success = False
+    if 'new_parsing_success' not in st.session_state:
+        st.session_state.new_parsing_success = False
     
     # Traitement du scraping de l'ancien site
     if scrape_old_button:
@@ -148,56 +129,46 @@ def main():
                     st.error(f"❌ Impossible de scraper l'ancien site : {old_site_url}")
                     st.info("💡 Utilisez la saisie manuelle ci-dessous pour l'ancien site.")
     
-    # Traitement du scraping du nouveau site
-    if scrape_new_button:
-        if not new_site_url.strip():
-            st.error("❌ Veuillez saisir l'URL du nouveau site avant de lancer le scraping.")
+    # Traitement du parsing du sitemap pour le nouveau site
+    if parse_sitemap_button:
+        if not new_sitemap_url.strip():
+            st.error("❌ Veuillez saisir l'URL du sitemap avant de lancer le parsing.")
         else:
-            with st.spinner("🔍 Scraping du nouveau site en cours..."):
-                scraper = WebScraper()
-                new_urls = scraper.crawl_site_relative(new_site_url, max_pages=200)
-                new_success = len(new_urls) > 0
+            with st.spinner("🔍 Parsing du sitemap en cours..."):
+                # Parse le sitemap
+                new_urls = parse_sitemap(new_sitemap_url, recursive=True)
                 
-                st.session_state.scraped_new_urls = new_urls
-                st.session_state.new_scraping_success = new_success
-                
-                if new_success:
-                    st.success(f"✅ Nouveau site scrapé avec succès ! Trouvé {len(new_urls)} pages.")
+                if new_urls:
+                    # Convertir en URLs relatives pour le nouveau site
+                    from urllib.parse import urlparse
+                    parsed_urls = []
+                    for url in new_urls:
+                        parsed = urlparse(url)
+                        path = parsed.path
+                        if not path:
+                            path = '/'
+                        parsed_urls.append(path)
+                    
+                    st.session_state.parsed_new_urls = parsed_urls
+                    st.session_state.new_parsing_success = True
+                    
+                    st.success(f"✅ Sitemap parsé avec succès ! Trouvé {len(parsed_urls)} URLs.")
                 else:
-                    st.error(f"❌ Impossible de scraper le nouveau site : {new_site_url}")
-                    st.info("💡 Utilisez la saisie manuelle ci-dessous pour le nouveau site.")
+                    st.session_state.parsed_new_urls = []
+                    st.session_state.new_parsing_success = False
+                    st.error(f"❌ Impossible de parser le sitemap : {new_sitemap_url}")
+                    st.info("💡 Vérifiez l'URL du sitemap ou utilisez le mode manuel ci-dessous.")
     
-    # Logique de combinaison scraping/manuel et génération
+    # Logique de génération des redirections
     st.markdown("---")
     st.subheader("🎯 Génération des redirections")
     
-    # Détermine les URLs finales (scraping + manuel)
-    final_old_urls = []
-    final_new_urls = []
+    # Détermine les URLs finales
+    final_old_urls = st.session_state.scraped_old_urls if st.session_state.old_scraping_success else []
+    final_new_urls = st.session_state.parsed_new_urls if st.session_state.new_parsing_success else []
     
-    # Pour l'ancien site : priorité au scraping si disponible, sinon manuel
-    if st.session_state.scraped_old_urls and st.session_state.old_scraping_success:
-        final_old_urls = st.session_state.scraped_old_urls
-        old_source = "scraping"
-    elif old_urls_manual.strip():
-        # Parse les URLs manuelles
-        generator = RedirectGenerator()
-        final_old_urls = generator.parse_urls(old_urls_manual)
-        old_source = "manuel"
-    else:
-        old_source = "aucun"
-    
-    # Pour le nouveau site : priorité au scraping si disponible, sinon manuel
-    if st.session_state.scraped_new_urls and st.session_state.new_scraping_success:
-        final_new_urls = st.session_state.scraped_new_urls
-        new_source = "scraping"
-    elif new_urls_manual.strip():
-        # Parse les URLs manuelles
-        generator = RedirectGenerator()
-        final_new_urls = generator.parse_urls(new_urls_manual)
-        new_source = "manuel"
-    else:
-        new_source = "aucun"
+    old_source = "scraping" if final_old_urls else "aucun"
+    new_source = "sitemap" if final_new_urls else "aucun"
     
     # Affichage du statut
     col_status1, col_status2 = st.columns(2)
@@ -354,43 +325,101 @@ def main():
                 except Exception as e:
                     st.error(f"❌ Erreur lors du traitement des fichiers: {str(e)}")
 
+    # Mode manuel (fallback)
+    st.markdown("---")
+    with st.expander("🛠️ Mode manuel (si les méthodes automatiques échouent)"):
+        st.markdown("**Saisie manuelle des URLs si besoin**")
+        
+        col1_manual, col2_manual = st.columns(2)
+        
+        with col1_manual:
+            st.subheader("🔗 URLs anciennes")
+            old_urls_manual = st.text_area(
+                label="URLs anciennes (manuel)",
+                placeholder="Collez vos anciennes URLs ici...\nExemple:\nhttps://ancien-site.com/page1\nhttps://ancien-site.com/page2",
+                height=200,
+                key="old_manual_input",
+                help="Sitemap XML, liste brute ou CSV"
+            )
+        
+        with col2_manual:
+            st.subheader("🎯 URLs nouvelles") 
+            new_urls_manual = st.text_area(
+                label="URLs nouvelles (manuel)",
+                placeholder="Collez vos nouvelles URLs ici...\nExemple:\nhttps://nouveau-site.com/page1\nhttps://nouveau-site.com/page2",
+                height=200,
+                key="new_manual_input",
+                help="Sitemap XML, liste brute ou CSV"
+            )
+        
+        if st.button("🚀 Générer depuis le mode manuel", key="generate_manual"):
+            if old_urls_manual.strip() and new_urls_manual.strip():
+                try:
+                    generator = RedirectGenerator()
+                    htaccess_content, csv_data = generator.generate_redirections(old_urls_manual, new_urls_manual)
+                    
+                    st.success(f"✅ {len(csv_data)-1} redirections générées avec succès !")
+                    
+                    # Affichage et téléchargements
+                    col_dl1, col_dl2 = st.columns(2)
+                    with col_dl1:
+                        st.download_button(
+                            label="⬇️ Télécharger .htaccess",
+                            data=htaccess_content,
+                            file_name="redirections.htaccess",
+                            mime="text/plain"
+                        )
+                    with col_dl2:
+                        csv_buffer = io.StringIO()
+                        csv_writer = csv.writer(csv_buffer)
+                        csv_writer.writerows(csv_data)
+                        st.download_button(
+                            label="⬇️ Télécharger CSV",
+                            data=csv_buffer.getvalue(),
+                            file_name="redirections_audit.csv",
+                            mime="text/csv"
+                        )
+                    
+                except Exception as e:
+                    st.error(f"❌ Erreur: {str(e)}")
+            else:
+                st.error("❌ Veuillez remplir les deux champs.")
+    
     # Instructions d'utilisation
     with st.expander("📋 Instructions & aide"):
         st.markdown("""
-        ### 🔄 Mode hybride (recommandé)
-        **Pour chaque site, choisissez votre méthode :**
+        ### 🎯 Nouvelle stratégie optimisée
         
-        #### 🤖 Scraping automatique
-        1. **Entrez l'URL** (ex: https://ancien-site.com)
-        2. **Cliquez "Scraper"** - L'outil explore automatiquement jusqu'à 200 pages
-        3. **Vérifiez le résultat** (succès ou échec)
+        #### 1️⃣ Ancien site (en ligne)
+        - **Scraping automatique** : Entrez l'URL et cliquez "Scraper"
+        - L'outil explore automatiquement jusqu'à 200 pages
         
-        #### ✏️ Saisie manuelle 
-        1. **Collez vos URLs** dans le champ texte
-        2. **Formats supportés** : sitemap XML, liste brute, CSV
+        #### 2️⃣ Nouveau site (préproduction)
+        - **Parsing du sitemap** : Entrez l'URL du sitemap XML
+        - Compatible avec Yoast SEO et sitemaps standards
+        - Parse récursivement les sitemaps index
         
-        ### 💡 Flexibilité totale
-        - **Scraper l'ancien + Manuel nouveau** : Si robots.txt bloque le nouveau site
-        - **Manuel ancien + Scraper nouveau** : Si l'ancien site est inaccessible
-        - **Tout scraping** : Si les deux sites sont accessibles
-        - **Tout manuel** : Pour un contrôle total
+        ### 💡 Pourquoi cette approche ?
+        - **Ancien site** : Scraping car il est public et accessible
+        - **Nouveau site** : Sitemap car souvent bloqué (robots.txt, noindex, auth)
         
-        ### 📤 Formats supportés (saisie manuelle)
-        - **Sitemap XML** : Balises `<loc>...</loc>`
-        - **Liste brute** : Une URL par ligne
-        - **CSV** : Deux colonnes
+        ### 🔍 Où trouver le sitemap ?
+        URLs courantes :
+        - `/sitemap.xml`
+        - `/sitemap_index.xml`
+        - `/wp-sitemap.xml` (WordPress)
+        - Consultez `/robots.txt` pour trouver le sitemap
         
         ### ⚠️ Dépannage
-        - **Scraping échoue** → Passez en manuel pour ce site
-        - **Robots.txt bloque** → Utilisez la saisie manuelle
-        - **Site avec auth** → Exportez manuellement le sitemap
-        - **Nombre d'URLs différent** → Pas de problème, génération adaptative
+        - **Scraping échoue** → Utilisez le mode manuel
+        - **Sitemap introuvable** → Demandez à l'intégrateur
+        - **Nombre d'URLs différent** → Normal, matching adaptatif
         """)
     
     # Footer
     st.markdown("---")
     st.markdown("*Développé pour SEPTEO Digital Services — Fire Salamander Team* 🦎")
-    st.markdown("*v2.1 avec mode hybride flexible (scraping + manuel)*")
+    st.markdown("*v3.0 avec parsing de sitemap pour sites en préproduction*")
 
 if __name__ == "__main__":
     main()

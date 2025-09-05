@@ -69,6 +69,10 @@ class RedirectGenerator:
                 urls.append(parts[0].strip())
         return urls
     
+    def parse_urls(self, text_input: str) -> List[str]:
+        """Méthode publique pour parser des URLs depuis un texte"""
+        return self.parse_input(text_input)
+    
     def _parse_raw_urls(self, raw_text: str) -> List[str]:
         """Parse une liste brute d'URLs (une par ligne)"""
         urls = []

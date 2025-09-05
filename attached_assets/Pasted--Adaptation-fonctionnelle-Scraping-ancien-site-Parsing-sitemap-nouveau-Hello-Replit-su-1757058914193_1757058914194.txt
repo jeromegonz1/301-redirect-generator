@@ -1,0 +1,71 @@
+## 🔧 Adaptation fonctionnelle — Scraping ancien site + Parsing sitemap nouveau
+
+👋 Hello Replit, super job pour la partie scraping 👍
+
+Mais comme le **nouveau site** est en préproduction (souvent bloqué par `robots.txt`, `noindex`, etc.), on souhaite **changer de stratégie pour la collecte des URLs** :
+
+---
+
+## 🎯 Objectif
+
+- Pour le site **ancien** (en ligne) : on conserve le **scraping automatique**
+- Pour le site **nouveau** (en préprod) : on souhaite **parser le sitemap Yoast**, fourni par l'utilisateur
+
+---
+
+## ✅ Ce qui change à implémenter
+
+### 1. Ajouter un **champ optionnel dans le front** :
+
+URL du sitemap du site nouveau :
+[ http://.../sitemap_index.xml ]
+
+python
+Copier le code
+
+- Par défaut, ce champ peut être prérempli avec une suggestion (`/sitemap.xml`, `/sitemap_index.xml`)
+- S’il est renseigné, **on ne scrape pas le site nouveau**, mais on **parse le sitemap**
+
+---
+
+### 2. Nouvelle fonction à ajouter dans le backend
+
+Créer dans `parser.py` ou `scraper.py` :
+
+```python
+import requests
+from bs4 import BeautifulSoup
+
+def parse_sitemap(sitemap_url: str, recursive=True) -> list:
+    urls = []
+    try:
+        res = requests.get(sitemap_url)
+        soup = BeautifulSoup(res.content, 'xml')
+        sitemap_tags = soup.find_all('loc')
+
+        for loc in sitemap_tags:
+            link = loc.text.strip()
+            if recursive and 'sitemap' in link and link != sitemap_url:
+                urls.extend(parse_sitemap(link, recursive=False))  # éviter récursions infinies
+            else:
+                urls.append(link)
+    except Exception as e:
+        print(f"Erreur lors du parsing du sitemap : {e}")
+    return urls
+3. Matching final
+urls_ancien = crawl_site(ancien_site_url)
+
+urls_nouveau = parse_sitemap(sitemap_url_user_input)
+
+Puis : matching ligne par ligne (simple) ou fuzzy (à venir).
+
+✅ Résumé UX
+L’utilisateur n’a rien à faire de compliqué :
+
+Il colle le lien du site ancien
+
+Il colle le lien du sitemap Yoast de la préprod
+
+Il clique
+
+On retourne les correspondances prêtes à exporter
