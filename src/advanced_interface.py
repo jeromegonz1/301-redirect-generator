@@ -7,11 +7,35 @@ import csv
 import io
 import os
 from typing import List, Dict, Any
+from urllib.parse import urlparse
 from generator import RedirectGenerator
 from scraper import crawl_site_with_fallback, WebScraper, parse_sitemap
 from language_detector import LanguageDetector
 from ai_mapper import AIMapper, AIMatchingError
 from fallback_manager import FallbackManager
+
+
+def url_to_relative_path(url: str) -> str:
+    """
+    Convertit une URL absolue en chemin relatif pour .htaccess
+    
+    Args:
+        url: URL absolue (ex: http://site.com/path/page)
+        
+    Returns:
+        Chemin relatif (ex: /path/page)
+    """
+    if not url or not isinstance(url, str):
+        return "/"
+    
+    parsed = urlparse(url.strip())
+    path = parsed.path if parsed.path else "/"
+    
+    # Assure qu'on a un slash au début
+    if not path.startswith('/'):
+        path = '/' + path
+    
+    return path
 
 
 def interface_ai_avancee():
@@ -231,11 +255,12 @@ def interface_ai_avancee():
                         for match in all_matches:
                             source = match['ancienne']
                             target = match['nouvelle']
+                            target_relative = url_to_relative_path(target)  # Conversion en relatif
                             confidence = match.get('confidence', 0)
                             reason = match.get('raison', '')
                             
                             htaccess_lines.append(f"# {reason} (confiance: {confidence:.2f})")
-                            htaccess_lines.append(f"Redirect 301 {source} {target}")
+                            htaccess_lines.append(f"Redirect 301 {source} {target_relative}")
                             htaccess_lines.append("")
                     
                     # Ajout des redirections 302 pour fallbacks
@@ -269,7 +294,7 @@ def interface_ai_avancee():
                         for match in all_matches:
                             csv_data.append([
                                 match['ancienne'],
-                                match['nouvelle'], 
+                                url_to_relative_path(match['nouvelle']),  # Aussi en relatif pour le CSV
                                 "301",
                                 f"{match.get('confidence', 0):.2f}",
                                 match.get('raison', ''),
