@@ -1,0 +1,99 @@
+## 🚀 Sprint 2 — Matching IA + Gestion Multilingue 🌍🤖
+
+Hello 👋
+
+Nous lançons le **Sprint 2** du projet `301 Redirect Generator`.  
+Ce sprint vise à intégrer une **couche d’IA sémantique pour matcher automatiquement les anciennes URLs avec les nouvelles**, et à **gérer proprement les langues** dans les refontes multilingues.
+
+---
+
+### 🎯 Objectifs de ce sprint
+
+- Réduire au maximum le retravail manuel sur les redirections 301
+- Permettre des correspondances intelligentes même en cas de structure ou langue différente
+- Cloisonner les langues (FR, EN, DE, etc.) pour éviter les erreurs de matching
+- Offrir une redirection 302 vers la home FR pour les langues non migrées
+- **Permettre au chef de projet de transmettre un prompt contextuel métier à l’IA** (structure éditoriale, langues disponibles, renommage de sections, etc.)
+
+---
+
+### ✅ Fichiers Markdown à créer dans `/docs/` ou `/user_stories/`
+
+#### 📁 `SPRINT_2_README.md`
+Résumé du sprint, avec périmètre, objectifs, dépendances et liens vers les US.
+
+#### 📁 `AI_MATCHING_STRATEGY.md`
+Contient :
+- Rappel de l’objectif du matching sémantique
+- Structure du prompt GPT utilisé
+- Format d’entrée attendu (`ancienne_urls[]`, `nouvelles_urls[]`)
+- Format de sortie (`JSON`, `CSV`, `htaccess`)
+- Méthode de chunking recommandée
+- API utilisée : `gpt-3.5-turbo`
+- **Ajout : prise en charge d’un prompt contextuel métier transmis par le chef de projet**
+
+#### 📁 `LANGUAGE_HANDLING.md`
+Contient :
+- Méthode de détection de langue (`/fr/`, `/en/`, `/de/`, etc.)
+- Cloisonnement logique des correspondances
+- Stratégie en cas de déséquilibre langue (ex: EN sur site A, pas sur site B)
+- Règle de fallback 302 → vers home `/fr/`
+- Exemple de redirection :  
+  `/en/camping-pool/` → `302 /fr/`
+
+---
+
+### 🧩 User Stories à créer
+
+#### `US009.md` — Matching IA sémantique
+> En tant que chef de projet digital, je veux que l’outil associe chaque ancienne URL à la nouvelle URL la plus proche sémantiquement en utilisant une IA, afin de gagner du temps en cas de structure ou wording différent.
+
+#### `US010.md` — Interface de validation humaine
+> Je veux pouvoir relire et valider les correspondances IA proposées avant export pour éviter des erreurs et garder le contrôle.
+
+#### `US011.md` — Détection automatique des langues
+> L’outil doit détecter la langue des URLs pour que le matching se fasse uniquement entre langues identiques (FR/FR, EN/EN...).
+
+#### `US012.md` — Matching cloisonné par langue
+> Le matching IA et manuel doit se faire uniquement à l’intérieur d’un même groupe de langue détecté.
+
+#### `US013.md` — Fallback 302 vers la home FR
+> Si une langue est absente du nouveau site, toutes les URLs de cette langue doivent être redirigées en 302 vers la page d’accueil en FR.
+
+#### `US014.md` — Prompt contextuel du chef de projet
+> En tant que chef de projet, je veux pouvoir transmettre un prompt personnalisé à l’IA pour lui expliquer le contexte éditorial du site, les langues actives, les changements de structure ou de terminologie, afin d’obtenir un matching plus pertinent et métier-aware.
+
+---
+
+### 🛠️ Compléments à prévoir
+
+- Module `ai_mapper.py` à créer
+- Variable `OPENAI_API_KEY` à ajouter dans `.env`
+- UI :
+  - [x] Checkbox "Activer IA"
+  - [x] Bouton "Valider suggestions IA"
+  - 🆕 Zone de texte : "Instructions du chef de projet (optionnel)" → injecté en début de prompt GPT
+
+---
+
+### 💡 Exemples d'instruction typique du chef de projet :
+
+```txt
+Le site est en FR / EN / DE. Le contenu ES existe mais n’a pas encore été migré.
+Les pages /es/* doivent être redirigées temporairement vers la home FR.
+Les sections du site ont changé :
+- "mobil-home" devient "nos locatifs"
+- "blog" devient "actualités"
+- "restaurant" devient "restauration"
+Merci d’en tenir compte lors du matching.
+Merci de bien vouloir :
+
+Créer tous les fichiers Markdown ci-dessus 📄
+
+Les lier dans README.md ou SPRINT_2_README.md
+
+Mettre à jour le kanban.md ou GitHub Projects avec les nouvelles cartes ✅
+
+Une fois tout cela posé, nous pourrons itérer sur l’implémentation en toute sécurité 💪
+
+Merci 🙌

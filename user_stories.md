@@ -125,7 +125,7 @@ Toute la valeur ajoutée repose sur le **gain de temps**, la **simplicité d'uti
 **afin de** ne pas avoir à les copier manuellement.
 
 ### 🎯 Critères d'acceptation
-- ✅ Scraping intelligent avec crawling jusqu'à 200 pages
+- ✅ Scraping intelligent avec crawling jusqu'à 1000 pages
 - ✅ Détection automatique des liens internes
 - ✅ Normalisation des URLs (suppression query strings, fragments)
 - ✅ Support Basic Auth si nécessaire
@@ -171,10 +171,123 @@ Toute la valeur ajoutée repose sur le **gain de temps**, la **simplicité d'uti
 
 ---
 
+# 🚀 SPRINT 2 — Matching IA + Multilingue
+
+*Documentation complète : [docs/SPRINT_2_README.md](docs/SPRINT_2_README.md)*
+
+## 🔄 US009 – Matching IA Sémantique
+
+**Titre** : US009 - Matching IA sémantique avec GPT-3.5-turbo
+
+**En tant que** chef de projet digital,  
+**je veux** que l'outil associe chaque ancienne URL à la nouvelle URL la plus proche sémantiquement,  
+**afin de** gagner du temps en cas de structure différente.
+
+### 🎯 Critères d'acceptation
+- [ ] Utilisation de GPT-3.5-turbo pour le matching sémantique
+- [ ] Score de confidence pour chaque correspondance (0.0 à 1.0)
+- [ ] Chunking pour traiter 1000+ URLs (50 URLs par batch)
+- [ ] Taux de matching > 80% avec confidence > 0.7
+
+📄 **Documentation complète :** [docs/user_stories/US009.md](docs/user_stories/US009.md)
+
+---
+
+## 🔄 US010 – Interface de Validation Humaine
+
+**Titre** : US010 - Interface de validation des suggestions IA
+
+**En tant que** chef de projet digital,  
+**je veux** pouvoir relire et valider les correspondances IA proposées,  
+**afin d'** éviter des erreurs et garder le contrôle.
+
+### 🎯 Critères d'acceptation
+- [ ] Tableau interactif avec correspondances suggérées
+- [ ] Possibilité d'éditer chaque correspondance manuellement
+- [ ] Code couleur basé sur le score de confidence
+- [ ] Filtres par confidence et statut de validation
+
+📄 **Documentation complète :** [docs/user_stories/US010.md](docs/user_stories/US010.md)
+
+---
+
+## 🔄 US011 – Détection Automatique des Langues
+
+**Titre** : US011 - Détection automatique des langues dans les URLs
+
+**En tant que** responsable SEO multilingue,  
+**je veux** que l'outil détecte automatiquement la langue des URLs,  
+**afin que** le matching se fasse uniquement entre langues identiques.
+
+### 🎯 Critères d'acceptation
+- [ ] Reconnaissance des patterns linguistiques (`/fr/`, `/en/`, etc.)
+- [ ] Support des sous-domaines multilingues
+- [ ] Répartition visuelle des URLs par langue
+- [ ] Langue par défaut configurable
+
+📄 **Documentation complète :** [docs/user_stories/US011.md](docs/user_stories/US011.md)
+
+---
+
+## 🔄 US012 – Matching Cloisonné par Langue
+
+**Titre** : US012 - Matching uniquement entre langues identiques
+
+**En tant que** responsable SEO multilingue,  
+**je veux** que le matching se fasse uniquement à l'intérieur d'un même groupe de langue,  
+**afin d'** éviter les redirections inter-langues incorrectes.
+
+### 🎯 Critères d'acceptation
+- [ ] Cloisonnement strict : FR→FR, EN→EN uniquement
+- [ ] Interface avec onglets par langue
+- [ ] Statistiques séparées par groupe linguistique
+- [ ] Gestion des déséquilibres numériques
+
+📄 **Documentation complète :** [docs/user_stories/US012.md](docs/user_stories/US012.md)
+
+---
+
+## 🔄 US013 – Fallback 302 vers la Home FR
+
+**Titre** : US013 - Redirections temporaires pour langues non migrées
+
+**En tant que** responsable SEO multilingue,  
+**je veux** que les URLs des langues absentes soient redirigées en 302 vers la home FR,  
+**afin de** préserver l'UX en attendant la migration complète.
+
+### 🎯 Critères d'acceptation
+- [ ] Détection automatique des langues manquantes
+- [ ] Génération de redirections temporaires (302)
+- [ ] Cible configurable (par défaut `/fr/`)
+- [ ] Une seule redirection par langue manquante
+
+📄 **Documentation complète :** [docs/user_stories/US013.md](docs/user_stories/US013.md)
+
+---
+
+## 🔄 US014 – Prompt Contextuel du Chef de Projet
+
+**Titre** : US014 - Context métier pour améliorer le matching IA
+
+**En tant que** chef de projet digital,  
+**je veux** pouvoir transmettre un prompt personnalisé à l'IA,  
+**afin d'** obtenir un matching plus pertinent et métier-aware.
+
+### 🎯 Critères d'acceptation
+- [ ] Zone de texte pour instructions métier (500+ caractères)
+- [ ] Injection du contexte dans le prompt GPT
+- [ ] Templates pré-remplis pour cas courants
+- [ ] Amélioration de +20% de la qualité du matching
+
+📄 **Documentation complète :** [docs/user_stories/US014.md](docs/user_stories/US014.md)
+
+---
+
 ## 🗺️ Suivi & gestion projet
 
 ### État des User Stories
 
+#### 🎯 Sprint 1 (Terminé)
 | US | Titre | Statut | Documentation |
 |----|-------|--------|---------------|
 | US001 | Coller deux listes d'URL | ✅ Terminée | - |
@@ -185,6 +298,16 @@ Toute la valeur ajoutée repose sur le **gain de temps**, la **simplicité d'uti
 | US006 | Scraping automatique | ✅ Terminée | - |
 | US007 | Parsing sitemap Yoast | ✅ Terminée | [Voir doc](docs/user_stories/US007.md) |
 | US008 | Campagne test réelle | ✅ Terminée | [Voir doc](docs/user_stories/US008.md) |
+
+#### 🚀 Sprint 2 (En cours)
+| US | Titre | Statut | Documentation |
+|----|-------|--------|---------------|
+| US009 | Matching IA sémantique | 🔄 À développer | [Voir doc](docs/user_stories/US009.md) |
+| US010 | Interface validation humaine | 🔄 À développer | [Voir doc](docs/user_stories/US010.md) |
+| US011 | Détection automatique langues | 🔄 À développer | [Voir doc](docs/user_stories/US011.md) |
+| US012 | Matching cloisonné par langue | 🔄 À développer | [Voir doc](docs/user_stories/US012.md) |
+| US013 | Fallback 302 vers home FR | 🔄 À développer | [Voir doc](docs/user_stories/US013.md) |
+| US014 | Prompt contextuel chef projet | 🔄 À développer | [Voir doc](docs/user_stories/US014.md) |
 
 ---
 
@@ -199,16 +322,24 @@ Toute la valeur ajoutée repose sur le **gain de temps**, la **simplicité d'uti
 
 ### 📊 Métriques du projet
 
-- **Total User Stories :** 8
-- **Complétées :** 8/8 (100%)
+#### Sprint 1 (Terminé)
+- **User Stories Sprint 1 :** 8/8 (100%)
 - **Tests automatisés :** 24 tests (9 generator + 15 scraper)
-- **Couverture fonctionnelle :** 100%
 - **Version actuelle :** v3.0 avec parsing sitemap
 
-### 🚀 Prochaines évolutions potentielles
+#### Sprint 2 (En cours)
+- **User Stories Sprint 2 :** 0/6 (0%)
+- **Objectif :** Matching IA + Gestion multilingue
+- **Version cible :** v4.0 avec GPT-3.5-turbo
 
-- Matching intelligent (fuzzy matching)
-- Filtrage des URLs media
-- Gestion spécifique du multilingue
-- Interface de preview avant génération
-- Export vers d'autres formats (nginx, etc.)
+### 🎯 Roadmap
+
+- ✅ **Sprint 1** : Scraping + Parsing (Terminé)
+- 🔄 **Sprint 2** : IA + Multilingue (En cours)
+- 🔮 **Sprint 3** : Optimisations + UI/UX avancé
+
+### 📚 Documentation Sprint 2
+
+- [📋 Sprint 2 README](docs/SPRINT_2_README.md)
+- [🤖 Stratégie Matching IA](docs/AI_MATCHING_STRATEGY.md)
+- [🌍 Gestion Multilingue](docs/LANGUAGE_HANDLING.md)
