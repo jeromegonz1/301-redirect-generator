@@ -4,3 +4,4 @@ beautifulsoup4==4.13.5
 requests==2.32.5
 tldextract==5.3.0
 lxml
+openai

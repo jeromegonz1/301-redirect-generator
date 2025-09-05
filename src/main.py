@@ -5,8 +5,12 @@ Interface Streamlit pour le générateur de redirections 301 avec scraping autom
 import streamlit as st
 import csv
 import io
+import os
 from generator import RedirectGenerator
 from scraper import crawl_site_with_fallback, WebScraper, parse_sitemap
+from language_detector import LanguageDetector
+from ai_mapper import AIMapper, AIMatchingError
+from fallback_manager import FallbackManager
 
 # Configuration de la page
 st.set_page_config(
@@ -59,13 +63,31 @@ def generate_redirections_from_lists(old_urls, new_urls):
         return None, None, str(e)
 
 def main():
-    """Interface principale avec scraping flexible"""
+    """Interface principale avec IA sémantique et support multilangue"""
     
     # Titre
     st.title("🦎 301 Redirect Generator")
-    st.markdown("**Nouvelle stratégie** - Scraping ancien site + Sitemap nouveau site en préproduction")
+    st.markdown("**Sprint 2** - IA sémantique GPT-3.5 + Support multilangue + Fallbacks 302")
     st.markdown("---")
+    
+    # Sélection du mode
+    mode = st.radio(
+        "🔧 Mode de génération",
+        ["🚀 Mode IA (Sprint 2)", "🔄 Mode classique"],
+        horizontal=True
+    )
+    
+    if mode == "🚀 Mode IA (Sprint 2)":
+        from advanced_interface import interface_ai_avancee
+        interface_ai_avancee()
+    else:
+        from advanced_interface import interface_classique
+        interface_classique()
 
+
+def interface_classique_legacy():
+    """Interface classique historique (conservée pour référence)"""
+    
     # Interface simplifiée avec sitemap pour le nouveau site
     st.header("🔄 Collecte des URLs")
     
@@ -416,10 +438,37 @@ def main():
         - **Nombre d'URLs différent** → Normal, matching adaptatif
         """)
     
+    # Instructions pour les deux modes
+    with st.expander("📋 Instructions & aide"):
+        st.markdown("""
+        ### 🚀 Mode IA (Sprint 2) - Recommandé
+        
+        #### ✨ Fonctionnalités avancées
+        - **IA sémantique GPT-3.5** : Matching intelligent des URLs par similarité sémantique
+        - **Support multilangue** : Détection automatique et traitement par langue
+        - **Fallbacks 302** : Redirections temporaires pour langues non migrées
+        - **Contexte métier** : Améliore le matching avec vos spécifications projet
+        
+        #### 🔧 Configuration IA
+        - **Température** : Créativité de l'IA (0.0 = conservateur, 1.0 = créatif)
+        - **Seuil de confiance** : Score minimum pour valider une correspondance
+        - **Taille des lots** : URLs traitées simultanément (impact sur coût API)
+        
+        ### 🔄 Mode classique
+        - Mapping alphabétique traditionnel
+        - Sans IA, sans analyse linguistique
+        - Compatible avec l'ancien workflow
+        
+        ### 💡 Recommandations
+        - **Nouveau projet** → Mode IA pour matching précis
+        - **Site multilingue** → Mode IA obligatoire 
+        - **Budget limité** → Mode classique acceptable
+        """)
+    
     # Footer
     st.markdown("---")
     st.markdown("*Développé pour SEPTEO Digital Services — Fire Salamander Team* 🦎")
-    st.markdown("*v3.0 avec parsing de sitemap pour sites en préproduction*")
+    st.markdown("*v4.0 - Sprint 2 avec IA sémantique et support multilangue*")
 
 if __name__ == "__main__":
     main()
