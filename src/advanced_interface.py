@@ -678,11 +678,18 @@ def interface_ai_avancee():
                     # Affichage et téléchargement
                     st.code(htaccess_content, language="apache")
                     
-                    # Sprint 3 - Ajout de la colonne pour export CSV fallback 302
-                    if enable_fallback_302 and fallback_302_csv_data:
-                        col_dl1, col_dl2, col_dl3, col_dl4 = st.columns(4)
+                    # Sprint 3.5 - Ajout de la colonne pour export XLS Balt
+                    if OPENPYXL_AVAILABLE:
+                        if enable_fallback_302 and fallback_302_csv_data:
+                            col_dl1, col_dl2, col_dl3, col_dl4, col_dl5 = st.columns(5)
+                        else:
+                            col_dl1, col_dl2, col_dl3, col_dl4 = st.columns(4)
                     else:
-                        col_dl1, col_dl2, col_dl3 = st.columns(3)
+                        # Fallback si openpyxl non disponible
+                        if enable_fallback_302 and fallback_302_csv_data:
+                            col_dl1, col_dl2, col_dl3, col_dl4 = st.columns(4)
+                        else:
+                            col_dl1, col_dl2, col_dl3 = st.columns(3)
                     
                     with col_dl1:
                         st.download_button(
@@ -750,6 +757,41 @@ def interface_ai_avancee():
                                 mime="text/csv",
                                 help="URLs non matchées avec redirections 302 temporaires"
                             )
+                    
+                    # Sprint 3.5 - Export XLS Balt (nouveau bouton)
+                    if OPENPYXL_AVAILABLE:
+                        if enable_fallback_302 and fallback_302_csv_data:
+                            col_xls = col_dl5  # 5ème colonne si fallback 302 activé
+                        else:
+                            col_xls = col_dl4  # 4ème colonne sinon
+                            
+                        with col_xls:
+                            # Génération du fichier XLS Balt en mémoire
+                            try:
+                                import tempfile
+                                with tempfile.NamedTemporaryFile(suffix='.xlsx', delete=False) as tmp_file:
+                                    balt_file_path = generate_balt_xlsx(filtered_redirects, tmp_file.name)
+                                    
+                                    # Lecture du fichier pour téléchargement
+                                    with open(balt_file_path, 'rb') as f:
+                                        balt_data = f.read()
+                                    
+                                    # Nettoyage du fichier temporaire
+                                    try:
+                                        os.unlink(balt_file_path)
+                                    except:
+                                        pass
+                                    
+                                    st.download_button(
+                                        label="💾 Export XLS (Balt)",
+                                        data=balt_data,
+                                        file_name="redirections_balt.xlsx",
+                                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                        help="Format XLS compatible Septeo BALT CMS (2 colonnes Source/Target uniquement)"
+                                    )
+                            except Exception as e:
+                                st.error(f"❌ Erreur export XLS: {str(e)}")
+                                st.info("💡 Vérifiez que openpyxl est installé: `pip install openpyxl`")
                 
                 except AIMatchingError as e:
                     st.error(f"❌ Erreur IA: {str(e)}")
