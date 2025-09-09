@@ -1,0 +1,1115 @@
+{
+  "timestamp": "2025-09-05T14:02:48.256778",
+  "cache_key": "ce622fc3ab0f",
+  "old_urls_count": 212,
+  "new_urls_count": 549,
+  "contexte_metier": "",
+  "temperature": 0.1,
+  "results": {
+    "all_matches": [
+      {
+        "ancienne": "https://www.campinglescascades.com/de/actualites-de/4-sterne-camping/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/das-wichtigste-fuer-einen-gelungenen-aufenthalt-auf-dem-campingplatz-les-cascades/",
+        "confidence": 0.9,
+        "raison": "Les deux URLs parlent de l'expérience de camping 4 étoiles"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/actualites-de/aktivitaten-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/sporturlaub-im-departement-gard-outdoor-aktivitaeten-und-adrenalin/",
+        "confidence": 0.75,
+        "raison": "Les deux URLs évoquent des activités sportives dans le Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/actualites-de/festivals-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/festivals-und-veranstaltungen-die-sie-diesen-sommer-im-departement-gard-nicht-verpassen-sollten/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs traitent des festivals dans le Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/actualites-de/italienisches-restaurant-im-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/entdecken-sie-unsere-trattoria-les-cascades-dei-sapori-eine-kulinarische-reise-ins-herz-italiens-auf-unserem-campingplatz-in-la-roque-sur-ceze/",
+        "confidence": 0.85,
+        "raison": "Les deux URLs parlent d'un restaurant italien dans le Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/actualites-de/unser-neuer-raum-im-garten/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/die-besten-aktivitaeten-fuer-familien-auf-dem-campingplatz-les-cascades/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL parle également des activités sur le camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/mobilheim/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/das-wichtigste-fuer-einen-gelungenen-aufenthalt-auf-dem-campingplatz-les-cascades/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL met en avant l'importance d'un séjour réussi sur le camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/warum-sollten-sie-sich-fuer-ihren-naechsten-urlaub-fuer-das-departement-gard-entscheiden/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL parle des raisons de choisir le département du Gard pour les vacances"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/die-schoensten-doerfer-frankreichs/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/umgebung/staedte-und-doerfer/die-schoensten-doerfer/",
+        "confidence": 0.9,
+        "raison": "La nouvelle URL correspond exactement au contenu sur les plus beaux villages de France"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/freizeitangebot/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/sporturlaub-im-departement-gard-outdoor-aktivitaeten-und-adrenalin/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL parle des activités sportives dans le Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/der-fluss-und-die-kaskaden-von-sautadet/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/fuehrer-zu-den-besten-wanderrouten-rund-um-die-wasserfaelle-von-sautadet/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL propose des guides pour les randonnées autour des cascades de Sautadet"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/la-roque-sur-ceze/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/entdecken-sie-den-campingplatz/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL invite à découvrir le camping, incluant La Roque-sur-Cèze"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/kontakt-und-anfahrt/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/kontakt/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL concerne les contacts et l'accès au camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/preise/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/unsere-unterkuenfte/unsere-preise/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL présente les tarifs des hébergements"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/der-campingplatz/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/entdecken-sie-den-campingplatz/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL invite à découvrir le camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/dienstleistungen-ausruestung/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/entdecken-sie-den-campingplatz/unsere-leistungen-ausstattung/",
+        "confidence": 0.85,
+        "raison": "La nouvelle URL présente les services et équipements du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/das-schwimmbad/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/entdecken-sie-den-campingplatz/der-swimmingpool/",
+        "confidence": 0.85,
+        "raison": "La nouvelle URL parle spécifiquement de la piscine du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/premium-unterkuenfte/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/unsere-unterkuenfte/premiums/",
+        "confidence": 0.9,
+        "raison": "La nouvelle URL correspond aux hébergements premium du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/lodges/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/unsere-unterkuenfte/lodges/",
+        "confidence": 0.9,
+        "raison": "La nouvelle URL concerne les lodges du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/stellplaetze/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/unsere-unterkuenfte/stellplaetze/",
+        "confidence": 0.9,
+        "raison": "La nouvelle URL correspond aux emplacements de camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/restaurant/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/entdecken-sie-den-campingplatz/das-restaurant/",
+        "confidence": 0.85,
+        "raison": "La nouvelle URL parle du restaurant du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/",
+        "confidence": 1.0,
+        "raison": "La nouvelle URL correspond à la page d'accueil du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/de/category/actualites-de/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/de/category/unkategorisiert/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL est la plus proche en termes de catégorie"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/camping-4-star-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/our-accommodations/premiums/",
+        "confidence": 0.85,
+        "raison": "La nouvelle URL correspond aux hébergements premium du camping 4 étoiles."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/holiday-camping-garden/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/your-family-campground-in-la-roque-sur-ceze-welcomes-your-pets-%f0%9f%90%be/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL parle d'un camping familial accueillant les animaux de compagnie."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/4-star-camping/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/our-accommodations/premiums/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL correspond aux hébergements premium d'un camping 4 étoiles."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/sejour-gard-product-terroir/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/the-wine-route-in-the-gard-a-tour-for-wine-lovers/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL parle de la route des vins dans le Gard, en lien avec les produits du terroir."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/zoover-campsite-les-cascades/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/news/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL semble être la section actualités du camping Les Cascades."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/why-camping/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/why-choose-gard-for-your-next-vacation/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL explique pourquoi choisir le Gard pour ses vacances."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/glamping-tourism/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/eco-friendly-stay-at-les-cascades-campground-nature-at-the-heart-of-our-commitments/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL parle d'un séjour écologique et proche de la nature, en lien avec le glamping."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/festivals-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/festivals-and-events-not-to-be-missed-in-gard-this-summer/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL liste les festivals à ne pas manquer dans le Gard."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/camping-quality/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/adac-and-anwb-awards-a-guarantee-of-quality-for-our-campsite-in-la-roque-sur-ceze/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL parle de la qualité du camping Les Cascades, mentionnant des prix et garanties de qualité."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/activities-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/the-best-activities-to-do-as-a-family-at-les-cascades-campground/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL propose les meilleures activités à faire en famille au camping Les Cascades."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/yelloh-village-better-camping-sign-2021/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/news/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL semble être la section actualités du camping Les Cascades."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/4-star-tourism/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/our-accommodations/premiums/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL correspond aux hébergements premium d'un camping 4 étoiles."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/organise-vacation-camping/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/essential-items-to-bring-for-a-successful-stay-at-les-cascades-campground/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL parle des éléments essentiels à apporter pour un séjour réussi au camping Les Cascades."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/camping-les-cascades-sanitary-commitment/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/discover-the-campsite/our-services-equipment/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL semble présenter les services et équipements du camping Les Cascades, incluant les engagements sanitaires."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/new-2022-service-hotel-camping/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/discover-the-campsite/our-services-equipment/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL semble présenter les services et équipements du camping Les Cascades, incluant les nouveautés pour 2022."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/corporate-social-responsibility-our-commitments/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/surroundings/natural-and-cultural-sites/lussans-conclusions/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL semble parler des engagements en matière de responsabilité sociale et environnementale."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/italian-restaurant-in-the-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/discover-the-flavors-a-culinary-journey-to-the-heart-of-italy-at-our-campground-in-la-roque-sur-ceze-2/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL propose un voyage culinaire au cœur de l'Italie, en lien avec un restaurant italien dans le Gard."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/partie-2-responsabilite-societale-des-entreprises-nos-engagements/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/surroundings/natural-and-cultural-sites/lussans-conclusions/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL semble parler des engagements en matière de responsabilité sociale et environnementale."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/nicolas-vanier-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/surroundings/natural-and-cultural-sites/the-sautadet-waterfalls/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL semble être liée à la découverte des cascades de Sautadet dans le Gard."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/yelloh-village/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/news/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL semble être la section actualités du camping Les Cascades."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/our-new-aquatic-space-in-the-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/wellness-stay-the-benefits-of-nature-and-waterfalls-for-your-health/",
+        "confidence": 0.8,
+        "raison": "Lien entre l'ancien espace aquatique et le bien-être naturel dans la nouvelle URL"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/actualites-en/visiter-le-gard-un-veritable-tour-du-monde/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/must-see-attractions-in-gard-top-sites-to-visit-less-than-30-minutes-from-the-campground/",
+        "confidence": 0.75,
+        "raison": "Correspondance sur les attractions à visiter dans le Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/mobile-home/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/our-accommodations/",
+        "confidence": 0.9,
+        "raison": "Redirection vers la page générale des hébergements"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/photo-gallery/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/news/",
+        "confidence": 0.7,
+        "raison": "Nouvelle URL plus générale sur les actualités"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/surroundings/natural-and-cultural-sites/",
+        "confidence": 0.8,
+        "raison": "Correspondance sur les sites naturels et culturels dans le Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/the-most-beautiful-villages-in-france/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/discover-the-most-beautiful-villages-in-the-gard-to-visit-during-your-stay/",
+        "confidence": 0.75,
+        "raison": "Lien avec la découverte des beaux villages dans le Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/la-roque-sur-ceze/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/surroundings/towns-and-villages/la-roque-sur-ceze/",
+        "confidence": 0.9,
+        "raison": "Correspondance directe avec la nouvelle URL de la ville"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/the-campsite/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/discover-the-campsite/",
+        "confidence": 0.8,
+        "raison": "Redirection vers la découverte du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/the-swimming-pool/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/discover-the-campsite/the-swimming-pool/",
+        "confidence": 0.9,
+        "raison": "Correspondance directe avec la nouvelle URL de la piscine"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/the-premiums/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/our-accommodations/premiums/",
+        "confidence": 0.9,
+        "raison": "Lien direct avec la nouvelle section des hébergements premium"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/the-lodges/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/our-accommodations/lodges/",
+        "confidence": 0.9,
+        "raison": "Correspondance directe avec la nouvelle section des lodges"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/services-equipment/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/discover-the-campsite/our-services-equipment/",
+        "confidence": 0.85,
+        "raison": "Lien direct avec la nouvelle URL des services et équipements"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/animations/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/discover-the-campsite/our-activities-schedule/",
+        "confidence": 0.8,
+        "raison": "Correspondance sur le planning des activités dans le camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/the-river-and-the-cascades-du-sautadet/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/discover-the-campsite/access-to-the-river-and-the-famous-waterfalls/",
+        "confidence": 0.85,
+        "raison": "Lien direct avec l'accès à la rivière et aux cascades"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/tariffs/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/our-accommodations/our-prices/",
+        "confidence": 0.8,
+        "raison": "Correspondance sur les tarifs des hébergements"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/pitches/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/our-accommodations/pitches/",
+        "confidence": 0.9,
+        "raison": "Redirection vers la section des emplacements"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/contact-and-access/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/contact/",
+        "confidence": 0.9,
+        "raison": "Correspondance directe avec la nouvelle URL de contact"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/the-restaurant/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/discover-the-campsite/the-restaurant/",
+        "confidence": 0.9,
+        "raison": "Lien direct avec la nouvelle URL du restaurant"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/",
+        "confidence": 1.0,
+        "raison": "Redirection vers la page d'accueil du nouveau site"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/en/category/actualites-en/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/en/news/",
+        "confidence": 0.8,
+        "raison": "Correspondance sur les actualités dans la nouvelle URL"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2019/10/Camping-en-bord-de-riviere-Gard.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/la-route-des-vins-dans-le-gard-un-itineraire-pour-les-amateurs-de-vin/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL parle également d'activités dans le Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2019/11/camping-4-etoiles.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/distinctions-adac-et-anwb-un-gage-de-qualite-pour-notre-camping-a-la-roque-sur-ceze/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL met en avant la qualité du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2019/10/sejour-familial-bord-de-riviere-gard.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/votre-camping-familial-a-la-roque-sur-ceze-accueille-vos-animaux-de-compagnie-%f0%9f%90%be/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL parle également d'un camping familial"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2019/11/organiser-vacances-camping-gard.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/pourquoi-choisir-le-gard-pour-vos-prochaines-vacances/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL propose des idées pour des vacances dans le Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-Gard-Vainqueur-Zoover-Silver-Adwards.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/distinctions-adac-et-anwb-un-gage-de-qualite-pour-notre-camping-a-la-roque-sur-ceze/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL met en avant des distinctions de qualité pour le camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2019/10/bonnes-raisons-vacances-camping.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/pourquoi-choisir-le-gard-pour-vos-prochaines-vacances/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL propose des raisons de choisir le Gard pour les vacances"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2020/07/location-premium-camping-les-cascades.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nos-hebergements/premiums/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL parle des hébergements premium du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2019/10/festivals-gard.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/villes-et-villages/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL évoque les festivals et les villes du Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2019/10/IMG_5101_240_240.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/wp-content/uploads/nps-cascades782-scaled.jpg",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL présente une image similaire"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2019/10/cevennes-montagne-gard.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/sites-naturels-culturels/les-cevennes/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL parle des Cévennes et de la nature"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2021/10/bg-banner-camping-cascades.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/wp-content/uploads/banner-cascades-camping.jpg",
+        "confidence": 0.85,
+        "raison": "La nouvelle URL correspond au banner du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/engagement-sanitaire-du-camping-les-cascades/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/sejour-ecoresponsable-au-camping-les-cascades-la-nature-au-coeur-de-nos-engagements/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL parle également des engagements du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2019/10/avantage-camping-4-etoiles-cevennes.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/distinctions-adac-et-anwb-un-gage-de-qualite-pour-notre-camping-a-la-roque-sur-ceze/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL met en avant des distinctions de qualité pour le camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/pourquoi-le-camping/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/actualites/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL parle également des actualités du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/yelloh-village/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/villes-et-villages/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL évoque les villages et les alentours"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2021/12/nps-Cascades841-scaled.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/wp-content/uploads/nps-cascades839-1-scaled.jpg",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL présente une image similaire"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2021/12/FR1I7114.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/wp-content/uploads/mg-6055-scaled.jpg",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL présente une image similaire"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2021/12/IMG_0315.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/wp-content/uploads/img-6463-scaled.jpg",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL présente une image similaire"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2021/12/IMG_9413-scaled-e1642088182301.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/wp-content/uploads/img-6463-scaled.jpg",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL présente une image similaire"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/camping-4-etoiles-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/distinctions-adac-et-anwb-un-gage-de-qualite-pour-notre-camping-a-la-roque-sur-ceze/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL met en avant la qualité du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/yelloh-village-elu-meilleure-enseigne-de-camping-2021/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/distinctions-adac-et-anwb-un-gage-de-qualite-pour-notre-camping-a-la-roque-sur-ceze/",
+        "confidence": 0.75,
+        "raison": "Les deux URLs parlent de distinctions et de qualité pour le camping."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/camping-qualite/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/distinctions-adac-et-anwb-un-gage-de-qualite-pour-notre-camping-a-la-roque-sur-ceze/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs évoquent la qualité du camping."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/partie-2-responsabilite-societale-des-entreprises-nos-engagements/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/sejour-ecoresponsable-au-camping-les-cascades-la-nature-au-coeur-de-nos-engagements/",
+        "confidence": 0.7,
+        "raison": "Les deux URLs traitent des engagements et de la responsabilité sociétale."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/vacances-camping-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/pourquoi-choisir-le-gard-pour-vos-prochaines-vacances/",
+        "confidence": 0.75,
+        "raison": "Les deux URLs évoquent des vacances dans le Gard."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/camping-4-etoiles/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/votre-camping-familial-a-la-roque-sur-ceze-accueille-vos-animaux-de-compagnie-%f0%9f%90%be/",
+        "confidence": 0.7,
+        "raison": "Les deux URLs parlent de camping, même si la nouvelle est plus spécifique."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/tourisme-4-etoiles/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/votre-camping-familial-a-la-roque-sur-ceze-accueille-vos-animaux-de-compagnie-%f0%9f%90%be/",
+        "confidence": 0.7,
+        "raison": "Les deux URLs évoquent le tourisme et les étoiles."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/activites-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/activites-sportives/",
+        "confidence": 0.7,
+        "raison": "Les deux URLs évoquent des activités dans le Gard."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/glamping-tourisme/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nos-hebergements/lodges/tente-glamping-victoria/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs parlent de glamping et de tourisme."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/responsabilite-societale-des-entreprises-nos-engagements/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/sejour-ecoresponsable-au-camping-les-cascades-la-nature-au-coeur-de-nos-engagements/",
+        "confidence": 0.7,
+        "raison": "Les deux URLs traitent des engagements et de la responsabilité sociétale."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/actualites/visiter-le-gard-un-veritable-tour-du-monde/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/pourquoi-choisir-le-gard-pour-vos-prochaines-vacances/",
+        "confidence": 0.7,
+        "raison": "Les deux URLs évoquent la visite du Gard."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2020/10/cascades-du-sautadet.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/wp-content/uploads/cascades-du-sautadet.jpg",
+        "confidence": 0.9,
+        "raison": "Les deux URLs montrent une image des cascades du Sautadet."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/",
+        "confidence": 0.9,
+        "raison": "La page d'accueil du camping Les Cascades"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/tourisme-gard/pont-du-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/sites-naturels-culturels/le-pont-du-gard/",
+        "confidence": 0.8,
+        "raison": "Visite du Pont du Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/tourisme-gard/visite-gorges-du-gardon/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/sites-naturels-culturels/les-gorges-du-gardon/",
+        "confidence": 0.75,
+        "raison": "Visite des Gorges du Gardon"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/tourisme-gard/anduze/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/villes-et-villages/anduze/",
+        "confidence": 0.8,
+        "raison": "Visite de la ville d'Anduze"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/tourisme-gard/nimes/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/villes-et-villages/nimes/",
+        "confidence": 0.75,
+        "raison": "Visite de la ville de Nîmes"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/tourisme-gard/saint-jean-du-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/villes-et-villages/saint-jean-du-gard/",
+        "confidence": 0.8,
+        "raison": "Visite de la ville de Saint-Jean-du-Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/tourisme-gard/uzes/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/villes-et-villages/uzes/",
+        "confidence": 0.85,
+        "raison": "Correspondance directe entre les deux pages sur le tourisme à Uzès."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/camping-vallon-pont-darc/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/sites-naturels-culturels/vallon-pont-darc/",
+        "confidence": 0.75,
+        "raison": "Les deux URLs concernent le camping à Vallon Pont d'Arc."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-vallon-pont-d-arc.jpg",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/wp-content/uploads/louer-mobil-home-proche-pont-du-gard.jpg",
+        "confidence": 0.7,
+        "raison": "L'image de l'ancienne URL peut correspondre au contenu de la nouvelle URL sur la location de mobil-home."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/camping-presentation-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/",
+        "confidence": 0.9,
+        "raison": "La page d'accueil du camping semble correspondre à la présentation générale du camping."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/camping-services-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/le-camping/faq/",
+        "confidence": 0.8,
+        "raison": "La FAQ du camping peut regrouper les informations sur les services proposés."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/camping-piscine-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/le-camping/faq/",
+        "confidence": 0.7,
+        "raison": "La FAQ du camping peut inclure des informations sur la piscine."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/plus-beaux-villages-de-france/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/villes-et-villages/les-plus-beaux-villages/",
+        "confidence": 0.85,
+        "raison": "La nouvelle URL semble correspondre à la thématique des plus beaux villages."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/contact-acces/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/mentions-legales/",
+        "confidence": 0.75,
+        "raison": "La page des mentions légales peut contenir des informations de contact et d'accès."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/restaurant-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/le-camping/le-restaurant/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL semble correspondre à la page du restaurant du camping."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/selection-activites-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/aux-alentours/activites-sportives/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL semble regrouper les activités proposées dans la région."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/location-lodges-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nos-hebergements/lodges/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL semble correspondre à la location des lodges."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/actualites-nl/camping-4-sterrenwacht/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/les-meilleures-activites-a-faire-en-famille-au-camping-les-cascades/",
+        "confidence": 0.85,
+        "raison": "La nouvelle URL parle des activités à faire en famille au camping, correspondant au thème du camping 4 étoiles."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/actualites-nl/vakantie-camping-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/les-indispensables-a-emporter-pour-un-sejour-reussi-au-camping-les-cascades-2/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL parle des indispensables à emporter pour un séjour réussi au camping, en lien avec des vacances au camping dans le Gard."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/actualites-nl/4-sterren-camping/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/les-indispensables-a-emporter-pour-un-sejour-reussi-au-camping-les-cascades-2/",
+        "confidence": 0.7,
+        "raison": "La nouvelle URL parle des indispensables à emporter pour un séjour réussi au camping, en lien avec un camping de qualité."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/actualites-nl/activiteiten-gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/festivals-en-evenementen-die-u-deze-zomer-in-de-gard-niet-mag-missen/",
+        "confidence": 0.8,
+        "raison": "La nouvelle URL parle des festivals et événements à ne pas manquer dans le Gard, en lien avec les activités dans la région."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/actualites-nl/nieuw-2022-hotel-service-camping/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/nieuws/",
+        "confidence": 0.75,
+        "raison": "La nouvelle URL est la page générale des actualités, pouvant inclure des informations sur les nouveautés en 2022 pour le camping."
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/actualites-nl/onze-nieuwe-ruimte-in-de-tuin/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/les-meilleures-activites-a-faire-en-famille-au-camping-les-cascades/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs parlent des activités et des nouveautés du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/tarieven/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/onze-accommodaties/onze-prijzen/",
+        "confidence": 0.75,
+        "raison": "Les deux URLs concernent les tarifs et les prix des hébergements"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/fotogalerij/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/in-de-omgeving/",
+        "confidence": 0.7,
+        "raison": "Les deux URLs renvoient à des galeries de photos et d'images"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/gard/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/in-de-omgeving/",
+        "confidence": 0.7,
+        "raison": "Les deux URLs semblent parler de la région du Gard"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/de-mooiste-dorpen-van-frankrijk/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/in-de-omgeving/steden-en-dorpen/de-mooiste-dorpen/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs évoquent les plus beaux villages de France"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/stacaravan/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/onze-accommodaties/cottages/",
+        "confidence": 0.75,
+        "raison": "Les deux URLs concernent les hébergements en mobil-home"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/activiteiten/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/ontdek-de-camping/onze-activiteiten-programma/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs parlent des activités disponibles sur le camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/de-rivier-en-de-cascades-du-sautadet/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/in-de-omgeving/natuurlijke-en-culturele-plekken/de-sautadet-watervallen/",
+        "confidence": 0.75,
+        "raison": "Les deux URLs font référence aux cascades du Sautadet"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/la-roque-sur-ceze/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/in-de-omgeving/steden-en-dorpen/la-roque-sur-ceze/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs concernent la ville de La Roque-sur-Cèze"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/de-camping/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/ontdek-de-camping/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs renvoient à la découverte du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/diensten-uitrusting/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/ontdek-de-camping/onze-diensten-en-apparatuur/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs parlent des services et équipements du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/de-premiums/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/onze-accommodaties/premiums/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs concernent les hébergements de luxe ou premium"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/de-lodges/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/onze-accommodaties/lodges/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs parlent des lodges disponibles sur le camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/contact-en-toegang/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/contact/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs concernent les informations de contact et l'accès au camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/het-zwembad/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/ontdek-de-camping/het-zwembad/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs parlent de la piscine du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/de-staanplaatsen/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/onze-accommodaties/locaties/",
+        "confidence": 0.75,
+        "raison": "Les deux URLs concernent les emplacements de camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/het-restaurant/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/ontdek-de-camping/het-restaurant/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs parlent du restaurant du camping"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/",
+        "confidence": 1.0,
+        "raison": "Correspondance directe avec la page d'accueil du nouveau site"
+      },
+      {
+        "ancienne": "https://www.campinglescascades.com/nl/category/actualites-nl/",
+        "nouvelle": "http://72.web.thelis.es:30178/les-cascades/nl/nieuws/",
+        "confidence": 0.8,
+        "raison": "Les deux URLs concernent les actualités du camping"
+      }
+    ],
+    "all_unmatched": [
+      "https://www.campinglescascades.com/de/actualites-de/ferien-camping-garten/",
+      "https://www.campinglescascades.com/de/actualites-de/sejour-gard-product-terroir/",
+      "https://www.campinglescascades.com/de/actualites-de/organisieren-freizeit-camping/",
+      "https://www.campinglescascades.com/de/actualites-de/zoover-camping-les-cascades/",
+      "https://www.campinglescascades.com/de/actualites-de/warum-das-camping/",
+      "https://www.campinglescascades.com/de/actualites-de/glamping-tourismus/",
+      "https://www.campinglescascades.com/de/actualites-de/sanitaeres-engagement-des-campingplatzes-les-cascades/",
+      "https://www.campinglescascades.com/de/actualites-de/camping-qualitat/",
+      "https://www.campinglescascades.com/de/actualites-de/yelloh-village-better-camping-zeichen-2021/",
+      "https://www.campinglescascades.com/de/actualites-de/4-sterne-tourismus/",
+      "https://www.campinglescascades.com/de/actualites-de/neu-2022-service-hotel-camping/",
+      "https://www.campinglescascades.com/de/actualites-de/soziale-verantwortung-von-unternehmen-unsere-verpflichtungen/",
+      "https://www.campinglescascades.com/de/actualites-de/teil-2-soziale-verantwortung-von-unternehmen-unsere-verpflichtungen/",
+      "https://www.campinglescascades.com/de/actualites-de/nicolas-vanier-gard/",
+      "https://www.campinglescascades.com/de/actualites-de/yelloh-village/",
+      "https://www.campinglescascades.com/de/fotogalerie/",
+      "https://www.campinglescascades.com/de/fotogalerie/",
+      "https://www.campinglescascades.com/actualites/nouveautes-2022-camping-cascades/",
+      "https://www.campinglescascades.com/actualites/sejour-gard-produit-terroir/",
+      "https://www.campinglescascades.com/actualites/organiser-vacances-camping/",
+      "https://www.campinglescascades.com/actualites/festivals-gard/",
+      "https://www.campinglescascades.com/actualites/nicolas-vanier-gard/",
+      "https://www.campinglescascades.com/actualites/notre-nouvel-espace-aquatique-dans-le-gard/",
+      "https://www.campinglescascades.com/wp-content/uploads/2019/11/film-nicolas-vanier-gard.jpg",
+      "https://www.campinglescascades.com/actualites/restaurant-italien-dans-le-gard/",
+      "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-prix-reduit-gard.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2021/07/nps-Cascades727-Copie11-scaled.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2019/10/tourisme-gard.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2021/10/camping-aniamtions-gard.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2022/03/visite-pont-du-gard.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2022/03/visite-gorges-du-gardon.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2022/03/visites-aigues-mortes.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2022/03/visiter-ales.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2022/03/visites-anduze.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2022/03/tourisme-avignon.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2022/03/visites-nimes.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2022/03/visite-saint-jean-du-gard.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2022/03/tourisme-uzes.jpg",
+      "https://www.campinglescascades.com/camping-prix-reduit-gard/",
+      "https://www.campinglescascades.com/wp-content/uploads/2022/06/cascades-pont.jpg",
+      "https://www.campinglescascades.com/camping-roque-sur-ceze/",
+      "https://www.campinglescascades.com/camping-riviere-cascades/",
+      "https://www.campinglescascades.com/tourisme-gard/",
+      "https://www.campinglescascades.com/parc-national-des-cevennes/",
+      "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-cevennes.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2019/10/contact-camping-les-cascades.jpg",
+      "https://www.campinglescascades.com/camping-animations-gard/",
+      "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-aniamtions-gard.jpg",
+      "https://www.campinglescascades.com/accueil-2/",
+      "https://www.campinglescascades.com/location-emplacement-gard/",
+      "https://www.campinglescascades.com/wp-content/uploads/2019/11/emplacement-camping-gard.jpg",
+      "https://www.campinglescascades.com/agenda-gard/",
+      "https://www.campinglescascades.com/location-mobil-home-gard/",
+      "https://www.campinglescascades.com/location-premium-gard/",
+      "https://www.campinglescascades.com/wp-content/uploads/2019/10/chateau-les-plus-beaux-villages-de-france.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-gard-sejour-lodge.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2019/10/restaurant-gard-avec-pizzeria.jpg",
+      "https://www.campinglescascades.com/wp-content/uploads/2024/02/banner-cascades-camping.jpg",
+      "https://www.campinglescascades.com/category/actualites/",
+      "https://www.campinglescascades.com/nl/actualites-nl/sejour-gard-product-terroir/",
+      "https://www.campinglescascades.com/nl/actualites-nl/organiseer-vacature-camping/",
+      "https://www.campinglescascades.com/nl/actualites-nl/zoover-camping-les-cascades/",
+      "https://www.campinglescascades.com/nl/actualites-nl/waarom-de-kamping/",
+      "https://www.campinglescascades.com/nl/actualites-nl/glamping-toerisme/",
+      "https://www.campinglescascades.com/nl/actualites-nl/sanitair-engagement-van-camping-les-cascades/",
+      "https://www.campinglescascades.com/nl/actualites-nl/camping-kwaliteit/",
+      "https://www.campinglescascades.com/nl/actualites-nl/yelloh-dorp-boter-kamping-sign-2021/",
+      "https://www.campinglescascades.com/nl/actualites-nl/4-sterren-toerisme/",
+      "https://www.campinglescascades.com/nl/actualites-nl/festivals-gard/",
+      "https://www.campinglescascades.com/nl/actualites-nl/maatschappelijk-verantwoord-ondernemen-onze-verbintenissen/",
+      "https://www.campinglescascades.com/nl/actualites-nl/italiaans-restaurant-in-de-gard/",
+      "https://www.campinglescascades.com/nl/actualites-nl/deel-2-maatschappelijk-verantwoord-ondernemen-onze-verbintenissen/",
+      "https://www.campinglescascades.com/nl/actualites-nl/nicolas-vanier-gard/",
+      "https://www.campinglescascades.com/nl/actualites-nl/yelloh-village/"
+    ],
+    "missing_langs": [],
+    "old_grouped": {
+      "nl": [
+        "https://www.campinglescascades.com/nl/actualites-nl/camping-4-sterrenwacht/",
+        "https://www.campinglescascades.com/nl/actualites-nl/vakantie-camping-gard/",
+        "https://www.campinglescascades.com/nl/actualites-nl/4-sterren-camping/",
+        "https://www.campinglescascades.com/nl/actualites-nl/sejour-gard-product-terroir/",
+        "https://www.campinglescascades.com/nl/actualites-nl/organiseer-vacature-camping/",
+        "https://www.campinglescascades.com/nl/actualites-nl/zoover-camping-les-cascades/",
+        "https://www.campinglescascades.com/nl/actualites-nl/waarom-de-kamping/",
+        "https://www.campinglescascades.com/nl/actualites-nl/glamping-toerisme/",
+        "https://www.campinglescascades.com/nl/actualites-nl/sanitair-engagement-van-camping-les-cascades/",
+        "https://www.campinglescascades.com/nl/actualites-nl/camping-kwaliteit/",
+        "https://www.campinglescascades.com/nl/actualites-nl/activiteiten-gard/",
+        "https://www.campinglescascades.com/nl/actualites-nl/yelloh-dorp-boter-kamping-sign-2021/",
+        "https://www.campinglescascades.com/nl/actualites-nl/4-sterren-toerisme/",
+        "https://www.campinglescascades.com/nl/actualites-nl/festivals-gard/",
+        "https://www.campinglescascades.com/nl/actualites-nl/nieuw-2022-hotel-service-camping/",
+        "https://www.campinglescascades.com/nl/actualites-nl/maatschappelijk-verantwoord-ondernemen-onze-verbintenissen/",
+        "https://www.campinglescascades.com/nl/actualites-nl/italiaans-restaurant-in-de-gard/",
+        "https://www.campinglescascades.com/nl/actualites-nl/deel-2-maatschappelijk-verantwoord-ondernemen-onze-verbintenissen/",
+        "https://www.campinglescascades.com/nl/actualites-nl/nicolas-vanier-gard/",
+        "https://www.campinglescascades.com/nl/actualites-nl/yelloh-village/",
+        "https://www.campinglescascades.com/nl/actualites-nl/onze-nieuwe-ruimte-in-de-tuin/",
+        "https://www.campinglescascades.com/nl/tarieven/",
+        "https://www.campinglescascades.com/nl/fotogalerij/",
+        "https://www.campinglescascades.com/nl/gard/",
+        "https://www.campinglescascades.com/nl/de-mooiste-dorpen-van-frankrijk/",
+        "https://www.campinglescascades.com/nl/stacaravan/",
+        "https://www.campinglescascades.com/nl/activiteiten/",
+        "https://www.campinglescascades.com/nl/de-rivier-en-de-cascades-du-sautadet/",
+        "https://www.campinglescascades.com/nl/la-roque-sur-ceze/",
+        "https://www.campinglescascades.com/nl/de-camping/",
+        "https://www.campinglescascades.com/nl/diensten-uitrusting/",
+        "https://www.campinglescascades.com/nl/de-premiums/",
+        "https://www.campinglescascades.com/nl/de-lodges/",
+        "https://www.campinglescascades.com/nl/contact-en-toegang/",
+        "https://www.campinglescascades.com/nl/het-zwembad/",
+        "https://www.campinglescascades.com/nl/de-staanplaatsen/",
+        "https://www.campinglescascades.com/nl/het-restaurant/",
+        "https://www.campinglescascades.com/nl/",
+        "https://www.campinglescascades.com/nl/category/actualites-nl/"
+      ],
+      "fr": [
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/Camping-en-bord-de-riviere-Gard.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/11/camping-4-etoiles.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/sejour-familial-bord-de-riviere-gard.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/11/organiser-vacances-camping-gard.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-Gard-Vainqueur-Zoover-Silver-Adwards.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/bonnes-raisons-vacances-camping.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2020/07/location-premium-camping-les-cascades.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/festivals-gard.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/IMG_5101_240_240.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/cevennes-montagne-gard.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2021/10/bg-banner-camping-cascades.jpg",
+        "https://www.campinglescascades.com/actualites/engagement-sanitaire-du-camping-les-cascades/",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/avantage-camping-4-etoiles-cevennes.jpg",
+        "https://www.campinglescascades.com/actualites/pourquoi-le-camping/",
+        "https://www.campinglescascades.com/actualites/yelloh-village/",
+        "https://www.campinglescascades.com/wp-content/uploads/2021/12/nps-Cascades841-scaled.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2021/12/FR1I7114.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2021/12/IMG_0315.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2021/12/IMG_9413-scaled-e1642088182301.jpg",
+        "https://www.campinglescascades.com/actualites/camping-4-etoiles-gard/",
+        "https://www.campinglescascades.com/actualites/yelloh-village-elu-meilleure-enseigne-de-camping-2021/",
+        "https://www.campinglescascades.com/actualites/camping-qualite/",
+        "https://www.campinglescascades.com/actualites/partie-2-responsabilite-societale-des-entreprises-nos-engagements/",
+        "https://www.campinglescascades.com/actualites/nouveautes-2022-camping-cascades/",
+        "https://www.campinglescascades.com/actualites/vacances-camping-gard/",
+        "https://www.campinglescascades.com/actualites/camping-4-etoiles/",
+        "https://www.campinglescascades.com/actualites/sejour-gard-produit-terroir/",
+        "https://www.campinglescascades.com/actualites/organiser-vacances-camping/",
+        "https://www.campinglescascades.com/actualites/tourisme-4-etoiles/",
+        "https://www.campinglescascades.com/actualites/festivals-gard/",
+        "https://www.campinglescascades.com/actualites/activites-gard/",
+        "https://www.campinglescascades.com/actualites/glamping-tourisme/",
+        "https://www.campinglescascades.com/actualites/responsabilite-societale-des-entreprises-nos-engagements/",
+        "https://www.campinglescascades.com/actualites/nicolas-vanier-gard/",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/11/film-nicolas-vanier-gard.jpg",
+        "https://www.campinglescascades.com/actualites/notre-nouvel-espace-aquatique-dans-le-gard/",
+        "https://www.campinglescascades.com/wp-content/uploads/2021/08/banner-cascades-camping-banner.jpg",
+        "https://www.campinglescascades.com/actualites/restaurant-italien-dans-le-gard/",
+        "https://www.campinglescascades.com/actualites/visiter-le-gard-un-veritable-tour-du-monde/",
+        "https://www.campinglescascades.com/wp-content/uploads/2020/10/cascades-du-sautadet.jpg",
+        "https://www.campinglescascades.com/",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-prix-reduit-gard.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2021/07/nps-Cascades727-Copie11-scaled.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/tourisme-gard.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2021/10/camping-aniamtions-gard.jpg",
+        "https://www.campinglescascades.com/tourisme-gard/pont-du-gard/",
+        "https://www.campinglescascades.com/wp-content/uploads/2022/03/visite-pont-du-gard.jpg",
+        "https://www.campinglescascades.com/tourisme-gard/visite-gorges-du-gardon/",
+        "https://www.campinglescascades.com/wp-content/uploads/2022/03/visite-gorges-du-gardon.jpg",
+        "https://www.campinglescascades.com/tourisme-gard/aigues-mortes/",
+        "https://www.campinglescascades.com/wp-content/uploads/2022/03/visites-aigues-mortes.jpg",
+        "https://www.campinglescascades.com/tourisme-gard/ales/",
+        "https://www.campinglescascades.com/wp-content/uploads/2022/03/visiter-ales.jpg",
+        "https://www.campinglescascades.com/tourisme-gard/anduze/",
+        "https://www.campinglescascades.com/wp-content/uploads/2022/03/visites-anduze.jpg",
+        "https://www.campinglescascades.com/tourisme-gard/avignon/",
+        "https://www.campinglescascades.com/wp-content/uploads/2022/03/tourisme-avignon.jpg",
+        "https://www.campinglescascades.com/tourisme-gard/nimes/",
+        "https://www.campinglescascades.com/wp-content/uploads/2022/03/visites-nimes.jpg",
+        "https://www.campinglescascades.com/tourisme-gard/saint-jean-du-gard/",
+        "https://www.campinglescascades.com/wp-content/uploads/2022/03/visite-saint-jean-du-gard.jpg",
+        "https://www.campinglescascades.com/tourisme-gard/uzes/",
+        "https://www.campinglescascades.com/wp-content/uploads/2022/03/tourisme-uzes.jpg",
+        "https://www.campinglescascades.com/camping-prix-reduit-gard/",
+        "https://www.campinglescascades.com/camping-vallon-pont-darc/",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-vallon-pont-d-arc.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2022/06/cascades-pont.jpg",
+        "https://www.campinglescascades.com/camping-roque-sur-ceze/",
+        "https://www.campinglescascades.com/camping-riviere-cascades/",
+        "https://www.campinglescascades.com/tourisme-gard/",
+        "https://www.campinglescascades.com/parc-national-des-cevennes/",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-cevennes.jpg",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/contact-camping-les-cascades.jpg",
+        "https://www.campinglescascades.com/camping-animations-gard/",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-aniamtions-gard.jpg",
+        "https://www.campinglescascades.com/accueil-2/",
+        "https://www.campinglescascades.com/location-emplacement-gard/",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/11/emplacement-camping-gard.jpg",
+        "https://www.campinglescascades.com/agenda-gard/",
+        "https://www.campinglescascades.com/location-mobil-home-gard/",
+        "https://www.campinglescascades.com/camping-presentation-gard/",
+        "https://www.campinglescascades.com/camping-services-gard/",
+        "https://www.campinglescascades.com/camping-piscine-gard/",
+        "https://www.campinglescascades.com/location-premium-gard/",
+        "https://www.campinglescascades.com/plus-beaux-villages-de-france/",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/chateau-les-plus-beaux-villages-de-france.jpg",
+        "https://www.campinglescascades.com/contact-acces/",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/camping-gard-sejour-lodge.jpg",
+        "https://www.campinglescascades.com/restaurant-gard/",
+        "https://www.campinglescascades.com/wp-content/uploads/2019/10/restaurant-gard-avec-pizzeria.jpg",
+        "https://www.campinglescascades.com/selection-activites-gard/",
+        "https://www.campinglescascades.com/location-lodges-gard/",
+        "https://www.campinglescascades.com/wp-content/uploads/2024/02/banner-cascades-camping.jpg",
+        "https://www.campinglescascades.com/category/actualites/"
+      ],
+      "en": [
+        "https://www.campinglescascades.com/en/actualites-en/camping-4-star-gard/",
+        "https://www.campinglescascades.com/en/actualites-en/holiday-camping-garden/",
+        "https://www.campinglescascades.com/en/actualites-en/4-star-camping/",
+        "https://www.campinglescascades.com/en/actualites-en/sejour-gard-product-terroir/",
+        "https://www.campinglescascades.com/en/actualites-en/zoover-campsite-les-cascades/",
+        "https://www.campinglescascades.com/en/actualites-en/why-camping/",
+        "https://www.campinglescascades.com/en/actualites-en/glamping-tourism/",
+        "https://www.campinglescascades.com/en/actualites-en/festivals-gard/",
+        "https://www.campinglescascades.com/en/actualites-en/camping-quality/",
+        "https://www.campinglescascades.com/en/actualites-en/activities-gard/",
+        "https://www.campinglescascades.com/en/actualites-en/yelloh-village-better-camping-sign-2021/",
+        "https://www.campinglescascades.com/en/actualites-en/4-star-tourism/",
+        "https://www.campinglescascades.com/en/actualites-en/organise-vacation-camping/",
+        "https://www.campinglescascades.com/en/actualites-en/camping-les-cascades-sanitary-commitment/",
+        "https://www.campinglescascades.com/en/actualites-en/new-2022-service-hotel-camping/",
+        "https://www.campinglescascades.com/en/actualites-en/corporate-social-responsibility-our-commitments/",
+        "https://www.campinglescascades.com/en/actualites-en/italian-restaurant-in-the-gard/",
+        "https://www.campinglescascades.com/en/actualites-en/partie-2-responsabilite-societale-des-entreprises-nos-engagements/",
+        "https://www.campinglescascades.com/en/actualites-en/nicolas-vanier-gard/",
+        "https://www.campinglescascades.com/en/actualites-en/yelloh-village/",
+        "https://www.campinglescascades.com/en/actualites-en/our-new-aquatic-space-in-the-gard/",
+        "https://www.campinglescascades.com/en/actualites-en/visiter-le-gard-un-veritable-tour-du-monde/",
+        "https://www.campinglescascades.com/en/mobile-home/",
+        "https://www.campinglescascades.com/en/photo-gallery/",
+        "https://www.campinglescascades.com/en/gard/",
+        "https://www.campinglescascades.com/en/the-most-beautiful-villages-in-france/",
+        "https://www.campinglescascades.com/en/la-roque-sur-ceze/",
+        "https://www.campinglescascades.com/en/the-campsite/",
+        "https://www.campinglescascades.com/en/the-swimming-pool/",
+        "https://www.campinglescascades.com/en/the-premiums/",
+        "https://www.campinglescascades.com/en/the-lodges/",
+        "https://www.campinglescascades.com/en/services-equipment/",
+        "https://www.campinglescascades.com/en/animations/",
+        "https://www.campinglescascades.com/en/the-river-and-the-cascades-du-sautadet/",
+        "https://www.campinglescascades.com/en/tariffs/",
+        "https://www.campinglescascades.com/en/pitches/",
+        "https://www.campinglescascades.com/en/contact-and-access/",
+        "https://www.campinglescascades.com/en/the-restaurant/",
+        "https://www.campinglescascades.com/en/",
+        "https://www.campinglescascades.com/en/category/actualites-en/"
+      ],
+      "de": [
+        "https://www.campinglescascades.com/de/actualites-de/camping-4-sterne-wache/",
+        "https://www.campinglescascades.com/de/actualites-de/ferien-camping-garten/",
+        "https://www.campinglescascades.com/de/actualites-de/4-sterne-camping/",
+        "https://www.campinglescascades.com/de/actualites-de/sejour-gard-product-terroir/",
+        "https://www.campinglescascades.com/de/actualites-de/organisieren-freizeit-camping/",
+        "https://www.campinglescascades.com/de/actualites-de/zoover-camping-les-cascades/",
+        "https://www.campinglescascades.com/de/actualites-de/warum-das-camping/",
+        "https://www.campinglescascades.com/de/actualites-de/glamping-tourismus/",
+        "https://www.campinglescascades.com/de/actualites-de/sanitaeres-engagement-des-campingplatzes-les-cascades/",
+        "https://www.campinglescascades.com/de/actualites-de/camping-qualitat/",
+        "https://www.campinglescascades.com/de/actualites-de/aktivitaten-gard/",
+        "https://www.campinglescascades.com/de/actualites-de/yelloh-village-better-camping-zeichen-2021/",
+        "https://www.campinglescascades.com/de/actualites-de/4-sterne-tourismus/",
+        "https://www.campinglescascades.com/de/actualites-de/festivals-gard/",
+        "https://www.campinglescascades.com/de/actualites-de/neu-2022-service-hotel-camping/",
+        "https://www.campinglescascades.com/de/actualites-de/soziale-verantwortung-von-unternehmen-unsere-verpflichtungen/",
+        "https://www.campinglescascades.com/de/actualites-de/italienisches-restaurant-im-gard/",
+        "https://www.campinglescascades.com/de/actualites-de/teil-2-soziale-verantwortung-von-unternehmen-unsere-verpflichtungen/",
+        "https://www.campinglescascades.com/de/actualites-de/nicolas-vanier-gard/",
+        "https://www.campinglescascades.com/de/actualites-de/yelloh-village/",
+        "https://www.campinglescascades.com/de/actualites-de/unser-neuer-raum-im-garten/",
+        "https://www.campinglescascades.com/de/mobilheim/",
+        "https://www.campinglescascades.com/de/fotogalerie/",
+        "https://www.campinglescascades.com/de/gard/",
+        "https://www.campinglescascades.com/de/die-schoensten-doerfer-frankreichs/",
+        "https://www.campinglescascades.com/de/freizeitangebot/",
+        "https://www.campinglescascades.com/de/der-fluss-und-die-kaskaden-von-sautadet/",
+        "https://www.campinglescascades.com/de/la-roque-sur-ceze/",
+        "https://www.campinglescascades.com/de/kontakt-und-anfahrt/",
+        "https://www.campinglescascades.com/de/preise/",
+        "https://www.campinglescascades.com/de/der-campingplatz/",
+        "https://www.campinglescascades.com/de/dienstleistungen-ausruestung/",
+        "https://www.campinglescascades.com/de/das-schwimmbad/",
+        "https://www.campinglescascades.com/de/premium-unterkuenfte/",
+        "https://www.campinglescascades.com/de/lodges/",
+        "https://www.campinglescascades.com/de/stellplaetze/",
+        "https://www.campinglescascades.com/de/restaurant/",
+        "https://www.campinglescascades.com/de/",
+        "https://www.campinglescascades.com/de/category/actualites-de/"
+      ]
+    }
+  }
+}
