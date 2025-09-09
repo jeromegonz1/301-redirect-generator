@@ -12,6 +12,13 @@ Application Streamlit pour générer des redirections 301 intelligentes avec sup
 
 ## Modifications récentes (05/09/2025)
 
+### Sprint 3.5 - Export XLS Balt
+- ✅ **Nouveau format d'export** : Fichier .xlsx compatible Septeo BALT CMS
+- ✅ **Structure conforme** : 2 colonnes exactement (Source, Target) avec URLs absolues uniquement
+- ✅ **Intégration interface** : Bouton "💾 Export XLS (Balt)" après traitement complet
+- ✅ **Tests TDD complets** : 5/5 tests passent, validation format strict
+- ✅ **Gestion des erreurs** : Messages d'aide si openpyxl manquant
+
 ### Sprint 3 Enhanced - URLs absolues et fallback intelligent
 - ✅ **URLs absolues** : Toutes les redirections utilisent des URLs complètes (source → target)
 - ✅ **Fallback 302 intelligent** : Détection automatique langue + redirection vers home langue
