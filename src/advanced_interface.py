@@ -16,6 +16,14 @@ from fallback_manager import FallbackManager
 from cache_manager import CacheManager
 from fallback_302_intelligent import Fallback302Intelligent
 
+# Import pour export XLS Balt (Sprint 3.5)
+try:
+    import openpyxl
+    from openpyxl import Workbook
+    OPENPYXL_AVAILABLE = True
+except ImportError:
+    OPENPYXL_AVAILABLE = False
+
 
 def url_to_relative_path(url: str) -> str:
     """
@@ -120,6 +128,83 @@ def remove_duplicate_redirects(redirects: List[Dict]) -> List[Dict]:
         filtered.append(redirect)
     
     return filtered
+
+
+def generate_balt_xlsx(redirects_data: List[Dict], output_path: str = None, output_dir: str = None) -> str:
+    """
+    Génère un fichier Excel (.xlsx) au format Balt pour import automatique Septeo
+    
+    Format Balt:
+    - 2 colonnes exactement: Source, Target
+    - URLs absolues uniquement (source ET target)
+    - Pas de commentaires, confidence ou type redirection
+    - UTF-8, nom: redirections_balt.xlsx
+    
+    Args:
+        redirects_data: Liste des redirections avec 'source' et 'target'
+        output_path: Chemin complet du fichier de sortie (optionnel)
+        output_dir: Répertoire de sortie (si output_path non spécifié)
+        
+    Returns:
+        Chemin du fichier Excel généré
+        
+    Raises:
+        ImportError: Si openpyxl n'est pas disponible
+        ValueError: Si les données sont invalides
+    """
+    if not OPENPYXL_AVAILABLE:
+        raise ImportError("openpyxl requis pour l'export XLS. Installation: pip install openpyxl")
+    
+    # Détermination du chemin de sortie
+    if not output_path:
+        if output_dir:
+            output_path = os.path.join(output_dir, 'redirections_balt.xlsx')
+        else:
+            output_path = 'redirections_balt.xlsx'
+    
+    # Création du workbook Excel
+    workbook = Workbook()
+    worksheet = workbook.active
+    worksheet.title = "Redirections"
+    
+    # En-têtes (ligne 1) - Format Balt exact
+    worksheet['A1'] = 'Source'
+    worksheet['B1'] = 'Target'
+    
+    # Données (à partir de la ligne 2)
+    current_row = 2
+    for redirect in redirects_data:
+        source = redirect.get('source', '')
+        target = redirect.get('target', '')
+        
+        # Validation: URLs absolues uniquement pour format Balt
+        if source.startswith('https://') or source.startswith('http://'):
+            if target.startswith('https://') or target.startswith('http://'):
+                worksheet[f'A{current_row}'] = source
+                worksheet[f'B{current_row}'] = target
+                current_row += 1
+    
+    # Sauvegarde du fichier Excel
+    try:
+        workbook.save(output_path)
+        workbook.close()
+        
+        # Vérification que le fichier a été créé
+        if not os.path.exists(output_path):
+            raise FileNotFoundError(f"Échec création fichier: {output_path}")
+            
+        return output_path
+        
+    except Exception as e:
+        # Nettoyage en cas d'erreur
+        if 'workbook' in locals():
+            workbook.close()
+        if os.path.exists(output_path):
+            try:
+                os.remove(output_path)
+            except:
+                pass
+        raise ValueError(f"Erreur génération XLS Balt: {str(e)}")
 
 
 def interface_ai_avancee():
