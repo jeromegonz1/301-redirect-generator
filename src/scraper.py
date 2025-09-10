@@ -1,5 +1,5 @@
 """
-Module de scraping automatique pour le 301 Redirect Generator
+Module de scraping automatique pour Fire Snake 301
 Extrait automatiquement les URLs internes d'un site web
 """
 

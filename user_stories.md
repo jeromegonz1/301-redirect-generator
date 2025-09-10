@@ -1,5 +1,5 @@
-User Stories – 301 Redirect Generator
-# 🦎 User Stories – 301 Redirect Generator
+User Stories – Fire Snake 301
+# 🔥🐍 User Stories – Fire Snake 301
 
 ## 🧭 EPIC – Génération automatisée de redirections 301 entre deux sites
 

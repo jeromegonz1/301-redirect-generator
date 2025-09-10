@@ -131,7 +131,7 @@ class CacheManager:
         file_path = self.htaccess_dir / filename
         
         # Ajoute des métadonnées en en-tête
-        header = f"""# Fichier .htaccess généré par 301 Redirect Generator
+        header = f"""# Fichier .htaccess généré par Fire Snake 301
 # Date: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 # URLs anciennes: {len(old_urls)}
 # URLs nouvelles: {len(new_urls)}

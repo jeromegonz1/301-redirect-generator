@@ -1,5 +1,5 @@
 📄 README.md – Présentation & Instructions
-# 🦎 301 Redirect Generator
+# 🔥🐍 Fire Snake 301
 
 Générez vos redirections 301 en un clic.  
 📦 Pas besoin de coder. 🧠 Pas besoin de réfléchir.  
@@ -46,7 +46,7 @@ Il automatise la génération des redirections 301 entre un **ancien site** et u
 
 
 
-/301-redirect-generator
+/fire-snake-301
 ├── src/
 │ ├── main.py ← Interface Streamlit
 │ └── generator.py ← Logique de parsing / génération

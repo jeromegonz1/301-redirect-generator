@@ -1,4 +1,4 @@
-# Cahier des Charges – 301 Redirect Generator
+# Cahier des Charges – Fire Snake 301
 
 ## 1. Objectif du projet
 

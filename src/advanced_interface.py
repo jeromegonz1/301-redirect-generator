@@ -593,7 +593,7 @@ def interface_ai_avancee():
                     # 5. Construction du .htaccess final
                     htaccess_lines = [
                         "# Redirections 301/302 avec URLs absolues",
-                        "# 301 Redirect Generator - Sprint 3 Enhanced",
+                        "# Fire Snake 301 - Sprint 3 Enhanced",
                         "# Format: Source absolue → Target absolue",
                         ""
                     ]

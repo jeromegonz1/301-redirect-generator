@@ -3,6 +3,10 @@ Interface Streamlit pour le générateur de redirections 301 avec scraping autom
 """
 
 import streamlit as st
+from dotenv import load_dotenv
+
+# Charge les variables d'environnement depuis .env
+load_dotenv()
 import csv
 import io
 import os
@@ -14,7 +18,7 @@ from fallback_manager import FallbackManager
 
 # Configuration de la page
 st.set_page_config(
-    page_title="301 Redirect Generator",
+    page_title="Fire Snake 301",
     page_icon="🦎",
     layout="wide"
 )
@@ -66,7 +70,7 @@ def main():
     """Interface principale avec IA sémantique et support multilangue"""
     
     # Titre
-    st.title("🦎 301 Redirect Generator")
+    st.title("🔥🐍 Fire Snake 301")
     st.markdown("**Sprint 2** - IA sémantique GPT-3.5 + Support multilangue + Fallbacks 302")
     st.markdown("---")
     

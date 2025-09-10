@@ -85,7 +85,7 @@ class FallbackManager:
         
         lines = [
             "# Redirections temporaires pour langues non migrées",
-            "# Générées automatiquement par 301 Redirect Generator",
+            "# Générées automatiquement par Fire Snake 301",
             ""
         ]
         
