@@ -2,10 +2,15 @@
 Interface avancée Sprint 2 avec IA sémantique et support multilangue
 """
 
+import os
+from dotenv import load_dotenv
+
+# Charge les variables d'environnement
+load_dotenv()
+
 import streamlit as st
 import csv
 import io
-import os
 from typing import List, Dict, Any
 from urllib.parse import urlparse
 from generator import RedirectGenerator
@@ -13,6 +18,7 @@ from scraper import crawl_site_with_fallback, WebScraper, parse_sitemap
 from language_detector import LanguageDetector
 from ai_mapper import AIMapper, AIMatchingError
 from fallback_manager import FallbackManager
+from domain_detector import DomainDetector
 from cache_manager import CacheManager
 from fallback_302_intelligent import Fallback302Intelligent
 
@@ -100,34 +106,42 @@ def extract_language_from_url_path(url: str) -> str:
 
 def remove_duplicate_redirects(redirects: List[Dict]) -> List[Dict]:
     """
-    Filtre les redirections pour éviter les doublons et source == cible
+    Filtre les redirections pour éviter les doublons et privilégier l'IA vs fallback
+    
+    Philosophy Fire Snake 301: 
+    - Fallback 302 UNIQUEMENT pour URLs non matchées par IA
+    - Priorité aux correspondances IA (confidence > 0) sur fallbacks (confidence = 0)
     
     Args:
-        redirects: Liste des redirections avec 'source' et 'target'
+        redirects: Liste des redirections avec 'source', 'target', 'confidence'
         
     Returns:
-        Liste filtrée sans doublons
+        Liste filtrée sans doublons, IA prioritaire sur fallback
     """
-    seen = set()
-    filtered = []
+    source_map = {}  # source -> best redirect
     
     for redirect in redirects:
         source = redirect.get('source', '')
         target = redirect.get('target', '')
+        confidence = redirect.get('confidence', 0.0)
         
         # Ignorer si source == target  
         if source == target:
             continue
+        
+        # Si source déjà vue, compare les confidences
+        if source in source_map:
+            existing_redirect = source_map[source]
+            existing_confidence = existing_redirect.get('confidence', 0.0)
             
-        # Ignorer les doublons
-        redirect_key = (source, target)
-        if redirect_key in seen:
-            continue
-            
-        seen.add(redirect_key)
-        filtered.append(redirect)
+            # Privilégie la redirection avec la plus haute confidence
+            # IA (confidence > 0) l'emporte toujours sur fallback (confidence = 0)
+            if confidence > existing_confidence:
+                source_map[source] = redirect
+        else:
+            source_map[source] = redirect
     
-    return filtered
+    return list(source_map.values())
 
 
 def generate_balt_xlsx(redirects_data: List[Dict], output_path: str = None, output_dir: str = None) -> str:
@@ -177,12 +191,19 @@ def generate_balt_xlsx(redirects_data: List[Dict], output_path: str = None, outp
         source = redirect.get('source', '')
         target = redirect.get('target', '')
         
+        # Debug: Log des données reçues
+        print(f"[DEBUG EXCEL] Source: '{source}' | Target: '{target}'")
+        
         # Validation: URLs absolues uniquement pour format Balt
         if source.startswith('https://') or source.startswith('http://'):
             if target.startswith('https://') or target.startswith('http://'):
                 worksheet[f'A{current_row}'] = source
                 worksheet[f'B{current_row}'] = target
                 current_row += 1
+            else:
+                print(f"[DEBUG EXCEL] Target invalide (pas absolu): '{target}'")
+        else:
+            print(f"[DEBUG EXCEL] Source invalide (pas absolu): '{source}'")
     
     # Sauvegarde du fichier Excel
     try:
@@ -370,12 +391,39 @@ def interface_ai_avancee():
         
         # Configuration domaine cible
         st.header("🌐 Configuration domaine cible")
+        
+        # Détection intelligente du domaine cible
+        domain_detector = DomainDetector()
+        
+        # Utilise la session state pour persister la suggestion
+        if 'suggested_domain' not in st.session_state:
+            st.session_state.suggested_domain = ""
+        
+        # Recalcule la suggestion si les URLs de l'ancien site changent
+        current_old_urls = getattr(st.session_state, 'old_urls', [])
+        current_old_urls_str = '\n'.join(current_old_urls) if current_old_urls else ""
+        
+        if current_old_urls_str != st.session_state.get('last_old_urls_str', ''):
+            st.session_state.last_old_urls_str = current_old_urls_str
+            if current_old_urls:
+                st.session_state.suggested_domain = domain_detector.suggest_target_domain(
+                    current_old_urls_str, 
+                    st.session_state.get('target_domain_value', '')
+                )
+        
+        # Input avec suggestion intelligente
+        suggested_domain = st.session_state.suggested_domain or ""
+        
         target_domain = st.text_input(
             "Domaine cible pour les redirections",
-            placeholder="https://www.les-cascades.com",
-            help="Domaine complet du nouveau site (sans slash final)",
-            value="https://www.les-cascades.com"  # Valeur par défaut
+            placeholder="https://www.example.com",
+            help="🧠 Auto-détecté depuis l'ancien site. Modifiez si nécessaire.",
+            value=suggested_domain,
+            key="target_domain_input"
         )
+        
+        # Sauvegarde la valeur pour la prochaine suggestion
+        st.session_state.target_domain_value = target_domain
         
         if not target_domain:
             st.error("⚠️ Domaine cible requis pour générer les redirections absolues")
@@ -560,7 +608,12 @@ def interface_ai_avancee():
                     if enable_fallback_302 and all_unmatched:
                         for unmatched_url in all_unmatched:
                             language = extract_language_from_url_path(unmatched_url)
-                            target_fallback = f"{target_domain}/{language}/"
+                            
+                            # Logique française : langue principale à la racine, autres langues avec préfixe
+                            if language == fallback_lang:
+                                target_fallback = f"{target_domain}/"  # Langue principale à la racine
+                            else:
+                                target_fallback = f"{target_domain}/{language}/"  # Autres langues avec préfixe
                             
                             all_redirects.append({
                                 'type': '302',

@@ -2,14 +2,15 @@
 Interface Streamlit pour le générateur de redirections 301 avec scraping automatique
 """
 
-import streamlit as st
+import os
 from dotenv import load_dotenv
 
-# Charge les variables d'environnement depuis .env
+# Charge les variables d'environnement depuis .env AVANT tous les autres imports
 load_dotenv()
+
+import streamlit as st
 import csv
 import io
-import os
 from generator import RedirectGenerator
 from scraper import crawl_site_with_fallback, WebScraper, parse_sitemap
 from language_detector import LanguageDetector
