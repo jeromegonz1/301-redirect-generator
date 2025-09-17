@@ -6,3 +6,4 @@ tldextract==5.3.0
 lxml
 openai
 openpyxl
+uvicorn
