@@ -1,0 +1,99 @@
+# Fire Snake 301 - Git Ignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# Environment variables
+.env
+.env.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Application outputs
+outputs/gpt_cache/*.json
+outputs/htaccess_files/*.txt
+outputs/csv_files/*.csv
+outputs/excel_files/*.xlsx
+
+# Keep output directories but ignore contents
+outputs/gpt_cache/*
+!outputs/gpt_cache/.gitkeep
+outputs/htaccess_files/*
+!outputs/htaccess_files/.gitkeep
+outputs/csv_files/*
+!outputs/csv_files/.gitkeep
+outputs/excel_files/*
+!outputs/excel_files/.gitkeep
+
+# Logs
+*.log
+logs/
+nginx/logs/*.log
+
+# SSL certificates (handled by Let's Encrypt)
+nginx/ssl/*.pem
+nginx/ssl/*.key
+
+# Docker
+.docker/
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Local development
+.env.local
+docker-compose.override.yml
