@@ -6,6 +6,6 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./src:/app
-    command: streamlit run src/main.py --server.port=8000 --server.address=0.0.0.0
+      - ./src:/app/src
+    command: streamlit run /app/src/main.py --server.port=8000 --server.address=0.0.0.0
     restart: always
