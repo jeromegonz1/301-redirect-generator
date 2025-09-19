@@ -15,6 +15,7 @@ from typing import List, Dict, Any
 from urllib.parse import urlparse
 from generator import RedirectGenerator
 from scraper import crawl_site_with_fallback, WebScraper, parse_sitemap
+from src.smart_input_parser import SmartInputParser
 from language_detector import LanguageDetector
 from ai_mapper import AIMapper, AIMatchingError
 from fallback_manager import FallbackManager
@@ -302,7 +303,7 @@ def interface_ai_avancee():
     
     with col1:
         st.subheader("🔗 Ancien site")
-        old_input_mode = st.radio("Mode", ["URL à scraper", "Sitemap XML", "Liste manuelle"], key="old")
+        old_input_mode = st.radio("Mode", ["URL à scraper", "Sitemap XML", "Input universel", "Liste manuelle"], key="old")
         
         if old_input_mode == "URL à scraper":
             old_url = st.text_input("URL de l'ancien site", placeholder="https://ancien-site.com")
@@ -324,6 +325,25 @@ def interface_ai_avancee():
                         st.success(f"✅ {len(old_urls)} URLs extraites du sitemap")
                 else:
                     st.error("Veuillez entrer une URL de sitemap")
+        elif old_input_mode == "Input universel":
+            st.info("🎯 Collez n'importe quel format: XML, JSON, CSV ou liste d'URLs")
+            old_universal_input = st.text_area("Input universel (auto-détection)", height=200, key="old_universal", 
+                                             placeholder="Collez ici votre sitemap XML, JSON, CSV ou liste d'URLs...")
+            if st.button("🧠 Parser avec IA (auto-détection)"):
+                if old_universal_input:
+                    with st.spinner("Auto-détection et parsing en cours..."):
+                        try:
+                            parser = SmartInputParser()
+                            old_urls = parser.detect_and_parse(old_universal_input)
+                            st.session_state.old_urls = old_urls
+                            
+                            # Affiche le format détecté
+                            detected_format = parser.detect_format(old_universal_input)
+                            st.success(f"✅ Format détecté: {detected_format.upper()} | {len(old_urls)} URLs extraites")
+                        except Exception as e:
+                            st.error(f"❌ Erreur parsing: {str(e)}")
+                else:
+                    st.error("Veuillez coller votre input")
         else:
             old_text = st.text_area("URLs (une par ligne)", height=200, key="old_manual")
             if old_text:
@@ -331,7 +351,7 @@ def interface_ai_avancee():
     
     with col2:
         st.subheader("🎯 Nouveau site")
-        new_input_mode = st.radio("Mode", ["Sitemap XML", "Liste manuelle"], key="new")
+        new_input_mode = st.radio("Mode", ["Sitemap XML", "Input universel", "Liste manuelle"], key="new")
         
         if new_input_mode == "Sitemap XML":
             sitemap_url = st.text_input("URL du sitemap", placeholder="https://nouveau-site.com/sitemap.xml")
@@ -343,6 +363,25 @@ def interface_ai_avancee():
                         st.success(f"✅ {len(new_urls)} URLs extraites")
                 else:
                     st.error("Veuillez entrer une URL de sitemap")
+        elif new_input_mode == "Input universel":
+            st.info("🎯 Collez n'importe quel format: XML, JSON, CSV ou liste d'URLs")
+            new_universal_input = st.text_area("Input universel (auto-détection)", height=200, key="new_universal",
+                                             placeholder="Collez ici votre sitemap XML, JSON, CSV ou liste d'URLs...")
+            if st.button("🧠 Parser nouveau site (auto-détection)"):
+                if new_universal_input:
+                    with st.spinner("Auto-détection et parsing en cours..."):
+                        try:
+                            parser = SmartInputParser()
+                            new_urls = parser.detect_and_parse(new_universal_input)
+                            st.session_state.new_urls = new_urls
+                            
+                            # Affiche le format détecté
+                            detected_format = parser.detect_format(new_universal_input)
+                            st.success(f"✅ Format détecté: {detected_format.upper()} | {len(new_urls)} URLs extraites")
+                        except Exception as e:
+                            st.error(f"❌ Erreur parsing: {str(e)}")
+                else:
+                    st.error("Veuillez coller votre input")
         else:
             new_text = st.text_area("URLs (une par ligne)", height=200, key="new_manual")
             if new_text:

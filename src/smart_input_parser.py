@@ -10,7 +10,7 @@ import csv
 import io
 from typing import List, Dict, Any
 from urllib.parse import urlparse
-from smart_input_config import (
+from src.smart_input_config import (
     FORMAT_DETECTION_PATTERNS, 
     EXCLUDED_EXTENSIONS, 
     PARSING_LIMITS
