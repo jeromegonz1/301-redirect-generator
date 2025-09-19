@@ -9,6 +9,7 @@ import math
 from typing import List, Dict, Any, Optional, Tuple
 from dataclasses import dataclass
 from openai import OpenAI
+from url_cleaner import URLCleaner
 
 
 class AIMatchingError(Exception):
@@ -64,6 +65,9 @@ class AIMapper:
         # Coûts approximatifs (USD pour 1K tokens)
         self.cost_per_1k_input = 0.0015  # GPT-3.5-turbo input
         self.cost_per_1k_output = 0.002  # GPT-3.5-turbo output
+        
+        # Nettoyeur d'URLs pour les destinations
+        self.url_cleaner = URLCleaner()
     
     def match_urls(self, old_urls: List[str], new_urls: List[str], 
                    contexte_metier: str = "", langue: str = "fr",
@@ -84,8 +88,11 @@ class AIMapper:
         if not old_urls or not new_urls:
             return MatchResult(correspondances=[], non_matchees=old_urls)
         
+        # Nettoyage des URLs de destination (suppression /les-cascades/)
+        cleaned_new_urls = self.url_cleaner.clean_urls(new_urls)
+        
         # Chunking pour gérer les gros volumes
-        chunks = self._create_chunks(old_urls, new_urls, self.chunk_size)
+        chunks = self._create_chunks(old_urls, cleaned_new_urls, self.chunk_size)
         
         all_correspondances = []
         all_non_matchees = []

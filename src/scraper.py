@@ -252,7 +252,16 @@ def parse_sitemap(sitemap_url: str, recursive: bool = True, _visited: set = None
             'Connection': 'keep-alive'
         }
         
+        # Essayer d'abord avec headers simples
         response = requests.get(sitemap_url, headers=headers, timeout=30)
+        
+        # Si bloqué par Cloudflare, essayer le bypass
+        if response.status_code == 403 or 'cloudflare' in response.text.lower():
+            from cloudflare_bypass import CloudflareBypass
+            bypass = CloudflareBypass()
+            bypass_response = bypass.fetch_with_bypass(sitemap_url)
+            if bypass_response and bypass_response.status_code == 200:
+                response = bypass_response
         response.raise_for_status()
         
         # Parse le XML avec BeautifulSoup (plus robuste)

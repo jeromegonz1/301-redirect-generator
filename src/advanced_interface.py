@@ -18,7 +18,9 @@ from scraper import crawl_site_with_fallback, WebScraper, parse_sitemap
 from language_detector import LanguageDetector
 from ai_mapper import AIMapper, AIMatchingError
 from fallback_manager import FallbackManager
+from media_filter import MediaFilter
 from domain_detector import DomainDetector
+from manual_input import ManualInputParser
 from cache_manager import CacheManager
 from fallback_302_intelligent import Fallback302Intelligent
 
@@ -318,15 +320,43 @@ def interface_ai_avancee():
             if st.button("🗺️ Parser sitemap ancien site"):
                 if old_sitemap_url:
                     with st.spinner("Parsing du sitemap..."):
-                        old_urls = parse_sitemap(old_sitemap_url)
+                        old_urls_raw = parse_sitemap(old_sitemap_url)
+                        # Filtrage des fichiers médias
+                        media_filter = MediaFilter()
+                        old_urls = media_filter.filter_urls(old_urls_raw)
+                        stats = media_filter.get_filtered_statistics(old_urls_raw)
+                        
                         st.session_state.old_urls = old_urls
                         st.success(f"✅ {len(old_urls)} URLs extraites du sitemap")
+                        if stats['removed'] > 0:
+                            st.info(f"🖼️ {stats['removed']} fichiers médias filtrés ({stats['removal_percentage']}%)")
                 else:
                     st.error("Veuillez entrer une URL de sitemap")
         else:
-            old_text = st.text_area("URLs (une par ligne)", height=200, key="old_manual")
-            if old_text:
-                st.session_state.old_urls = [url.strip() for url in old_text.split('\n') if url.strip()]
+            old_text = st.text_area("🔗 URLs de l'ancien site (une par ligne)", 
+                                   height=200, key="old_manual",
+                                   help="Collez vos URLs ici, une par ligne. Les URLs invalides seront automatiquement filtrées.")
+            
+            if st.button("✅ Valider les URLs de l'ancien site") and old_text:
+                parser = ManualInputParser()
+                old_urls = parser.parse_urls(old_text)
+                stats = parser.get_last_statistics()
+                errors = parser.get_last_errors()
+                
+                st.session_state.old_urls = old_urls
+                
+                # Affichage des résultats
+                if old_urls:
+                    st.success(f"✅ {stats['valid_urls']} URLs valides extraites")
+                    
+                if stats['invalid_urls'] > 0:
+                    st.warning(f"⚠️ {stats['invalid_urls']} URLs invalides ignorées")
+                    with st.expander("Voir les erreurs"):
+                        for error in errors:
+                            st.error(error)
+                            
+                if stats['empty_lines'] > 0:
+                    st.info(f"ℹ️ {stats['empty_lines']} lignes vides ignorées")
     
     with col2:
         st.subheader("🎯 Nouveau site")
@@ -337,15 +367,51 @@ def interface_ai_avancee():
             if st.button("🗺️ Parser sitemap"):
                 if sitemap_url:
                     with st.spinner("Parsing du sitemap..."):
-                        new_urls = parse_sitemap(sitemap_url)
+                        new_urls_raw = parse_sitemap(sitemap_url)
+                        # Filtrage des fichiers médias
+                        media_filter = MediaFilter()
+                        new_urls = media_filter.filter_urls(new_urls_raw)
+                        stats = media_filter.get_filtered_statistics(new_urls_raw)
+                        
                         st.session_state.new_urls = new_urls
                         st.success(f"✅ {len(new_urls)} URLs extraites")
+                        if stats['removed'] > 0:
+                            st.info(f"🖼️ {stats['removed']} fichiers médias filtrés ({stats['removal_percentage']}%)")
                 else:
                     st.error("Veuillez entrer une URL de sitemap")
         else:
-            new_text = st.text_area("URLs (une par ligne)", height=200, key="new_manual")
-            if new_text:
-                st.session_state.new_urls = [url.strip() for url in new_text.split('\n') if url.strip()]
+            new_text = st.text_area("🎯 URLs du nouveau site (une par ligne)", 
+                                   height=200, key="new_manual",
+                                   help="Collez vos URLs ici, une par ligne. Les URLs invalides seront automatiquement filtrées.")
+            
+            if st.button("✅ Valider les URLs du nouveau site") and new_text:
+                parser = ManualInputParser()
+                new_urls_raw = parser.parse_urls(new_text)
+                stats = parser.get_last_statistics()
+                errors = parser.get_last_errors()
+                
+                # Appliquer le filtrage des médias
+                media_filter = MediaFilter()
+                new_urls = media_filter.filter_urls(new_urls_raw)
+                media_stats = media_filter.get_filtered_statistics(new_urls_raw)
+                
+                st.session_state.new_urls = new_urls
+                
+                # Affichage des résultats
+                if new_urls:
+                    st.success(f"✅ {stats['valid_urls']} URLs valides extraites")
+                    
+                if media_stats['removed'] > 0:
+                    st.info(f"🖼️ {media_stats['removed']} fichiers médias filtrés ({media_stats['removal_percentage']}%)")
+                    
+                if stats['invalid_urls'] > 0:
+                    st.warning(f"⚠️ {stats['invalid_urls']} URLs invalides ignorées")
+                    with st.expander("Voir les erreurs"):
+                        for error in errors:
+                            st.error(error)
+                            
+                if stats['empty_lines'] > 0:
+                    st.info(f"ℹ️ {stats['empty_lines']} lignes vides ignorées")
     
     # Affichage des URLs collectées avec analyse linguistique
     if hasattr(st.session_state, 'old_urls') and hasattr(st.session_state, 'new_urls'):
@@ -905,9 +971,16 @@ def interface_classique():
         if st.button("🗺️ Parser le sitemap"):
             if sitemap_url:
                 with st.spinner("Parsing du sitemap..."):
-                    new_urls = parse_sitemap(sitemap_url)
+                    new_urls_raw = parse_sitemap(sitemap_url)
+                    # Filtrage des fichiers médias
+                    media_filter = MediaFilter()
+                    new_urls = media_filter.filter_urls(new_urls_raw)
+                    stats = media_filter.get_filtered_statistics(new_urls_raw)
+                    
                     st.session_state.new_urls_sitemap = new_urls
                     st.success(f"✅ {len(new_urls)} URLs extraites du sitemap!")
+                    if stats['removed'] > 0:
+                        st.info(f"🖼️ {stats['removed']} fichiers médias filtrés ({stats['removal_percentage']}%)")
             else:
                 st.error("❌ Veuillez entrer l'URL du sitemap.")
         
