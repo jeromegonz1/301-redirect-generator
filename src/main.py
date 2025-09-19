@@ -79,11 +79,11 @@ def main():
     # Sélection du mode
     mode = st.radio(
         "🔧 Mode de génération",
-        ["🚀 Mode IA (Sprint 2)", "🔄 Mode classique"],
+        ["🚀 Mode IA avancé", "🔄 Mode classique"],
         horizontal=True
     )
     
-    if mode == "🚀 Mode IA (Sprint 2)":
+    if mode == "🚀 Mode IA avancé":
         from advanced_interface import interface_ai_avancee
         interface_ai_avancee()
     else:
@@ -447,7 +447,7 @@ def interface_classique_legacy():
     # Instructions pour les deux modes
     with st.expander("📋 Instructions & aide"):
         st.markdown("""
-        ### 🚀 Mode IA (Sprint 2) - Recommandé
+        ### 🚀 Mode IA avancé - Recommandé
         
         #### ✨ Fonctionnalités avancées
         - **IA sémantique GPT-3.5** : Matching intelligent des URLs par similarité sémantique

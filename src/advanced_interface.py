@@ -241,7 +241,7 @@ def interface_ai_avancee():
     
     # Vérification de la clé API
     if not os.getenv("OPENAI_API_KEY"):
-        st.error("❌ Clé API OpenAI manquante. Veuillez la configurer dans les secrets Replit.")
+        st.error("❌ Clé API OpenAI manquante. Veuillez la configurer dans le fichier .env")
         return
     
     # Configuration IA
