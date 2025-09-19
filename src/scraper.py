@@ -245,8 +245,11 @@ def parse_sitemap(sitemap_url: str, recursive: bool = True, _visited: set = None
     try:
         # Configuration du user-agent pour éviter les blocages
         headers = {
-            'User-Agent': '301-Redirect-Bot (Sitemap Parser)',
-            'Accept': 'application/xml,text/xml,application/xhtml+xml'
+            'User-Agent': 'Mozilla/5.0 (compatible; FireSnake301Bot/1.0; +https://fire-snake-301.fr)',
+            'Accept': 'application/xml,text/xml,application/xhtml+xml,*/*',
+            'Accept-Language': 'fr-FR,fr;q=0.9,en;q=0.8',
+            'Accept-Encoding': 'gzip, deflate',
+            'Connection': 'keep-alive'
         }
         
         response = requests.get(sitemap_url, headers=headers, timeout=30)

@@ -401,7 +401,14 @@ def interface_ai_avancee():
         
         # Recalcule la suggestion si les URLs de l'ancien site changent
         current_old_urls = getattr(st.session_state, 'old_urls', [])
-        current_old_urls_str = '\n'.join(current_old_urls) if current_old_urls else ""
+        # Flatten si on a des listes dans les URLs
+        flattened_urls = []
+        for url in current_old_urls:
+            if isinstance(url, list):
+                flattened_urls.extend(url)
+            else:
+                flattened_urls.append(url)
+        current_old_urls_str = '\n'.join(flattened_urls) if flattened_urls else ""
         
         if current_old_urls_str != st.session_state.get('last_old_urls_str', ''):
             st.session_state.last_old_urls_str = current_old_urls_str
