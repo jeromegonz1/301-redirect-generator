@@ -12,9 +12,10 @@ echo "========================================="
 
 cd $APP_DIR
 
-# 1. Pull des dernières modifications
+# 1. Pull des dernières modifications et checkout tag v1.2.0
 echo "📥 Récupération des dernières modifications..."
-git pull origin main
+git fetch origin
+git checkout v1.2.0
 
 # 2. Rebuild et restart des conteneurs
 echo "🔨 Reconstruction des conteneurs..."

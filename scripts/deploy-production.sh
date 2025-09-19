@@ -29,11 +29,10 @@ if [ -f "nginx/conf.d/fire-snake-301.conf" ]; then
     cp nginx/conf.d/fire-snake-301.conf nginx/conf.d/fire-snake-301.conf.backup
 fi
 
-# 3. Récupérer les dernières modifications depuis git
+# 3. Récupérer les dernières modifications et checkout tag v1.2.0
 echo "📥 Récupération des dernières modifications..."
 git fetch origin
-git checkout main
-git pull origin main
+git checkout v1.2.0
 
 # 4. Restaurer le fichier .env
 if [ -f ".env.backup."* ]; then
