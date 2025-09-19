@@ -326,9 +326,36 @@ def interface_ai_avancee():
                 else:
                     st.error("Veuillez entrer une URL de sitemap")
         elif old_input_mode == "Input universel":
-            st.info("🎯 Collez n'importe quel format: XML, JSON, CSV ou liste d'URLs")
-            old_universal_input = st.text_area("Input universel (auto-détection)", height=200, key="old_universal", 
-                                             placeholder="Collez ici votre sitemap XML, JSON, CSV ou liste d'URLs...")
+            st.info("🎯 **Formats supportés :** XML Sitemap, JSON Array, CSV avec headers, Liste d'URLs (une par ligne)")
+            
+            with st.expander("📋 Exemples de formats supportés"):
+                st.code("""
+XML Sitemap:
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://site.com/page1</loc></url>
+  <url><loc>https://site.com/page2</loc></url>
+</urlset>
+
+JSON Array:
+["https://site.com/page1", "https://site.com/page2"]
+
+CSV avec header:
+url,title,status
+https://site.com/page1,Page 1,200
+https://site.com/page2,Page 2,200
+
+Liste simple:
+https://site.com/page1
+https://site.com/page2
+                """, language="text")
+            
+            old_universal_input = st.text_area(
+                "Input universel (auto-détection)", 
+                height=200, 
+                key="old_universal", 
+                placeholder="Collez ici votre contenu - Le format sera détecté automatiquement...",
+                help="✨ Formats auto-détectés: XML Sitemap • JSON Array • CSV avec headers • Liste d'URLs\n⚡ Les espaces et caractères parasites sont automatiquement nettoyés"
+            )
             if st.button("🧠 Parser avec IA (auto-détection)"):
                 if old_universal_input:
                     with st.spinner("Auto-détection et parsing en cours..."):
@@ -337,9 +364,18 @@ def interface_ai_avancee():
                             old_urls = parser.detect_and_parse(old_universal_input)
                             st.session_state.old_urls = old_urls
                             
-                            # Affiche le format détecté
+                            # Affiche le format détecté avec style
                             detected_format = parser.detect_format(old_universal_input)
-                            st.success(f"✅ Format détecté: {detected_format.upper()} | {len(old_urls)} URLs extraites")
+                            st.success(f"✅ **Format détecté: {detected_format.upper()}** | {len(old_urls)} URLs extraites avec succès")
+                            
+                            if detected_format == 'xml':
+                                st.info("🗺️ Sitemap XML parsé - Espaces automatiquement nettoyés")
+                            elif detected_format == 'json':
+                                st.info("📋 JSON Array parsé - Format moderne détecté")
+                            elif detected_format == 'csv':
+                                st.info("📊 CSV parsé - Headers automatiquement détectés")
+                            else:
+                                st.info("📝 Liste d'URLs parsée - Format texte simple")
                         except Exception as e:
                             st.error(f"❌ Erreur parsing: {str(e)}")
                 else:
@@ -364,9 +400,36 @@ def interface_ai_avancee():
                 else:
                     st.error("Veuillez entrer une URL de sitemap")
         elif new_input_mode == "Input universel":
-            st.info("🎯 Collez n'importe quel format: XML, JSON, CSV ou liste d'URLs")
-            new_universal_input = st.text_area("Input universel (auto-détection)", height=200, key="new_universal",
-                                             placeholder="Collez ici votre sitemap XML, JSON, CSV ou liste d'URLs...")
+            st.info("🎯 **Formats supportés :** XML Sitemap, JSON Array, CSV avec headers, Liste d'URLs (une par ligne)")
+            
+            with st.expander("📋 Exemples de formats supportés"):
+                st.code("""
+XML Sitemap:
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://nouveau-site.com/page1</loc></url>
+  <url><loc>https://nouveau-site.com/fr/page2</loc></url>
+</urlset>
+
+JSON Array:
+["https://nouveau-site.com/page1", "https://nouveau-site.com/fr/page2"]
+
+CSV avec header:
+url,title,status
+https://nouveau-site.com/page1,Page 1,200
+https://nouveau-site.com/fr/page2,Page 2,200
+
+Liste simple:
+https://nouveau-site.com/page1
+https://nouveau-site.com/fr/page2
+                """, language="text")
+            
+            new_universal_input = st.text_area(
+                "Input universel (auto-détection)", 
+                height=200, 
+                key="new_universal",
+                placeholder="Collez ici votre contenu - Le format sera détecté automatiquement...",
+                help="✨ Formats auto-détectés: XML Sitemap • JSON Array • CSV avec headers • Liste d'URLs\n⚡ Les espaces et caractères parasites sont automatiquement nettoyés"
+            )
             if st.button("🧠 Parser nouveau site (auto-détection)"):
                 if new_universal_input:
                     with st.spinner("Auto-détection et parsing en cours..."):
@@ -375,9 +438,18 @@ def interface_ai_avancee():
                             new_urls = parser.detect_and_parse(new_universal_input)
                             st.session_state.new_urls = new_urls
                             
-                            # Affiche le format détecté
+                            # Affiche le format détecté avec style
                             detected_format = parser.detect_format(new_universal_input)
-                            st.success(f"✅ Format détecté: {detected_format.upper()} | {len(new_urls)} URLs extraites")
+                            st.success(f"✅ **Format détecté: {detected_format.upper()}** | {len(new_urls)} URLs extraites avec succès")
+                            
+                            if detected_format == 'xml':
+                                st.info("🗺️ Sitemap XML parsé - Espaces automatiquement nettoyés")
+                            elif detected_format == 'json':
+                                st.info("📋 JSON Array parsé - Format moderne détecté")
+                            elif detected_format == 'csv':
+                                st.info("📊 CSV parsé - Headers automatiquement détectés")
+                            else:
+                                st.info("📝 Liste d'URLs parsée - Format texte simple")
                         except Exception as e:
                             st.error(f"❌ Erreur parsing: {str(e)}")
                 else:
