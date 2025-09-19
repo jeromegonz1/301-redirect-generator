@@ -15,7 +15,7 @@ from typing import List, Dict, Any
 from urllib.parse import urlparse
 from generator import RedirectGenerator
 from scraper import crawl_site_with_fallback, WebScraper, parse_sitemap
-from src.smart_input_parser import SmartInputParser
+from smart_input_parser import SmartInputParser
 from language_detector import LanguageDetector
 from ai_mapper import AIMapper, AIMatchingError
 from fallback_manager import FallbackManager

@@ -7,7 +7,7 @@ import time
 import random
 from typing import Callable, Any, Optional, Dict, Type
 from urllib.parse import urlparse
-from src.smart_input_config import RETRY_CONFIG
+from smart_input_config import RETRY_CONFIG
 
 
 class SmartRetry:

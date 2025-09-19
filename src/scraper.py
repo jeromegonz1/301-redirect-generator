@@ -14,8 +14,8 @@ import logging
 import xml.etree.ElementTree as ET
 
 # Import des nouveaux composants intelligents
-from src.smart_headers import SmartHeaders
-from src.smart_retry import SmartRetry
+from smart_headers import SmartHeaders
+from smart_retry import SmartRetry
 
 # Configuration du logging silencieux
 logging.getLogger("requests").setLevel(logging.WARNING)

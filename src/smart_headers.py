@@ -7,7 +7,7 @@ import random
 import requests
 from typing import Dict, Optional, List
 from urllib.parse import urlparse
-from src.smart_input_config import DEFAULT_HTTP_HEADERS
+from smart_input_config import DEFAULT_HTTP_HEADERS
 
 
 class SmartHeaders:
