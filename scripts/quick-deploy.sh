@@ -17,15 +17,22 @@ echo "📥 Récupération des dernières modifications..."
 git fetch origin
 git checkout v1.2.0
 
-# 2. Rebuild et restart des conteneurs
+# 2. Arrêt propre des conteneurs
+echo "⏹️ Arrêt des conteneurs existants..."
+docker-compose -f docker-compose.prod.yml down -v --remove-orphans
+
+# 3. Nettoyage préventif Docker (évite les erreurs ContainerConfig)
+echo "🧹 Nettoyage Docker complet..."
+docker container prune -f
+docker image prune -af
+docker volume prune -f
+docker builder prune -af
+
+# 4. Rebuild et restart des conteneurs
 echo "🔨 Reconstruction des conteneurs..."
-docker-compose -f docker-compose.prod.yml up -d --build
+docker-compose -f docker-compose.prod.yml up -d --build --force-recreate
 
-# 3. Nettoyage des images inutilisées
-echo "🧹 Nettoyage des anciennes images..."
-docker image prune -f
-
-# 4. Vérification
+# 5. Vérification
 echo "✅ Vérification du déploiement..."
 sleep 5
 docker-compose -f docker-compose.prod.yml ps

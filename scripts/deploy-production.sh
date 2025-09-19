@@ -46,14 +46,19 @@ if [ -f "nginx/conf.d/fire-snake-301.conf.backup" ]; then
     cp nginx/conf.d/fire-snake-301.conf.backup nginx/conf.d/fire-snake-301.conf
 fi
 
-# 6. Reconstruire et redémarrer les conteneurs
-echo "🔨 Reconstruction des conteneurs Docker..."
-docker-compose -f docker-compose.prod.yml down
-docker-compose -f docker-compose.prod.yml up -d --build
+# 6. Arrêt propre et nettoyage préventif
+echo "⏹️ Arrêt des conteneurs existants..."
+docker-compose -f docker-compose.prod.yml down -v --remove-orphans
 
-# 7. Nettoyer les vieilles images Docker
-echo "🧹 Nettoyage des images Docker inutilisées..."
-docker system prune -f
+echo "🧹 Nettoyage Docker complet (évite les erreurs ContainerConfig)..."
+docker container prune -f
+docker image prune -af
+docker volume prune -f
+docker builder prune -af
+
+# 7. Reconstruire et redémarrer les conteneurs
+echo "🔨 Reconstruction des conteneurs Docker..."
+docker-compose -f docker-compose.prod.yml up -d --build --force-recreate
 
 # 8. Afficher le statut
 echo ""
