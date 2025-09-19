@@ -1,44 +1,85 @@
-📄 README.md – Présentation & Instructions
 # 🔥🐍 Fire Snake 301
 
-Générez vos redirections 301 en un clic.  
-📦 Pas besoin de coder. 🧠 Pas besoin de réfléchir.  
-🚀 Copiez vos anciennes et nouvelles URLs, et obtenez un `.htaccess` prêt à coller sur votre serveur.
+**v1.2.0** - Générateur de redirections 301 avec IA sémantique
+
+Générez vos redirections 301 intelligemment avec l'IA.  
+📦 Pas besoin de coder. 🧠 L'IA comprend vos URLs.  
+🚀 Collez n'importe quel format d'URLs et obtenez un `.htaccess` prêt pour production.
 
 ---
 
 ## 🎯 Objectif
 
-Cet outil est conçu pour les chefs de projet, intégrateurs ou responsables SEO.  
-Il automatise la génération des redirections 301 entre un **ancien site** et un **nouveau site** après une refonte.
+Outil professionnel pour chefs de projet, intégrateurs et responsables SEO.  
+Automatise la génération des redirections 301/302 entre un **ancien site** et un **nouveau site** après une refonte.
 
-> 🧠 Toute la magie réside dans le gain de temps offert.  
-> 👉 **Vous ne faites que copier-coller vos URLs.**
+> 🧠 **Nouveauté v1.2.0** : IA sémantique + Parser universel  
+> 👉 **L'IA comprend le sens de vos URLs pour un matching intelligent.**
 
 ---
 
-## ✅ Fonctionnalités
+## ✨ Fonctionnalités v1.2.0
 
-- 🔸 Accepte :
-  - Sitemap XML (balises `<loc>`)
-  - Liste brute d’URLs (une par ligne)
-  - CSV collé (deux colonnes)
+### 🧠 **IA Sémantique**
+- **Matching intelligent** avec GPT-3.5-turbo
+- **Compréhension multilingue** automatique  
+- **Contexte métier** pour optimiser les correspondances
+- **Fallback 302** intelligent vers pages d'accueil
 
-- 🔸 Génère automatiquement :
-  - Un fichier `.htaccess` :
-    ```
-    Redirect 301 https://ancien-site.com/page /nouvelle-page
-    ```
-  - Un fichier `.csv` d’audit avec :
-    ```
-    OLD_FULL_URL, OLD_PATH, NEW_FULL_URL, NEW_PATH
-    ```
+### 🎯 **Input Universel** 
+- **Auto-détection de format** : XML, JSON, CSV, Text
+- **Sitemap XML** avec namespaces et sous-sitemaps
+- **JSON Arrays** modernes
+- **CSV avec headers** automatiquement détectés
+- **Nettoyage automatique** des espaces et caractères parasites
 
-- 🔸 Interface super simple :
-  - Deux zones de texte
-  - Bouton "Générer"
-  - Aperçu des résultats
-  - Boutons de téléchargement
+### 🚀 **Crawler Intelligent**
+- **Headers HTTP adaptatifs** (7 User-Agents en rotation)
+- **Retry automatique** avec backoff exponentiel
+- **Contournement Cloudflare** et protection anti-bot
+- **Gestion rate limiting** (header Retry-After)
+
+### 📄 **Génération**
+- **Fichier .htaccess** avec URLs absolues
+- **Export CSV** détaillé avec confidences
+- **Export Excel** format Balt (Septeo CMS)
+- **Commentaires IA** expliquant chaque redirection
+
+---
+
+## 🚀 Démarrage rapide
+
+### Installation
+
+```bash
+git clone https://github.com/jeromegonz1/301-redirect-generator.git
+cd 301-redirect-generator
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+pip install -r requirements.txt
+```
+
+### Configuration
+
+```bash
+# Créer le fichier .env
+echo "OPENAI_API_KEY=your-openai-api-key" > .env
+```
+
+### Lancement
+
+```bash
+streamlit run app.py
+```
+
+L'application sera disponible sur **http://localhost:8501**
+
+### Test avec Input Universel
+
+1. Sélectionnez **"Input universel"** dans l'interface
+2. Collez votre sitemap XML, JSON, CSV ou liste d'URLs  
+3. L'IA détecte automatiquement le format
+4. Obtenez vos redirections 301/302 intelligentes !
 
 ---
 
