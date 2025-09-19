@@ -402,6 +402,13 @@ def interface_ai_avancee():
         
         # Recalcule la suggestion si les URLs de l'ancien site changent
         current_old_urls = getattr(st.session_state, 'old_urls', [])
+        # S'assurer que current_old_urls contient des strings, pas des listes
+        if current_old_urls and isinstance(current_old_urls[0], list):
+            # Aplatir si c'est une liste de listes
+            current_old_urls = [url for sublist in current_old_urls for url in sublist if isinstance(url, str)]
+        elif current_old_urls:
+            # S'assurer que tous les éléments sont des strings
+            current_old_urls = [str(url) for url in current_old_urls if url]
         current_old_urls_str = '\n'.join(current_old_urls) if current_old_urls else ""
         
         if current_old_urls_str != st.session_state.get('last_old_urls_str', ''):
