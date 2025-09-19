@@ -15,6 +15,7 @@ from typing import List, Dict, Any
 from urllib.parse import urlparse
 from generator import RedirectGenerator
 from scraper import crawl_site_with_fallback, WebScraper, parse_sitemap
+from src.smart_input_parser import SmartInputParser
 from language_detector import LanguageDetector
 from ai_mapper import AIMapper, AIMatchingError
 from fallback_manager import FallbackManager
@@ -240,7 +241,7 @@ def interface_ai_avancee():
     
     # Vérification de la clé API
     if not os.getenv("OPENAI_API_KEY"):
-        st.error("❌ Clé API OpenAI manquante. Veuillez la configurer dans les secrets Replit.")
+        st.error("❌ Clé API OpenAI manquante. Veuillez la configurer dans le fichier .env")
         return
     
     # Configuration IA
@@ -302,7 +303,7 @@ def interface_ai_avancee():
     
     with col1:
         st.subheader("🔗 Ancien site")
-        old_input_mode = st.radio("Mode", ["URL à scraper", "Sitemap XML", "Liste manuelle"], key="old")
+        old_input_mode = st.radio("Mode", ["URL à scraper", "Sitemap XML", "Input universel", "Liste manuelle"], key="old")
         
         if old_input_mode == "URL à scraper":
             old_url = st.text_input("URL de l'ancien site", placeholder="https://ancien-site.com")
@@ -324,6 +325,61 @@ def interface_ai_avancee():
                         st.success(f"✅ {len(old_urls)} URLs extraites du sitemap")
                 else:
                     st.error("Veuillez entrer une URL de sitemap")
+        elif old_input_mode == "Input universel":
+            st.info("🎯 **Formats supportés :** XML Sitemap, JSON Array, CSV avec headers, Liste d'URLs (une par ligne)")
+            
+            with st.expander("📋 Exemples de formats supportés"):
+                st.code("""
+XML Sitemap:
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://site.com/page1</loc></url>
+  <url><loc>https://site.com/page2</loc></url>
+</urlset>
+
+JSON Array:
+["https://site.com/page1", "https://site.com/page2"]
+
+CSV avec header:
+url,title,status
+https://site.com/page1,Page 1,200
+https://site.com/page2,Page 2,200
+
+Liste simple:
+https://site.com/page1
+https://site.com/page2
+                """, language="text")
+            
+            old_universal_input = st.text_area(
+                "Input universel (auto-détection)", 
+                height=200, 
+                key="old_universal", 
+                placeholder="Collez ici votre contenu - Le format sera détecté automatiquement...",
+                help="✨ Formats auto-détectés: XML Sitemap • JSON Array • CSV avec headers • Liste d'URLs\n⚡ Les espaces et caractères parasites sont automatiquement nettoyés"
+            )
+            if st.button("🧠 Parser avec IA (auto-détection)"):
+                if old_universal_input:
+                    with st.spinner("Auto-détection et parsing en cours..."):
+                        try:
+                            parser = SmartInputParser()
+                            old_urls = parser.detect_and_parse(old_universal_input)
+                            st.session_state.old_urls = old_urls
+                            
+                            # Affiche le format détecté avec style
+                            detected_format = parser.detect_format(old_universal_input)
+                            st.success(f"✅ **Format détecté: {detected_format.upper()}** | {len(old_urls)} URLs extraites avec succès")
+                            
+                            if detected_format == 'xml':
+                                st.info("🗺️ Sitemap XML parsé - Espaces automatiquement nettoyés")
+                            elif detected_format == 'json':
+                                st.info("📋 JSON Array parsé - Format moderne détecté")
+                            elif detected_format == 'csv':
+                                st.info("📊 CSV parsé - Headers automatiquement détectés")
+                            else:
+                                st.info("📝 Liste d'URLs parsée - Format texte simple")
+                        except Exception as e:
+                            st.error(f"❌ Erreur parsing: {str(e)}")
+                else:
+                    st.error("Veuillez coller votre input")
         else:
             old_text = st.text_area("URLs (une par ligne)", height=200, key="old_manual")
             if old_text:
@@ -331,7 +387,7 @@ def interface_ai_avancee():
     
     with col2:
         st.subheader("🎯 Nouveau site")
-        new_input_mode = st.radio("Mode", ["Sitemap XML", "Liste manuelle"], key="new")
+        new_input_mode = st.radio("Mode", ["Sitemap XML", "Input universel", "Liste manuelle"], key="new")
         
         if new_input_mode == "Sitemap XML":
             sitemap_url = st.text_input("URL du sitemap", placeholder="https://nouveau-site.com/sitemap.xml")
@@ -343,6 +399,61 @@ def interface_ai_avancee():
                         st.success(f"✅ {len(new_urls)} URLs extraites")
                 else:
                     st.error("Veuillez entrer une URL de sitemap")
+        elif new_input_mode == "Input universel":
+            st.info("🎯 **Formats supportés :** XML Sitemap, JSON Array, CSV avec headers, Liste d'URLs (une par ligne)")
+            
+            with st.expander("📋 Exemples de formats supportés"):
+                st.code("""
+XML Sitemap:
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://nouveau-site.com/page1</loc></url>
+  <url><loc>https://nouveau-site.com/fr/page2</loc></url>
+</urlset>
+
+JSON Array:
+["https://nouveau-site.com/page1", "https://nouveau-site.com/fr/page2"]
+
+CSV avec header:
+url,title,status
+https://nouveau-site.com/page1,Page 1,200
+https://nouveau-site.com/fr/page2,Page 2,200
+
+Liste simple:
+https://nouveau-site.com/page1
+https://nouveau-site.com/fr/page2
+                """, language="text")
+            
+            new_universal_input = st.text_area(
+                "Input universel (auto-détection)", 
+                height=200, 
+                key="new_universal",
+                placeholder="Collez ici votre contenu - Le format sera détecté automatiquement...",
+                help="✨ Formats auto-détectés: XML Sitemap • JSON Array • CSV avec headers • Liste d'URLs\n⚡ Les espaces et caractères parasites sont automatiquement nettoyés"
+            )
+            if st.button("🧠 Parser nouveau site (auto-détection)"):
+                if new_universal_input:
+                    with st.spinner("Auto-détection et parsing en cours..."):
+                        try:
+                            parser = SmartInputParser()
+                            new_urls = parser.detect_and_parse(new_universal_input)
+                            st.session_state.new_urls = new_urls
+                            
+                            # Affiche le format détecté avec style
+                            detected_format = parser.detect_format(new_universal_input)
+                            st.success(f"✅ **Format détecté: {detected_format.upper()}** | {len(new_urls)} URLs extraites avec succès")
+                            
+                            if detected_format == 'xml':
+                                st.info("🗺️ Sitemap XML parsé - Espaces automatiquement nettoyés")
+                            elif detected_format == 'json':
+                                st.info("📋 JSON Array parsé - Format moderne détecté")
+                            elif detected_format == 'csv':
+                                st.info("📊 CSV parsé - Headers automatiquement détectés")
+                            else:
+                                st.info("📝 Liste d'URLs parsée - Format texte simple")
+                        except Exception as e:
+                            st.error(f"❌ Erreur parsing: {str(e)}")
+                else:
+                    st.error("Veuillez coller votre input")
         else:
             new_text = st.text_area("URLs (une par ligne)", height=200, key="new_manual")
             if new_text:
