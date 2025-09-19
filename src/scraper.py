@@ -13,6 +13,10 @@ import time
 import logging
 import xml.etree.ElementTree as ET
 
+# Import des nouveaux composants intelligents
+from smart_headers import SmartHeaders
+from smart_retry import SmartRetry
+
 # Configuration du logging silencieux
 logging.getLogger("requests").setLevel(logging.WARNING)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
@@ -22,10 +26,14 @@ class WebScraper:
     """Scraper intelligent pour extraire les URLs internes d'un site"""
     
     def __init__(self):
-        self.session = requests.Session()
-        self.session.headers.update({
-            'User-Agent': '301-Redirect-Bot'
-        })
+        # Initialiser les composants intelligents
+        self.smart_headers = SmartHeaders()
+        self.smart_retry = SmartRetry()
+        
+        # Créer une session avec headers intelligents
+        self.session = self.smart_headers.create_session()
+        
+        print("✨ WebScraper initialisé avec composants intelligents")
     
     def normalize_url(self, url: str) -> str:
         """Normalise une URL en supprimant query strings, fragments, trailing slash"""
@@ -243,14 +251,20 @@ def parse_sitemap(sitemap_url: str, recursive: bool = True, _visited: set = None
     urls = []
     
     try:
-        # Configuration du user-agent pour éviter les blocages
-        headers = {
-            'User-Agent': '301-Redirect-Bot (Sitemap Parser)',
-            'Accept': 'application/xml,text/xml,application/xhtml+xml'
-        }
+        # Utiliser SmartHeaders et SmartRetry pour une récupération intelligente
+        smart_headers = SmartHeaders()
+        smart_retry = SmartRetry()
         
-        response = requests.get(sitemap_url, headers=headers, timeout=30)
-        response.raise_for_status()
+        def fetch_sitemap():
+            headers = smart_headers.get_headers_for_content_type('xml')
+            headers.update(smart_headers.get_headers_for_url(sitemap_url))
+            
+            response = requests.get(sitemap_url, headers=headers, timeout=30)
+            response.raise_for_status()
+            return response
+        
+        # Exécuter avec retry automatique
+        response = smart_retry.execute_http_with_retry(fetch_sitemap)
         
         # Parse le XML avec BeautifulSoup (plus robuste)
         soup = BeautifulSoup(response.content, 'xml')
