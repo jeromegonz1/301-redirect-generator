@@ -43,6 +43,7 @@ WORKDIR /app
 COPY ./src /app/src
 COPY ./tests /app/tests
 COPY ./outputs /app/outputs
+COPY ./app.py /app/app.py
 
 # Create outputs directories if they don't exist
 RUN mkdir -p /app/outputs/gpt_cache /app/outputs/htaccess_files
@@ -55,4 +56,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
 EXPOSE 8501
 
 # Run Streamlit
-CMD ["streamlit", "run", "/app/src/main.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.enableCORS=false", "--server.enableXsrfProtection=false"]
+CMD ["streamlit", "run", "/app/app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.enableCORS=false", "--server.enableXsrfProtection=false"]
