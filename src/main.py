@@ -16,6 +16,7 @@ from scraper import crawl_site_with_fallback, WebScraper, parse_sitemap
 from language_detector import LanguageDetector
 from ai_mapper import AIMapper, AIMatchingError
 from fallback_manager import FallbackManager
+from config import APP_VERSION, APP_NAME, APP_DESCRIPTION, APP_METADATA
 
 # Configuration de la page
 st.set_page_config(
@@ -71,8 +72,8 @@ def main():
     """Interface principale avec IA sémantique et support multilangue"""
     
     # Titre
-    st.title("🔥🐍 Fire Snake 301")
-    st.markdown("**Sprint 2** - IA sémantique GPT-3.5 + Support multilangue + Fallbacks 302")
+    st.title(f"🔥🐍 {APP_NAME}")
+    st.markdown(f"**Version {APP_VERSION}** - {APP_DESCRIPTION}")
     st.markdown("---")
     
     # Sélection du mode
@@ -472,8 +473,8 @@ def interface_classique_legacy():
     
     # Footer
     st.markdown("---")
-    st.markdown("*Développé pour SEPTEO Digital Services — Fire Salamander Team* 🦎")
-    st.markdown("*v4.0 - Sprint 2 avec IA sémantique et support multilangue*")
+    st.markdown(f"*Développé pour {APP_METADATA['company']} — {APP_METADATA['team']}* 🦎")
+    st.markdown(f"*Version {APP_VERSION}*")
 
 if __name__ == "__main__":
     main()

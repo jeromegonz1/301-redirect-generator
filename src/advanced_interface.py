@@ -1,5 +1,5 @@
 """
-Interface avancée Sprint 2 avec IA sémantique et support multilangue
+Interface avancée avec IA sémantique et support multilangue
 """
 
 import os
@@ -21,6 +21,7 @@ from fallback_manager import FallbackManager
 from domain_detector import DomainDetector
 from cache_manager import CacheManager
 from fallback_302_intelligent import Fallback302Intelligent
+from config import APP_VERSION, APP_NAME, APP_DESCRIPTION, APP_METADATA
 
 # Import pour export XLS Balt (Sprint 3.5)
 try:

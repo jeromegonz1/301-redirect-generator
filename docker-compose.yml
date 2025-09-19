@@ -4,8 +4,12 @@ services:
   fire-snake-301:
     build: .
     ports:
-      - "8000:8000"
+      - "8002:8000"
     volumes:
       - ./src:/app/src
+    env_file:
+      - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
     command: streamlit run /app/src/main.py --server.port=8000 --server.address=0.0.0.0
     restart: always
