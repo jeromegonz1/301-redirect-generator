@@ -3,7 +3,7 @@ Configuration centralisée de l'application Fire Snake 301
 """
 
 # Version de l'application
-APP_VERSION = "1.1.0"
+APP_VERSION = "1.1.1"
 APP_NAME = "Fire Snake 301"
 APP_DESCRIPTION = "Générateur de redirections 301 avec IA"
 
